@@ -66,7 +66,7 @@ const DOCTORS = [
     name: 'Dr. Sarah Elizabeth',
     role: 'Orthodontist & Aligners',
     experience: '9 years',
-    image: 'https://images.unsplash.com/photo-1594824813583-94c6436cc549?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'Dr. Rahul Nair',
