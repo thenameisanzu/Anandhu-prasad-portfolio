@@ -150,13 +150,60 @@ export default function Site() {
     }
   }, [])
 
+  const navRef = useRef(null)
+  const isDraggingNav = useRef(false)
+  const lastActiveRef = useRef(active)
+
+  useEffect(() => {
+    lastActiveRef.current = active
+  }, [active])
+
   const go = (i) => {
+    setActive(i)
     const p = pager.current
     if (window.innerWidth < 1024 && p) p.scrollTo({ left: i * p.clientWidth, behavior: 'smooth' })
     else {
       const el = document.getElementById(TABS[i][0])
       if (el) el.scrollIntoView({ behavior: 'smooth' })
     }
+  }
+
+  const selectTabFromClientX = (clientX) => {
+    if (!navRef.current) return
+    const rect = navRef.current.getBoundingClientRect()
+    const relX = clientX - rect.left
+    if (rect.width <= 0) return
+    const tabWidth = rect.width / TABS.length
+    const rawIndex = Math.floor(relX / tabWidth)
+    const index = Math.max(0, Math.min(rawIndex, TABS.length - 1))
+    if (index !== lastActiveRef.current) {
+      lastActiveRef.current = index
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        try {
+          navigator.vibrate(8)
+        } catch (_) {}
+      }
+      go(index)
+    }
+  }
+
+  const handleTouchStart = (e) => {
+    isDraggingNav.current = true
+    if (e.touches && e.touches[0]) {
+      selectTabFromClientX(e.touches[0].clientX)
+    }
+  }
+
+  const handleTouchMove = (e) => {
+    if (!isDraggingNav.current) return
+    if (e.cancelable) e.preventDefault()
+    if (e.touches && e.touches[0]) {
+      selectTabFromClientX(e.touches[0].clientX)
+    }
+  }
+
+  const handleTouchEnd = () => {
+    isDraggingNav.current = false
   }
 
   const book = (e) => {
@@ -305,15 +352,18 @@ export default function Site() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  onMouseEnter={() => setHoveredTreatment(i)}
-                  onFocus={() => setHoveredTreatment(i)}
-                  onClick={() => setHoveredTreatment(hoveredTreatment === i ? -1 : i)}
+                  onMouseEnter={() => {
+                    if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+                      setHoveredTreatment(i)
+                    }
+                  }}
                   className={`group relative border-t border-black/20 transition-colors duration-300 ${
                     isRevealed ? 'bg-neutral-50/70 -mx-4 px-4 rounded-3xl' : 'hover:bg-neutral-50/40 -mx-4 px-4 rounded-3xl'
                   }`}
                 >
                   <button
                     type="button"
+                    onClick={() => setHoveredTreatment((prev) => (prev === i ? -1 : i))}
                     className="flex w-full items-center justify-between py-7 text-left cursor-pointer select-none"
                     aria-expanded={isRevealed}
                   >
@@ -545,29 +595,35 @@ export default function Site() {
         </Sec>
       </main>
 
-      {/* Mobile Sticky Pill Navigation */}
+      {/* Mobile Sticky Pill Navigation (Apple-style interactive slide / scrub gesture) */}
       <nav
+        ref={navRef}
         aria-label="Sections"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
         style={{ bottom: 'max(12px, env(safe-area-inset-bottom))' }}
-        className="fixed inset-x-3 z-50 mx-auto flex max-w-[520px] rounded-full bg-black/70 p-1.5 text-white ring-1 ring-white/25 backdrop-blur-xl lg:hidden shadow-2xl"
+        className="fixed inset-x-3 z-50 mx-auto flex max-w-[520px] rounded-full bg-black/80 p-1.5 text-white ring-1 ring-white/25 backdrop-blur-2xl lg:hidden shadow-2xl select-none touch-none active:scale-[0.99] transition-transform duration-200"
       >
         {TABS.map(([id, l, Icon], i) => (
           <button
             key={id}
+            type="button"
             onClick={() => go(i)}
-            className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors ${
+            className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors duration-200 ${
               active === i ? 'text-black font-semibold' : 'text-white/70'
             }`}
           >
             {active === i && (
               <motion.span
                 layoutId="pill"
-                className="absolute inset-0 rounded-full bg-white shadow-sm"
-                transition={{ type: 'spring', stiffness: 400, damping: 34 }}
+                className="absolute inset-0 rounded-full bg-white shadow-md"
+                transition={{ type: 'spring', stiffness: 450, damping: 35 }}
               />
             )}
             <Icon size={20} className="relative z-10" />
-            <span className="relative z-10">{l}</span>
+            <span className="relative z-10 font-medium tracking-tight">{l}</span>
           </button>
         ))}
       </nav>
