@@ -126,8 +126,18 @@ export default function Site() {
     restDelta: 0.001,
   })
 
+  const navRef = useRef(null)
+  const isDraggingNav = useRef(false)
+  const dragTimeoutRef = useRef(null)
+  const lastActiveRef = useRef(active)
+
+  useEffect(() => {
+    lastActiveRef.current = active
+  }, [active])
+
   useEffect(() => {
     const fn = () => {
+      if (isDraggingNav.current) return
       const p = pager.current
       if (!p) return
       if (window.innerWidth < 1024) return setActive(Math.round(p.scrollLeft / p.clientWidth))
@@ -147,16 +157,9 @@ export default function Site() {
       if (p) p.removeEventListener('scroll', fn)
       window.removeEventListener('scroll', fn)
       window.removeEventListener('resize', fn)
+      if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current)
     }
   }, [])
-
-  const navRef = useRef(null)
-  const isDraggingNav = useRef(false)
-  const lastActiveRef = useRef(active)
-
-  useEffect(() => {
-    lastActiveRef.current = active
-  }, [active])
 
   const go = (i) => {
     setActive(i)
@@ -188,6 +191,7 @@ export default function Site() {
   }
 
   const handleTouchStart = (e) => {
+    if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current)
     isDraggingNav.current = true
     if (e.touches && e.touches[0]) {
       selectTabFromClientX(e.touches[0].clientX)
@@ -203,7 +207,13 @@ export default function Site() {
   }
 
   const handleTouchEnd = () => {
-    isDraggingNav.current = false
+    if (navRef.current && pager.current && window.innerWidth < 1024) {
+      pager.current.scrollTo({ left: lastActiveRef.current * pager.current.clientWidth, behavior: 'smooth' })
+    }
+    if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current)
+    dragTimeoutRef.current = setTimeout(() => {
+      isDraggingNav.current = false
+    }, 250)
   }
 
   const book = (e) => {
