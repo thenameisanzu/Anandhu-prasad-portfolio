@@ -530,8 +530,8 @@ export default function Site() {
                     ))}
                   </span>
 
-                  {/* Last Name: Stylised Hollow Cine-Stroke - 100% Single Unified Outline (No Internal Overlaps) */}
-                  <span className="block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black transition-colors duration-300 cursor-default">
+                  {/* Last Name: Stylised Hollow Cine-Stroke - Moved Up Snug Under ANANDU */}
+                  <span className="block overflow-hidden pb-[.06em] -mt-3 sm:-mt-5 lg:-mt-8 font-anton uppercase tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black transition-colors duration-300 cursor-default">
                     {'PRASAD'.split('').map((c, i) => (
                       <motion.span
                         key={i}
