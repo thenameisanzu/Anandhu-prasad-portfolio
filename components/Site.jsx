@@ -553,69 +553,23 @@ export default function Site() {
                 </motion.div>
               </div>
 
-              {/* Right Column: PORTRAIT FRAME & PLACEHOLDER */}
+              {/* Right Column: CLEAN PORTRAIT IMAGE (3:4 Ratio, No Rounded Edges, No Overlay Text) */}
               <div className="lg:col-span-5 flex justify-center">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.92, y: 30 }}
+                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative w-full max-w-[420px] group"
+                  className="relative w-full max-w-[420px]"
                 >
-                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-neutral-100 border border-black/15 shadow-2xl">
-                    
-                    {/* Viewfinder Overlay */}
-                    <div className="absolute inset-4 pointer-events-none z-20 flex flex-col justify-between">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-white/90">
-                        <span className="flex items-center gap-1 rounded bg-black/75 px-2 py-0.5 backdrop-blur-md border border-white/20">
-                          <Camera size={12} className="text-white" />
-                          <span>ISO 800</span>
-                        </span>
-                        <div className="flex items-center gap-1">
-                          {[16, 24, 12, 28, 20, 10].map((h, i) => (
-                            <motion.span
-                              key={i}
-                              className="w-1 rounded-full bg-white"
-                              animate={{ height: [6, h, 6] }}
-                              transition={{ duration: 0.8 + i * 0.1, repeat: Infinity, ease: 'easeInOut' }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Viewfinder Corner Brackets */}
-                      <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-white" />
-                      <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-white" />
-                      <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-white" />
-                      <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-white" />
-
-                      {/* Bottom Info Pill */}
-                      <div className="flex items-center justify-between text-[11px] font-mono">
-                        <span className="rounded bg-black/80 text-white px-2.5 py-1 backdrop-blur-md border border-white/20">
-                          {PROFILE.name}
-                        </span>
-                        <span className="rounded bg-white text-black px-2 py-0.5 font-bold text-[10px]">
-                          HERO IMAGE
-                        </span>
-                      </div>
-                    </div>
-
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 border border-black/15 shadow-xl">
                     <Image
                       src={PROFILE.heroImage}
                       alt={`${PROFILE.name} - Video Editor Portrait`}
                       fill
                       priority
                       sizes="(max-width: 768px) 100vw, 420px"
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-700 hover:scale-105"
                     />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                  </div>
-
-                  <div className="mt-3 flex items-center justify-between px-2 text-xs font-mono text-black/50">
-                    <span>✦ Profile Photo Frame</span>
-                    <span className="text-black font-semibold">
-                      public{PROFILE.heroImage}
-                    </span>
                   </div>
                 </motion.div>
               </div>
