@@ -6,9 +6,9 @@
 :root {
   --bg-primary: #ffffff;
   --text-primary: #000000;
-  --grid-stroke: rgba(0, 0, 0, 0.06);
-  --grid-glow: rgba(0, 0, 0, 0.09);
-  --grain-opacity: 0.12;
+  --grid-stroke: rgba(0, 0, 0, 0.05);
+  --grid-glow: rgba(0, 0, 0, 0.08);
+  --grain-opacity: 0.10;
   --grain-blend: multiply;
   color-scheme: light;
 }
@@ -16,9 +16,9 @@
 html.dark, :root.dark {
   --bg-primary: #000000;
   --text-primary: #ffffff;
-  --grid-stroke: rgba(255, 255, 255, 0.08);
-  --grid-glow: rgba(255, 255, 255, 0.14);
-  --grain-opacity: 0.05;
+  --grid-stroke: rgba(255, 255, 255, 0.07);
+  --grid-glow: rgba(255, 255, 255, 0.12);
+  --grain-opacity: 0.045;
   --grain-blend: screen;
   color-scheme: dark;
 }
@@ -26,17 +26,30 @@ html.dark, :root.dark {
 html {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body {
   @apply font-sans antialiased;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.4s ease, color 0.4s ease;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Temporary class applied only during theme switch for a silky 250ms cross-fade */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition-delay: 0s !important;
+}
+
+/* Hardware accelerated film grain */
 body::before {
   content: "";
   position: fixed;
@@ -45,27 +58,9 @@ body::before {
   pointer-events: none;
   opacity: var(--grain-opacity);
   mix-blend-mode: var(--grain-blend);
+  transform: translateZ(0);
+  will-change: opacity;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
-  transition: opacity 0.4s ease;
-}
-
-/* View Transitions circular clip animation */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::view-transition-old(root) {
-  z-index: 1;
-}
-::view-transition-new(root) {
-  z-index: 9999;
-}
-.dark::view-transition-old(root) {
-  z-index: 9999;
-}
-.dark::view-transition-new(root) {
-  z-index: 1;
 }
 
 .no-scrollbar {

@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 /**
- * InteractiveGridPattern Component
- * An interactive background grid pattern where cells dynamically illuminate as the pointer moves across.
- * Inspired by Magic UI & 21st.dev interactive-grid-pattern.
+ * High-Performance Interactive Grid Pattern
+ * Uses GPU-accelerated SVG <pattern> (1 DOM node instead of 1000+ nodes)
+ * and a smooth, throttled radial cursor spotlight.
  */
 export function InteractiveGridPattern({
   width = 44,
@@ -15,76 +15,49 @@ export function InteractiveGridPattern({
   ...props
 }) {
   const containerRef = useRef(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [hoveredSquare, setHoveredSquare] = useState(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    const updateSize = () => {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.offsetWidth,
-          height: containerRef.current.offsetHeight,
-        })
-      }
-    }
-
-    updateSize()
-    const observer = new ResizeObserver(updateSize)
-    observer.observe(containerRef.current)
-
-    return () => observer.disconnect()
-  }, [])
-
-  const horizontal = Math.max(1, Math.ceil(dimensions.width / width))
-  const vertical = Math.max(1, Math.ceil(dimensions.height / height))
-
-  const handlePointer = useCallback(
-    (clientX, clientY) => {
-      if (!containerRef.current) return
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = clientX - rect.left
-      const y = clientY - rect.top
-
-      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-        const col = Math.floor(x / width)
-        const row = Math.floor(y / height)
-        if (col >= 0 && col < horizontal && row >= 0 && row < vertical) {
-          const index = row * horizontal + col
-          setHoveredSquare(index)
-        }
-      }
-    },
-    [width, height, horizontal, vertical]
-  )
+  const [pointer, setPointer] = useState({ x: -1000, y: -1000, active: false })
+  const rafId = useRef(null)
 
   useEffect(() => {
     const parent = containerRef.current?.parentElement
     if (!parent) return
 
-    const onPointerMove = (e) => {
-      handlePointer(e.clientX, e.clientY)
+    const handleMove = (clientX, clientY) => {
+      if (rafId.current) cancelAnimationFrame(rafId.current)
+      rafId.current = requestAnimationFrame(() => {
+        if (!containerRef.current) return
+        const rect = containerRef.current.getBoundingClientRect()
+        setPointer({
+          x: clientX - rect.left,
+          y: clientY - rect.top,
+          active: true,
+        })
+      })
     }
+
+    const onPointerMove = (e) => handleMove(e.clientX, e.clientY)
     const onTouchMove = (e) => {
-      if (e.touches.length > 0) {
-        handlePointer(e.touches[0].clientX, e.touches[0].clientY)
+      if (e.touches && e.touches[0]) {
+        handleMove(e.touches[0].clientX, e.touches[0].clientY)
       }
     }
-    const onLeave = () => setHoveredSquare(null)
+    const onLeave = () => {
+      setPointer((prev) => ({ ...prev, active: false }))
+    }
 
     parent.addEventListener('pointermove', onPointerMove, { passive: true })
     parent.addEventListener('touchmove', onTouchMove, { passive: true })
-    parent.addEventListener('pointerleave', onLeave)
-    parent.addEventListener('touchend', onLeave)
+    parent.addEventListener('pointerleave', onLeave, { passive: true })
+    parent.addEventListener('touchend', onLeave, { passive: true })
 
     return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current)
       parent.removeEventListener('pointermove', onPointerMove)
       parent.removeEventListener('touchmove', onTouchMove)
       parent.removeEventListener('pointerleave', onLeave)
       parent.removeEventListener('touchend', onLeave)
     }
-  }, [handlePointer])
+  }, [])
 
   return (
     <div
@@ -92,32 +65,39 @@ export function InteractiveGridPattern({
       className={`absolute inset-0 h-full w-full overflow-hidden select-none pointer-events-none ${className}`}
       {...props}
     >
-      {dimensions.width > 0 && dimensions.height > 0 && (
-        <svg
-          width={width * horizontal}
-          height={height * vertical}
-          className="h-full w-full pointer-events-none"
-        >
-          {Array.from({ length: horizontal * vertical }).map((_, index) => {
-            const x = (index % horizontal) * width
-            const y = Math.floor(index / horizontal) * height
-            const isHovered = hoveredSquare === index
+      {/* GPU Accelerated SVG Pattern - 0 DOM load */}
+      <svg className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <defs>
+          <pattern
+            id="hero-grid-pattern"
+            width={width}
+            height={height}
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d={`M ${width} 0 L 0 0 0 ${height}`}
+              fill="none"
+              stroke="var(--grid-stroke)"
+              strokeWidth="1"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hero-grid-pattern)" />
+      </svg>
 
-            return (
-              <rect
-                key={index}
-                x={x}
-                y={y}
-                width={width}
-                height={height}
-                stroke="var(--grid-stroke)"
-                fill={isHovered ? 'var(--grid-glow)' : 'transparent'}
-                className={`transition-all duration-100 ease-in-out not-[&:hover]:duration-1000 hover:fill-[var(--grid-glow)] ${squaresClassName}`}
-              />
-            )
-          })}
-        </svg>
-      )}
+      {/* Fluid Interactive Pointer Spotlight */}
+      <div
+        className="absolute pointer-events-none rounded-full transition-opacity duration-500 ease-out will-change-transform"
+        style={{
+          width: 380,
+          height: 380,
+          left: pointer.x,
+          top: pointer.y,
+          transform: 'translate(-50%, -50%)',
+          opacity: pointer.active ? 1 : 0,
+          background: 'radial-gradient(circle, var(--grid-glow) 0%, transparent 70%)',
+        }}
+      />
     </div>
   )
 }

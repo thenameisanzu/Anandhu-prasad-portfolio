@@ -10,7 +10,6 @@ import {
   Phone,
   ArrowUpRight,
   CheckCircle2,
-  Camera,
   Clock,
   Instagram,
   Youtube,
@@ -40,14 +39,11 @@ export const PROFILE = {
   tagline: 'DaVinci Resolve • Premiere Pro • CapCut',
   bio: 'Specializing in high-retention video editing, precision color grading, and dynamic sound design. Delivering polished, high-impact cuts for commercial brands, YouTube creators, and viral short-form content.',
   phone: '+91 8606502102',
-  whatsapp: '918606502102', // CountryCode + Number without '+'
+  whatsapp: '918606502102',
   email: 'ananduprasad.edit@gmail.com',
   location: 'Kerala, India • Available Worldwide (Remote)',
   
-  // 📸 HERO IMAGE:
   heroImage: '/anandu-portrait.jpg',
-  
-  // 📁 MAIN GOOGLE DRIVE SHOWREEL / PORTFOLIO FOLDER LINK:
   showreelDriveUrl: 'https://drive.google.com/',
 
   socials: {
@@ -172,7 +168,7 @@ export const TOOLS = [
   },
 ]
 
-// 📽️ SELECTED WORKS (With Direct Google Drive Links)
+// 📽️ SELECTED WORKS
 export const PROJECTS = [
   {
     id: 1,
@@ -228,12 +224,16 @@ export const TABS = [
   ['contact', 'Contact', Mail],
 ]
 
-// Reusable Section Container with generous top clearance for fixed header
+// Fluid Section Container with effortless spring entrance and generous viewport
 const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
   const { isDark } = useTheme()
   return (
-    <section
+    <motion.section
       id={id}
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
       className={`relative px-5 md:px-10 lg:px-16 max-md:h-[100dvh] max-md:min-w-full max-md:w-full max-md:max-w-full max-md:snap-start max-md:snap-always max-md:overflow-y-auto max-md:overflow-x-hidden ${
         isFooter
           ? 'pt-28 pb-28 md:pt-28 md:pb-6 md:min-h-0'
@@ -249,7 +249,7 @@ const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
       } transition-colors duration-300 ${className}`}
     >
       {children}
-    </section>
+    </motion.section>
   )
 }
 
@@ -257,10 +257,10 @@ const H2 = ({ children, className = '' }) => {
   const { isDark } = useTheme()
   return (
     <motion.h2
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`font-display text-[13vw] font-bold leading-[.88] tracking-tighter md:text-[10vw] lg:text-[7.5rem] ${
         isDark ? 'text-white' : 'text-black'
       } transition-colors duration-300 ${className}`}
@@ -290,15 +290,13 @@ export default function Site() {
   const [active, setActive] = useState(0)
   const [hoveredProject, setHoveredProject] = useState(1)
   const [theme, setTheme] = useState('dark')
-  const [lutToast, setLutToast] = useState(null)
-  const [rippleEffect, setRippleEffect] = useState(null)
 
   const isDark = theme === 'dark'
 
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 400,
-    damping: 40,
+    stiffness: 300,
+    damping: 35,
     restDelta: 0.001,
   })
 
@@ -307,7 +305,7 @@ export default function Site() {
   const dragTimeoutRef = useRef(null)
   const lastActiveRef = useRef(active)
 
-  // Initialize theme from localStorage
+  // Initialize theme from localStorage without lag
   useEffect(() => {
     try {
       const saved = localStorage.getItem('anandu-portfolio-theme')
@@ -323,102 +321,64 @@ export default function Site() {
     } catch (_) {}
   }, [])
 
-  // Cinema Theme Switcher with Circular Reveal & HUD Toast Effect
-  const toggleTheme = (e) => {
+  // Silky Smooth & Fast Theme Switcher
+  const toggleTheme = () => {
     const nextTheme = isDark ? 'light' : 'dark'
-    
-    // Get click coordinates for origin of circular effect
-    const rect = e?.currentTarget?.getBoundingClientRect?.()
-    const x = rect ? rect.left + rect.width / 2 : (e?.clientX || window.innerWidth / 2)
-    const y = rect ? rect.top + rect.height / 2 : (e?.clientY || 40)
+    const root = document.documentElement
 
-    // Trigger Colorist LUT Toast
-    setLutToast(nextTheme === 'dark' ? 'LUT: ACES FILM DARK (INVERTED)' : 'LUT: REC.709 STUDIO LIGHT')
-    setTimeout(() => setLutToast(null), 1500)
+    // Enable temporary smooth transition on elements
+    root.classList.add('theme-transitioning')
+    root.classList.toggle('dark', nextTheme === 'dark')
+    root.classList.toggle('light', nextTheme === 'light')
 
-    // Trigger expanding circular wave ripple
-    setRippleEffect({
-      id: Date.now(),
-      x,
-      y,
-      color: nextTheme === 'dark' ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.12)',
-    })
-    setTimeout(() => setRippleEffect(null), 850)
+    setTheme(nextTheme)
+    try {
+      localStorage.setItem('anandu-portfolio-theme', nextTheme)
+    } catch (_) {}
 
-    // Native View Transition API (Chrome, Edge, Safari 18+)
-    if (typeof document !== 'undefined' && document.startViewTransition) {
-      const endRadius = Math.hypot(
-        Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y)
-      )
-
-      const transition = document.startViewTransition(() => {
-        setTheme(nextTheme)
-        try {
-          localStorage.setItem('anandu-portfolio-theme', nextTheme)
-        } catch (_) {}
-        if (nextTheme === 'dark') {
-          document.documentElement.classList.add('dark')
-          document.documentElement.classList.remove('light')
-        } else {
-          document.documentElement.classList.add('light')
-          document.documentElement.classList.remove('dark')
-        }
-      })
-
-      transition.ready.then(() => {
-        document.documentElement.animate(
-          {
-            clipPath: [
-              `circle(0px at ${x}px ${y}px)`,
-              `circle(${endRadius}px at ${x}px ${y}px)`
-            ]
-          },
-          {
-            duration: 650,
-            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-            pseudoElement: '::view-transition-new(root)'
-          }
-        )
-      })
-    } else {
-      // Fallback smooth transition for all browsers
-      setTheme(nextTheme)
-      try {
-        localStorage.setItem('anandu-portfolio-theme', nextTheme)
-      } catch (_) {}
-      if (nextTheme === 'dark') {
-        document.documentElement.classList.add('dark')
-        document.documentElement.classList.remove('light')
-      } else {
-        document.documentElement.classList.add('light')
-        document.documentElement.classList.remove('dark')
-      }
-    }
+    setTimeout(() => {
+      root.classList.remove('theme-transitioning')
+    }, 280)
   }
 
   useEffect(() => {
     lastActiveRef.current = active
   }, [active])
 
+  // Throttled RAF scroll listener to eliminate scroll stutter and layout thrashing
   useEffect(() => {
+    let ticking = false
     const fn = () => {
-      if (isDraggingNav.current) return
-      const p = pager.current
-      if (!p) return
-      if (window.innerWidth < 768) return setActive(Math.round(p.scrollLeft / p.clientWidth))
-      const i = TABS.findIndex(([id]) => {
-        const el = document.getElementById(id)
-        if (!el) return false
-        const r = el.getBoundingClientRect()
-        return r.top <= window.innerHeight / 2 && r.bottom > window.innerHeight / 2
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        ticking = false
+        if (isDraggingNav.current) return
+        const p = pager.current
+        if (!p) return
+        if (window.innerWidth < 768) {
+          const newActive = Math.round(p.scrollLeft / p.clientWidth)
+          if (newActive !== lastActiveRef.current) setActive(newActive)
+          return
+        }
+        const midY = window.innerHeight / 2
+        for (let idx = 0; idx < TABS.length; idx++) {
+          const el = document.getElementById(TABS[idx][0])
+          if (el) {
+            const r = el.getBoundingClientRect()
+            if (r.top <= midY && r.bottom > midY) {
+              if (idx !== lastActiveRef.current) setActive(idx)
+              break
+            }
+          }
+        }
       })
-      if (i > -1) setActive(i)
     }
+
     const p = pager.current
     if (p) p.addEventListener('scroll', fn, { passive: true })
     window.addEventListener('scroll', fn, { passive: true })
-    window.addEventListener('resize', fn)
+    window.addEventListener('resize', fn, { passive: true })
     return () => {
       if (p) p.removeEventListener('scroll', fn)
       window.removeEventListener('scroll', fn)
@@ -511,47 +471,6 @@ export default function Site() {
           style={{ scaleX }}
         />
 
-        {/* Visual Expanding Circular Ripple Overlay (Works Across All Browsers) */}
-        <AnimatePresence>
-          {rippleEffect && (
-            <motion.div
-              key={rippleEffect.id}
-              initial={{ width: 0, height: 0, opacity: 0.7 }}
-              animate={{ width: '260vmax', height: '260vmax', opacity: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              style={{
-                left: rippleEffect.x,
-                top: rippleEffect.y,
-                transform: 'translate(-50%, -50%)',
-                backgroundColor: rippleEffect.color,
-                pointerEvents: 'none',
-              }}
-              className="fixed z-[9998] rounded-full filter blur-[1px]"
-            />
-          )}
-        </AnimatePresence>
-
-        {/* Colorist LUT Switch HUD Toast Effect */}
-        <AnimatePresence>
-          {lutToast && (
-            <motion.div
-              initial={{ opacity: 0, y: -24, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -16, scale: 0.95 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className={`fixed top-16 md:top-20 inset-x-0 mx-auto z-50 flex w-fit items-center gap-2.5 rounded-full px-4 py-2 font-mono text-xs font-bold tracking-wide shadow-2xl border backdrop-blur-xl ${
-                isDark
-                  ? 'bg-neutral-950/90 text-white border-white/20 shadow-white/5'
-                  : 'bg-white/95 text-black border-black/20 shadow-black/10'
-              }`}
-            >
-              <span className={`h-2 w-2 rounded-full animate-ping ${isDark ? 'bg-amber-400' : 'bg-blue-600'}`} />
-              <span>{lutToast}</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* FIXED HEADER */}
         <header
           className={`fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-3 md:py-4 backdrop-blur-md border-b transition-colors duration-300 md:px-10 lg:px-16 ${
@@ -606,11 +525,11 @@ export default function Site() {
 
           {/* Action Area: Theme Switcher & CTAs */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* 🌗 THEME TOGGLE BUTTON WITH SPRING ANIMATION */}
+            {/* 🌗 FAST & FLUID THEME TOGGLE BUTTON */}
             <button
               onClick={toggleTheme}
               type="button"
-              title={isDark ? 'Switch to Light Theme (Rec.709)' : 'Switch to Dark Theme (ACES Film)'}
+              title={isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
               aria-label="Toggle Theme"
               className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-mono font-semibold transition-all hover:scale-105 active:scale-95 shadow-xs cursor-pointer border ${
                 isDark
@@ -620,15 +539,15 @@ export default function Site() {
             >
               <motion.div
                 key={theme}
-                initial={{ rotate: -90, scale: 0.6, opacity: 0 }}
-                animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+                initial={{ rotate: -90, scale: 0.7 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="flex items-center"
               >
                 {isDark ? (
-                  <Sun size={14} className="text-amber-300 group-hover:rotate-45 transition-transform duration-300" />
+                  <Sun size={14} className="text-amber-300" />
                 ) : (
-                  <Moon size={14} className="text-neutral-900 group-hover:-rotate-12 transition-transform duration-300" />
+                  <Moon size={14} className="text-neutral-900" />
                 )}
               </motion.div>
               <span className="hidden sm:inline text-[11px] font-mono uppercase tracking-wider">
@@ -673,7 +592,7 @@ export default function Site() {
               SECTION 1: HERO - CLEAN MINIMAL MONOCHROME WITH GOOGLE DRIVE CTA
               ========================================================================= */}
           <Sec id="home" className="overflow-hidden">
-            {/* Dynamic Grid Pattern Background */}
+            {/* Ultra-Fast Hardware Accelerated Grid Background */}
             <InteractiveGridPattern
               width={44}
               height={44}
@@ -686,7 +605,7 @@ export default function Site() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className={`mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs border-b pb-4 transition-colors ${
                   isDark ? 'text-white/50 border-white/10' : 'text-black/50 border-black/10'
                 }`}
@@ -715,7 +634,7 @@ export default function Site() {
                 </div>
               </motion.div>
 
-              {/* Grid Layout: Left Typography | Right Photo Frame - Side-by-side on md (iPad) and lg (Desktop) */}
+              {/* Grid Layout: Left Typography | Right Photo Frame */}
               <div className="grid gap-8 md:gap-10 md:grid-cols-12 md:items-center">
                 
                 {/* Left Column: Headline, Bio & Google Drive Button */}
@@ -723,9 +642,9 @@ export default function Site() {
                   
                   {/* Official Software Badges */}
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.05 }}
+                    transition={{ duration: 0.4, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-5 flex flex-wrap items-center gap-2.5"
                   >
                     <span
@@ -754,12 +673,11 @@ export default function Site() {
                     </span>
                   </motion.div>
 
-                  {/* Animated Stylised Name Headline - Unified Single Outlines */}
+                  {/* Stylised Name Headline */}
                   <h1
                     aria-label={PROFILE.name}
                     className="select-none text-[15vw] leading-none tracking-normal sm:text-[12vw] md:text-[5.5rem] lg:text-[7.2rem] xl:text-[8.2rem]"
                   >
-                    {/* First Name: Solid */}
                     <span
                       className={`block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] transition-colors duration-300 ${
                         isDark ? 'text-white' : 'text-black'
@@ -771,14 +689,13 @@ export default function Site() {
                           className="inline-block"
                           initial={{ y: '100%' }}
                           animate={{ y: 0 }}
-                          transition={{ duration: 0.35, delay: 0.04 + i * 0.02, ease: 'easeOut' }}
+                          transition={{ duration: 0.4, delay: 0.04 + i * 0.02, ease: [0.16, 1, 0.3, 1] }}
                         >
                           {c}
                         </motion.span>
                       ))}
                     </span>
 
-                    {/* Last Name: Stylised Hollow Outline - Clean Below ANANDU */}
                     <span
                       className={`block overflow-hidden pb-[.06em] mt-1 sm:mt-2 font-anton uppercase tracking-[0.05em] text-transparent transition-colors duration-300 cursor-default ${
                         isDark
@@ -792,7 +709,7 @@ export default function Site() {
                           className="inline-block mr-[0.02em] last:mr-0"
                           initial={{ y: '100%' }}
                           animate={{ y: 0 }}
-                          transition={{ duration: 0.35, delay: 0.12 + i * 0.02, ease: 'easeOut' }}
+                          transition={{ duration: 0.4, delay: 0.12 + i * 0.02, ease: [0.16, 1, 0.3, 1] }}
                         >
                           {c}
                         </motion.span>
@@ -800,7 +717,7 @@ export default function Site() {
                       <motion.span
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.2, delay: 0.25 }}
+                        transition={{ duration: 0.25, delay: 0.25 }}
                         className={`inline-block ml-1 [-webkit-text-stroke:0px] ${isDark ? 'text-white' : 'text-black'}`}
                       >
                         .
@@ -810,9 +727,9 @@ export default function Site() {
 
                   {/* Subtitle Bio */}
                   <motion.p
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.18, ease: 'easeOut' }}
+                    transition={{ duration: 0.45, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
                     className={`mt-6 max-w-xl text-base sm:text-lg md:text-lg leading-relaxed font-normal transition-colors ${
                       isDark ? 'text-white/75' : 'text-black/75'
                     }`}
@@ -820,11 +737,11 @@ export default function Site() {
                     {PROFILE.bio}
                   </motion.p>
 
-                  {/* Hero CTAs: Direct Google Drive Link & Hire Button */}
+                  {/* Hero CTAs */}
                   <motion.div
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.22, ease: 'easeOut' }}
+                    transition={{ duration: 0.45, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
                     className="mt-8 flex flex-wrap items-center gap-4"
                   >
                     <a
@@ -855,12 +772,12 @@ export default function Site() {
                   </motion.div>
                 </div>
 
-                {/* Right Column: CLEAN PORTRAIT IMAGE (3:4 Ratio, Rounded Edges, Side-by-Side on Tablet/Desktop) */}
+                {/* Right Column: CLEAN PORTRAIT IMAGE (3:4 Ratio, Rounded Edges) */}
                 <div className="md:col-span-5 flex justify-center">
                   <motion.div
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: 0.1, ease: 'easeOut' }}
+                    transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
                     className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-none"
                   >
                     <div
@@ -895,36 +812,46 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 2: SELECTED PROJECTS WITH GOOGLE DRIVE BUTTONS
+              SECTION 2: SELECTED PROJECTS WITH FLUID REVEALS
               ========================================================================= */}
           <Sec id="projects" alternate>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <span
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
                   Portfolio Showcase
-                </span>
+                </motion.span>
                 <H2>Selected Works</H2>
               </div>
-              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}
+              >
                 Click any project to view details or open the master video directly in Google Drive.
-              </p>
+              </motion.p>
             </div>
 
-            {/* Project List */}
+            {/* Fluid Staggered Project List */}
             <div className={`mt-12 divide-y ${isDark ? 'divide-white/10' : 'divide-black/10'}`}>
-              {PROJECTS.map((project) => {
+              {PROJECTS.map((project, idx) => {
                 const isRevealed = hoveredProject === project.id
                 return (
                   <motion.div
                     key={project.id}
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.05 }}
-                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                    viewport={{ once: true, amount: 0.08, margin: '-30px' }}
+                    transition={{ duration: 0.55, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
                     className={`group relative transition-all duration-300 ${
                       isRevealed
                         ? isDark
@@ -992,7 +919,7 @@ export default function Site() {
                           initial={{ height: 0, opacity: 0, marginTop: 0 }}
                           animate={{ height: 'auto', opacity: 1, marginTop: 4 }}
                           exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                          transition={{ duration: 0.25, ease: 'easeOut' }}
+                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
                           <div className="grid gap-6 pb-8 md:grid-cols-2 items-center">
@@ -1067,23 +994,33 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 3: SOFTWARE & ARSENAL
+              SECTION 3: SOFTWARE & ARSENAL WITH FLUID STAGGER
               ========================================================================= */}
           <Sec id="skills">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <span
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
                   Software & Workflow
-                </span>
+                </motion.span>
                 <H2>The Arsenal</H2>
               </div>
-              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}
+              >
                 Specialized mastery across the top 3 video post-production tools.
-              </p>
+              </motion.p>
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -1092,10 +1029,10 @@ export default function Site() {
                 return (
                   <motion.div
                     key={tool.name}
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 28 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.05 }}
-                    transition={{ duration: 0.25, delay: i * 0.05, ease: 'easeOut' }}
+                    viewport={{ once: true, amount: 0.08, margin: '-20px' }}
+                    transition={{ duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ y: -4 }}
                     className={`relative flex flex-col justify-between rounded-3xl border p-8 transition-all duration-300 shadow-sm ${
                       isDark
@@ -1157,27 +1094,37 @@ export default function Site() {
           <Sec id="contact" alternate isFooter>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <span
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
                   Collaboration
-                </span>
+                </motion.span>
                 <H2>Let&apos;s Cut</H2>
               </div>
-              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}
+              >
                 Have Google Drive footage ready? Send project details and let&apos;s get cutting.
-              </p>
+              </motion.p>
             </div>
 
             <div className="mt-12 grid gap-10 md:grid-cols-2 items-start w-full max-w-full overflow-hidden">
               {/* Direct Contact Details */}
               <motion.div
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.05 }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.08 }}
+                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-8 w-full max-w-full"
               >
                 <div className="space-y-4">
@@ -1287,10 +1234,10 @@ export default function Site() {
 
               {/* Quick Inquiry Form */}
               <motion.div
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.05 }}
-                transition={{ duration: 0.25, delay: 0.05, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.08 }}
+                transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
                 className={`w-full max-w-full overflow-hidden rounded-3xl border p-6 sm:p-8 shadow-sm backdrop-blur-md ${
                   isDark ? 'border-white/15 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
                 }`}
