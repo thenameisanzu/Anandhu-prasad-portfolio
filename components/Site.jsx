@@ -15,7 +15,9 @@ import {
   Youtube,
   Plus,
   Sun,
-  Moon
+  Moon,
+  User,
+  Sparkles,
 } from 'lucide-react'
 import { InteractiveGridPattern } from './InteractiveGridPattern'
 
@@ -216,9 +218,10 @@ export const PROJECTS = [
   },
 ]
 
-// 📱 CLEAN 4-TAB NAVIGATION
+// 📱 CLEAN 5-TAB NAVIGATION
 export const TABS = [
   ['home', 'Home', Film],
+  ['about', 'About', User],
   ['projects', 'Work', Play],
   ['skills', 'Skills', Sliders],
   ['contact', 'Contact', Mail],
@@ -550,7 +553,10 @@ export default function Site() {
 
             {/* Direct WhatsApp Action */}
             <button
-              onClick={() => go(3)}
+              onClick={() => {
+                const contactIndex = TABS.findIndex(([id]) => id === 'contact')
+                go(contactIndex >= 0 ? contactIndex : 4)
+              }}
               className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold hover:scale-105 active:scale-95 transition-all shadow-md cursor-pointer ${
                 isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'
               }`}
@@ -694,7 +700,10 @@ export default function Site() {
                       <ArrowUpRight size={16} />
                     </a>
                     <button
-                      onClick={() => go(3)}
+                      onClick={() => {
+                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
+                        go(contactIndex >= 0 ? contactIndex : 4)
+                      }}
                       className={`flex items-center gap-2 rounded-full border px-7 py-4 font-medium transition-all hover:scale-105 active:scale-95 cursor-pointer ${
                         isDark
                           ? 'border-white/25 bg-transparent text-white hover:border-white hover:bg-white/10'
@@ -732,15 +741,198 @@ export default function Site() {
               <p className={`mt-8 text-center text-xs font-mono lg:hidden ${
                 isDark ? 'text-white/40' : 'text-black/40'
               }`}>
-                Swipe to explore work &rarr;
+                Swipe to explore &rarr;
               </p>
             </div>
           </Sec>
 
           {/* =========================================================================
-              SECTION 2: SELECTED PROJECTS WITH BASIC FADE
+              SECTION 2: ABOUT ME
               ========================================================================= */}
-          <Sec id="projects" alternate>
+          <Sec id="about" alternate>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+              <div>
+                <span
+                  className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
+                    isDark ? 'text-white/50' : 'text-black/50'
+                  }`}
+                >
+                  Who I Am // Story &amp; Vision
+                </span>
+                <H2>About Me</H2>
+              </div>
+              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+                Transforming raw timelines into high-retention cinematic stories that resonate.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-8 lg:grid-cols-12 items-start">
+              {/* Left Column: Editorial Bio & Creative Philosophy */}
+              <div className="lg:col-span-7 flex flex-col gap-6">
+                <div
+                  className={`rounded-3xl border p-7 sm:p-9 transition-colors duration-150 shadow-sm ${
+                    isDark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className={`inline-flex items-center justify-center h-8 w-8 rounded-full border text-xs font-mono font-bold ${
+                      isDark ? 'border-white/20 bg-white/10 text-white' : 'border-black/20 bg-black/5 text-black'
+                    }`}>
+                      AP
+                    </span>
+                    <span className={`font-mono text-xs uppercase tracking-wider font-semibold ${
+                      isDark ? 'text-white/60' : 'text-black/60'
+                    }`}>
+                      Anandu Prasad &bull; Kerala, India
+                    </span>
+                  </div>
+
+                  <h3 className={`text-2xl sm:text-3xl font-bold font-syne tracking-tight mb-4 ${
+                    isDark ? 'text-white' : 'text-black'
+                  }`}>
+                    Editing isn&apos;t just cutting clips—it&apos;s sculpting emotion and momentum.
+                  </h3>
+
+                  <div className={`space-y-4 text-sm sm:text-base leading-relaxed ${
+                    isDark ? 'text-white/70' : 'text-black/70'
+                  }`}>
+                    <p>
+                      I am a video editor and colorist with over 3+ years of hands-on post-production experience. I specialize in crafting high-retention video content for YouTube creators, commercial brands, and documentary storytellers.
+                    </p>
+                    <p>
+                      My approach blends rhythmic pacing, surgical sound design, and color precision graded in DaVinci Resolve. Whether it&apos;s an intense 30-second automotive commercial, an immersive 20-minute travel documentary, or a viral vertical reel, I build cuts that capture attention in the first 3 seconds and never let go.
+                    </p>
+                  </div>
+
+                  {/* Core Badges */}
+                  <div className="mt-6 pt-6 border-t border-white/10 flex flex-wrap gap-2">
+                    {['High-Retention Pacing', 'Color Grading (DaVinci)', 'Sound Design & Foley', 'Fast 48h Turnaround', 'Remote Collaboration'].map((tag) => (
+                      <span
+                        key={tag}
+                        className={`rounded-full border px-3 py-1 font-mono text-[11px] font-medium ${
+                          isDark ? 'border-white/15 bg-white/[0.05] text-white/80' : 'border-black/15 bg-black/[0.03] text-black/80'
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Philosophy Quote Card */}
+                <div
+                  className={`rounded-3xl border p-6 sm:p-8 flex items-start gap-4 transition-colors ${
+                    isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
+                  }`}
+                >
+                  <Sparkles size={24} className={`shrink-0 mt-1 ${isDark ? 'text-amber-300' : 'text-amber-600'}`} />
+                  <div>
+                    <p className="font-serif italic text-base sm:text-lg leading-relaxed mb-2">
+                      &ldquo;Every cut must earn its place. If a frame does not elevate the narrative rhythm or push emotion forward, it belongs on the cutting room floor.&rdquo;
+                    </p>
+                    <span className={`font-mono text-xs uppercase tracking-wider block font-semibold ${
+                      isDark ? 'text-white/50' : 'text-black/50'
+                    }`}>
+                      &mdash; The Creative Philosophy
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Experience Metrics & Editing Workflow */}
+              <div className="lg:col-span-5 flex flex-col gap-6">
+                {/* 4 Key Stat Cards */}
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { label: 'Experience', val: '3+', sub: 'Years in Post-Production' },
+                    { label: 'Projects', val: '150+', sub: 'Commercials & Films' },
+                    { label: 'Audience Reach', val: '10M+', sub: 'Organic Video Views' },
+                    { label: 'Client Rating', val: '100%', sub: 'On-Time Delivery' },
+                  ].map((stat) => (
+                    <div
+                      key={stat.label}
+                      className={`rounded-2xl border p-5 transition-colors ${
+                        isDark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
+                      }`}
+                    >
+                      <span className={`font-mono text-[10px] uppercase tracking-wider block mb-1 ${
+                        isDark ? 'text-white/50' : 'text-black/50'
+                      }`}>
+                        {stat.label}
+                      </span>
+                      <span className={`text-3xl font-extrabold font-anton block tracking-tight ${
+                        isDark ? 'text-white' : 'text-black'
+                      }`}>
+                        {stat.val}
+                      </span>
+                      <span className={`text-xs mt-1 block leading-tight ${
+                        isDark ? 'text-white/60' : 'text-black/60'
+                      }`}>
+                        {stat.sub}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 4-Step Editing Protocol */}
+                <div
+                  className={`rounded-3xl border p-6 sm:p-7 transition-colors ${
+                    isDark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
+                  }`}
+                >
+                  <span className={`font-mono text-xs uppercase tracking-widest block mb-4 font-semibold ${
+                    isDark ? 'text-white/50' : 'text-black/50'
+                  }`}>
+                    Editing Protocol
+                  </span>
+                  <div className="space-y-4">
+                    {[
+                      { step: '01', title: 'Ingest & Story Spine', desc: 'Logging footage, identifying hero beats, and establishing narrative flow.' },
+                      { step: '02', title: 'Rough Assembly & Pacing', desc: 'Cutting for momentum, micro-hooks, and high viewer retention curves.' },
+                      { step: '03', title: 'Color Grade & Textures', desc: 'DaVinci Wide Gamut grading, film halation, tone separation, and contrast.' },
+                      { step: '04', title: 'Foley & Master Polish', desc: 'Layered sound effects, punchy audio balancing, and export in 4K Cinema.' },
+                    ].map((item) => (
+                      <div key={item.step} className="flex items-start gap-3.5">
+                        <span className={`font-mono text-xs font-bold px-2 py-0.5 rounded border shrink-0 ${
+                          isDark ? 'border-white/15 bg-white/5 text-white/70' : 'border-black/15 bg-black/5 text-black/70'
+                        }`}>
+                          {item.step}
+                        </span>
+                        <div>
+                          <h4 className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-black'}`}>
+                            {item.title}
+                          </h4>
+                          <p className={`text-xs mt-0.5 leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 pt-5 border-t border-white/10 flex justify-end">
+                    <button
+                      onClick={() => {
+                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
+                        go(contactIndex >= 0 ? contactIndex : 4)
+                      }}
+                      className={`inline-flex items-center gap-1.5 text-xs font-semibold font-mono uppercase tracking-wider transition-colors cursor-pointer ${
+                        isDark ? 'text-white hover:text-white/70' : 'text-black hover:text-black/70'
+                      }`}
+                    >
+                      <span>Start A Project With Anandu</span>
+                      <ArrowUpRight size={14} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Sec>
+
+          {/* =========================================================================
+              SECTION 3: SELECTED PROJECTS WITH BASIC FADE
+              ========================================================================= */}
+          <Sec id="projects">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
                 <span
@@ -899,9 +1091,9 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 3: SOFTWARE & ARSENAL
+              SECTION 4: SOFTWARE & ARSENAL
               ========================================================================= */}
-          <Sec id="skills">
+          <Sec id="skills" alternate>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
                 <span
@@ -983,9 +1175,9 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 4: CONTACT & HIRE ME (WHATSAPP & FOOTAGE LINK)
+              SECTION 5: CONTACT & HIRE ME (WHATSAPP & FOOTAGE LINK)
               ========================================================================= */}
-          <Sec id="contact" alternate isFooter>
+          <Sec id="contact" isFooter>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
                 <span
@@ -1227,7 +1419,7 @@ export default function Site() {
         <nav
           aria-label="Sections"
           style={{ bottom: 'max(12px, env(safe-area-inset-bottom))' }}
-          className={`fixed inset-x-3 z-50 mx-auto flex max-w-[480px] rounded-full p-1.5 backdrop-blur-2xl lg:hidden shadow-2xl select-none ring-1 transition-colors duration-150 ${
+          className={`fixed inset-x-3 z-50 mx-auto flex max-w-[500px] rounded-full p-1.5 backdrop-blur-2xl lg:hidden shadow-2xl select-none ring-1 transition-colors duration-150 ${
             isDark ? 'bg-neutral-950/90 text-white ring-white/15' : 'bg-white/95 text-black ring-black/15'
           }`}
         >
