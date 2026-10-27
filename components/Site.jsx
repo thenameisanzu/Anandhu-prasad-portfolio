@@ -224,7 +224,7 @@ export const TABS = [
   ['contact', 'Contact', Mail],
 ]
 
-// Solid Static Section Container (No physical motion on outer container = zero scroll glitch)
+// Solid Static Section Container (No vertical translation = zero scroll glitch)
 const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
   const { isDark } = useTheme()
   return (
@@ -297,10 +297,9 @@ export default function Site() {
     restDelta: 0.001,
   })
 
-  const navRef = useRef(null)
-  const isDraggingNav = useRef(false)
-  const dragTimeoutRef = useRef(null)
   const lastActiveRef = useRef(active)
+  const isProgrammaticScroll = useRef(false)
+  const scrollTimeoutRef = useRef(null)
 
   // Initialize theme from localStorage
   useEffect(() => {
@@ -336,29 +335,61 @@ export default function Site() {
     lastActiveRef.current = active
   }, [active])
 
-  // Simple throttled scroll listener
+  // Precision Navigation handler with programmatic scroll lock
+  const go = (i) => {
+    setActive(i)
+    lastActiveRef.current = i
+    isProgrammaticScroll.current = true
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+
+    const p = pager.current
+    if (window.innerWidth < 768 && p) {
+      p.scrollTo({ left: i * p.clientWidth, behavior: 'smooth' })
+    } else {
+      const el = document.getElementById(TABS[i][0])
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    // Release programmatic scroll lock after smooth scrolling completes
+    scrollTimeoutRef.current = setTimeout(() => {
+      isProgrammaticScroll.current = false
+    }, 600)
+  }
+
+  // Throttled scroll listener that does NOT fight with programmatic tab clicks
   useEffect(() => {
     let ticking = false
     const fn = () => {
+      if (isProgrammaticScroll.current) return
       if (ticking) return
       ticking = true
+
       requestAnimationFrame(() => {
         ticking = false
-        if (isDraggingNav.current) return
+        if (isProgrammaticScroll.current) return
         const p = pager.current
         if (!p) return
+
         if (window.innerWidth < 768) {
           const newActive = Math.round(p.scrollLeft / p.clientWidth)
-          if (newActive !== lastActiveRef.current) setActive(newActive)
+          if (newActive !== lastActiveRef.current && newActive >= 0 && newActive < TABS.length) {
+            lastActiveRef.current = newActive
+            setActive(newActive)
+          }
           return
         }
-        const midY = window.innerHeight / 2
+
+        // On desktop/tablet, check which section is in view
+        const midY = window.innerHeight * 0.4
         for (let idx = 0; idx < TABS.length; idx++) {
           const el = document.getElementById(TABS[idx][0])
           if (el) {
             const r = el.getBoundingClientRect()
             if (r.top <= midY && r.bottom > midY) {
-              if (idx !== lastActiveRef.current) setActive(idx)
+              if (idx !== lastActiveRef.current) {
+                lastActiveRef.current = idx
+                setActive(idx)
+              }
               break
             }
           }
@@ -370,68 +401,14 @@ export default function Site() {
     if (p) p.addEventListener('scroll', fn, { passive: true })
     window.addEventListener('scroll', fn, { passive: true })
     window.addEventListener('resize', fn, { passive: true })
+
     return () => {
       if (p) p.removeEventListener('scroll', fn)
       window.removeEventListener('scroll', fn)
       window.removeEventListener('resize', fn)
-      if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
     }
   }, [])
-
-  const go = (i) => {
-    setActive(i)
-    const p = pager.current
-    if (window.innerWidth < 768 && p) p.scrollTo({ left: i * p.clientWidth, behavior: 'smooth' })
-    else {
-      const el = document.getElementById(TABS[i][0])
-      if (el) el.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const selectTabFromClientX = (clientX) => {
-    if (!navRef.current) return
-    const rect = navRef.current.getBoundingClientRect()
-    const relX = clientX - rect.left
-    if (rect.width <= 0) return
-    const tabWidth = rect.width / TABS.length
-    const rawIndex = Math.floor(relX / tabWidth)
-    const index = Math.max(0, Math.min(rawIndex, TABS.length - 1))
-    if (index !== lastActiveRef.current) {
-      lastActiveRef.current = index
-      if (typeof navigator !== 'undefined' && navigator.vibrate) {
-        try {
-          navigator.vibrate(8)
-        } catch (_) {}
-      }
-      go(index)
-    }
-  }
-
-  const handleTouchStart = (e) => {
-    if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current)
-    isDraggingNav.current = true
-    if (e.touches && e.touches[0]) {
-      selectTabFromClientX(e.touches[0].clientX)
-    }
-  }
-
-  const handleTouchMove = (e) => {
-    if (!isDraggingNav.current) return
-    if (e.cancelable) e.preventDefault()
-    if (e.touches && e.touches[0]) {
-      selectTabFromClientX(e.touches[0].clientX)
-    }
-  }
-
-  const handleTouchEnd = () => {
-    if (navRef.current && pager.current && window.innerWidth < 768) {
-      pager.current.scrollTo({ left: lastActiveRef.current * pager.current.clientWidth, behavior: 'smooth' })
-    }
-    if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current)
-    dragTimeoutRef.current = setTimeout(() => {
-      isDraggingNav.current = false
-    }, 250)
-  }
 
   const bookOnWhatsApp = (e) => {
     e.preventDefault()
@@ -497,21 +474,38 @@ export default function Site() {
             </div>
           </button>
 
-          {/* Desktop / Tablet Navigation */}
-          <nav className="hidden gap-8 text-sm font-medium md:flex">
-            {TABS.slice(1).map(([id, label], i) => (
-              <button
-                key={id}
-                onClick={() => go(i + 1)}
-                className={`relative py-1 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1.5px] after:scale-x-0 hover:after:scale-x-100 after:transition-transform cursor-pointer ${
-                  isDark
-                    ? 'text-white/60 hover:text-white after:bg-white'
-                    : 'text-black/60 hover:text-black after:bg-black'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+          {/* Desktop / Tablet Navigation with Active Item Highlighting */}
+          <nav className="hidden gap-8 text-sm font-medium md:flex items-center">
+            {TABS.slice(1).map(([id, label], i) => {
+              const tabIndex = i + 1
+              const isActive = active === tabIndex
+              return (
+                <button
+                  key={id}
+                  onClick={() => go(tabIndex)}
+                  className={`relative py-1.5 transition-colors cursor-pointer text-sm ${
+                    isActive
+                      ? isDark
+                        ? 'text-white font-semibold'
+                        : 'text-black font-semibold'
+                      : isDark
+                      ? 'text-white/60 hover:text-white'
+                      : 'text-black/60 hover:text-black'
+                  }`}
+                >
+                  <span>{label}</span>
+                  {isActive && (
+                    <motion.span
+                      layoutId="desktop-active-indicator"
+                      className={`absolute bottom-0 left-0 right-0 h-[2px] rounded-full ${
+                        isDark ? 'bg-white' : 'bg-black'
+                      }`}
+                      transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                    />
+                  )}
+                </button>
+              )
+            })}
           </nav>
 
           {/* Action Area: Theme Switcher & CTAs */}
@@ -1231,43 +1225,41 @@ export default function Site() {
 
         {/* MOBILE STICKY PILL NAVIGATION */}
         <nav
-          ref={navRef}
           aria-label="Sections"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          onTouchCancel={handleTouchEnd}
           style={{ bottom: 'max(12px, env(safe-area-inset-bottom))' }}
-          className={`fixed inset-x-3 z-50 mx-auto flex max-w-[480px] rounded-full p-1.5 backdrop-blur-2xl md:hidden shadow-2xl select-none touch-none active:scale-[0.99] transition-transform duration-200 ring-1 ${
+          className={`fixed inset-x-3 z-50 mx-auto flex max-w-[480px] rounded-full p-1.5 backdrop-blur-2xl md:hidden shadow-2xl select-none ring-1 transition-colors duration-150 ${
             isDark ? 'bg-neutral-950/90 text-white ring-white/15' : 'bg-white/95 text-black ring-black/15'
           }`}
         >
-          {TABS.map(([id, label, Icon], i) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => go(i)}
-              className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors duration-150 ${
-                active === i
-                  ? isDark
-                    ? 'text-black font-semibold'
-                    : 'text-white font-semibold'
-                  : isDark
-                  ? 'text-white/60'
-                  : 'text-black/60'
-              }`}
-            >
-              {active === i && (
-                <motion.span
-                  layoutId="pill"
-                  className={`absolute inset-0 rounded-full shadow-md ${isDark ? 'bg-white' : 'bg-black'}`}
-                  transition={{ type: 'spring', stiffness: 450, damping: 35 }}
-                />
-              )}
-              <Icon size={18} className="relative z-10" />
-              <span className="relative z-10 font-medium tracking-tight text-[10px]">{label}</span>
-            </button>
-          ))}
+          {TABS.map(([id, label, Icon], i) => {
+            const isActive = active === i
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => go(i)}
+                className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors duration-150 cursor-pointer ${
+                  isActive
+                    ? isDark
+                      ? 'text-black font-semibold'
+                      : 'text-white font-semibold'
+                    : isDark
+                    ? 'text-white/60'
+                    : 'text-black/60'
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="mobile-pill"
+                    className={`absolute inset-0 rounded-full shadow-md ${isDark ? 'bg-white' : 'bg-black'}`}
+                    transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                  />
+                )}
+                <Icon size={18} className="relative z-10" />
+                <span className="relative z-10 font-medium tracking-tight text-[10px]">{label}</span>
+              </button>
+            )
+          })}
         </nav>
       </MotionConfig>
     </ThemeContext.Provider>
