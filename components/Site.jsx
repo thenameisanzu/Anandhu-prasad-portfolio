@@ -18,29 +18,29 @@ import {
 } from 'lucide-react'
 
 // =========================================================================
-// 🎬 ANANDHU PRASAD - VIDEO EDITOR & COLORIST
+// 🎬 ANANDU PRASAD - VIDEO EDITOR & COLORIST
 // Ultra-Minimal Monochrome Portfolio with Google Drive Integration
 // =========================================================================
 export const PROFILE = {
-  name: 'Anandhu Prasad',
+  name: 'Anandu Prasad',
   headline: 'Video Editor & Colorist',
   tagline: 'DaVinci Resolve • Premiere Pro • CapCut',
   bio: 'Specializing in high-retention video editing, precision color grading, and dynamic sound design. Delivering polished, high-impact cuts for commercial brands, YouTube creators, and viral short-form content.',
-  phone: '+91 98765 43210',
-  whatsapp: '919876543210', // CountryCode + Number without '+'
-  email: 'anandhuprasad.edit@gmail.com',
+  phone: '+91 8606502102',
+  whatsapp: '918606502102', // CountryCode + Number without '+'
+  email: 'ananduprasad.edit@gmail.com',
   location: 'Kerala, India • Available Worldwide (Remote)',
   
   // 📸 HERO IMAGE:
-  // Drop your photo in /public (e.g. /public/anandhu.jpg) and update path below:
-  heroImage: '/anandhu-portrait.jpg',
+  // Drop your photo in /public (e.g. /public/anandu.jpg) and update path below:
+  heroImage: '/anandu-portrait.jpg',
   
   // 📁 MAIN GOOGLE DRIVE SHOWREEL / PORTFOLIO FOLDER LINK:
   // Paste your Google Drive video or folder link here:
   showreelDriveUrl: 'https://drive.google.com/',
 
   socials: {
-    instagram: 'https://instagram.com/',
+    instagram: 'https://www.instagram.com/ananduprasad._/',
     youtube: 'https://youtube.com/',
   },
 }
@@ -147,7 +147,7 @@ export const TOOLS = [
 ]
 
 // 📽️ SELECTED WORKS (With Direct Google Drive Links)
-// Anandhu can easily paste each video's Google Drive link into `driveUrl`!
+// Anandu can easily paste each video's Google Drive link into `driveUrl`!
 export const PROJECTS = [
   {
     id: 1,
@@ -352,7 +352,7 @@ export default function Site() {
     const driveLink = f.get('driveLink') || ''
     const details = f.get('details') || ''
 
-    const msg = `Hi Anandhu,\nI saw your video editing portfolio!\n\nName: ${name}\nProject: ${service}\nFootage / Drive Link: ${driveLink}\nDetails: ${details}\n\nLet's collaborate on this edit!`
+    const msg = `Hi Anandu,\nI saw your video editing portfolio!\n\nName: ${name}\nProject: ${service}\nFootage / Drive Link: ${driveLink}\nDetails: ${details}\n\nLet's collaborate on this edit!`
     window.open(`https://wa.me/${PROFILE.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
@@ -489,7 +489,7 @@ export default function Site() {
                   className="font-display text-[15vw] font-bold leading-[.85] tracking-tighter text-black sm:text-[12vw] lg:text-[7.2rem]"
                 >
                   <span className="block overflow-hidden pb-[.06em]">
-                    {'Anandhu'.split('').map((c, i) => (
+                    {'Anandu'.split('').map((c, i) => (
                       <motion.span
                         key={i}
                         className="inline-block text-black"
@@ -945,7 +945,7 @@ export default function Site() {
                 Send Project Details
               </h4>
               <p className="text-xs text-black/60 font-mono mb-6">
-                Paste your Google Drive link to send directly to Anandhu on WhatsApp.
+                Paste your Google Drive link to send directly to Anandu on WhatsApp.
               </p>
 
               <form onSubmit={bookOnWhatsApp} className="space-y-4">
@@ -1013,7 +1013,7 @@ export default function Site() {
 
           {/* FOOTER */}
           <footer className="mt-20 border-t border-black/10 pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/60">
-            <p>© {new Date().getFullYear()} Anandhu Prasad. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Anandu Prasad. All rights reserved.</p>
             <p className="flex items-center gap-1.5">
               <span>Crafted by</span>
               <span className="font-semibold text-black tracking-tight">Aethra Digital Solutions</span>

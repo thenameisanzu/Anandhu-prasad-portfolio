@@ -1,4 +1,4 @@
-# Anandhu Prasad — Video Editor & Colorist Portfolio
+# Anandu Prasad — Video Editor & Colorist Portfolio
 
 A cinematic, modern, high-retention personal portfolio website built with **Next.js 14**, **Tailwind CSS**, and **Framer Motion**. Tailored specifically for post-production video editors specializing in **DaVinci Resolve**, **Adobe Premiere Pro**, and **CapCut**.
 
@@ -20,15 +20,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📸 Hero Image Placeholder (How to add your photo)
 
-1. Put your portrait/photo in the `public/` directory (e.g. `public/anandhu-portrait.jpg` or any image name).
+1. Put your portrait/photo in the `public/` directory (e.g. `public/anandu-portrait.jpg` or any image name).
 2. Open [`components/Site.jsx`](file:///Users/ansusmacbookair/Downloads/smilora-minimal/components/Site.jsx).
 3. Update the `PROFILE.heroImage` property:
    ```javascript
    export const PROFILE = {
-     name: 'Anandhu Prasad',
-     heroImage: '/anandhu-portrait.jpg', // Place your image in public/
-     whatsapp: '919876543210',           // Your WhatsApp number
-     email: 'your.email@gmail.com',
+     name: 'Anandu Prasad',
+     heroImage: '/anandu-portrait.jpg', // Place your image in public/
+     phone: '+91 8606502102',
+     whatsapp: '918606502102',           // Your WhatsApp number
      ...
    }
    ```

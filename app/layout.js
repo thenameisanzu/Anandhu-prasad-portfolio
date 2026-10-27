@@ -3,8 +3,8 @@ import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google'
 const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display' })
 const body = Instrument_Sans({ subsets: ['latin'], variable: '--font-body' })
 export const metadata = {
-  title: 'Anandhu Prasad | Video Editor & Colorist',
-  description: 'Portfolio of Anandhu Prasad — Video Editor & Colorist specializing in DaVinci Resolve, Adobe Premiere Pro, and CapCut. Crafting cinematic stories and viral high-retention edits.',
+  title: 'Anandu Prasad | Video Editor & Colorist',
+  description: 'Portfolio of Anandu Prasad — Video Editor & Colorist specializing in DaVinci Resolve, Adobe Premiere Pro, and CapCut. Crafting cinematic stories and viral high-retention edits.',
 }
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#ffffff' }
 export default function RootLayout({ children }) {
