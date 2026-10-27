@@ -237,10 +237,10 @@ const Sec = ({ id, alternate, isFooter = false, className = '', children }) => (
 
 const H2 = ({ children, className = '' }) => (
   <motion.h2
-    initial={{ opacity: 0, y: 40 }}
+    initial={{ opacity: 0, y: 16 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.3 }}
-    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.35, ease: 'easeOut' }}
     className={`font-display text-[13vw] font-bold leading-[.88] tracking-tighter text-black md:text-[10vw] lg:text-[7.5rem] ${className}`}
   >
     {children}
@@ -269,8 +269,8 @@ export default function Site() {
 
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 400,
+    damping: 40,
     restDelta: 0.001,
   })
 
@@ -460,9 +460,9 @@ export default function Site() {
             
             {/* Viewfinder HUD Ticker */}
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3 }}
               className="mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-black/50 border-b border-black/10 pb-4"
             >
               <div className="flex items-center gap-3">
@@ -491,9 +491,9 @@ export default function Site() {
                 
                 {/* Official Software Badges */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
                   className="mb-5 flex flex-wrap items-center gap-2.5"
                 >
                   <span className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-black">
@@ -521,9 +521,9 @@ export default function Site() {
                       <motion.span
                         key={i}
                         className="inline-block"
-                        initial={{ y: '110%' }}
+                        initial={{ y: '100%' }}
                         animate={{ y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.15 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.35, delay: 0.04 + i * 0.02, ease: 'easeOut' }}
                       >
                         {c}
                       </motion.span>
@@ -531,14 +531,14 @@ export default function Site() {
                   </span>
 
                   {/* Last Name: Stylised Hollow Cine-Stroke with Italic Flair */}
-                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase italic tracking-[-0.03em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.5px_#000] lg:[-webkit-text-stroke:3.5px_#000] hover:text-black transition-colors duration-500 cursor-default">
+                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase italic tracking-[-0.03em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.5px_#000] lg:[-webkit-text-stroke:3.5px_#000] hover:text-black transition-colors duration-300 cursor-default">
                     {'PRASAD'.split('').map((c, i) => (
                       <motion.span
                         key={i}
                         className="inline-block"
-                        initial={{ y: '110%' }}
+                        initial={{ y: '100%' }}
                         animate={{ y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.45 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.35, delay: 0.12 + i * 0.02, ease: 'easeOut' }}
                       >
                         {c}
                       </motion.span>
@@ -546,7 +546,7 @@ export default function Site() {
                     <motion.span
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.85 }}
+                      transition={{ duration: 0.2, delay: 0.25 }}
                       className="inline-block text-black not-italic ml-1 [-webkit-text-stroke:0px]"
                     >
                       .
@@ -556,9 +556,9 @@ export default function Site() {
 
                 {/* Subtitle Bio */}
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.7 }}
+                  transition={{ duration: 0.3, delay: 0.18, ease: 'easeOut' }}
                   className="mt-6 max-w-xl text-lg text-black/75 leading-relaxed md:text-xl font-normal"
                 >
                   {PROFILE.bio}
@@ -566,9 +566,9 @@ export default function Site() {
 
                 {/* Hero CTAs: Direct Google Drive Link & Hire Button */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
+                  transition={{ duration: 0.3, delay: 0.22, ease: 'easeOut' }}
                   className="mt-8 flex flex-wrap items-center gap-4"
                 >
                   <a
@@ -594,9 +594,9 @@ export default function Site() {
               {/* Right Column: CLEAN PORTRAIT IMAGE (3:4 Ratio, No Rounded Edges, No Overlay Text) */}
               <div className="lg:col-span-5 flex justify-center">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: 0.1, ease: 'easeOut' }}
                   className="relative w-full max-w-[420px]"
                 >
                   <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 border border-black/15 shadow-xl">
@@ -647,10 +647,10 @@ export default function Site() {
               return (
                 <motion.div
                   key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.2 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true, amount: 0.05 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className={`group relative transition-all duration-300 ${
                     isRevealed ? 'bg-black/[0.04] -mx-4 px-4 rounded-3xl' : 'hover:bg-black/[0.02] -mx-4 px-4 rounded-3xl'
                   }`}
@@ -689,7 +689,7 @@ export default function Site() {
                         scale: isRevealed ? 1.15 : 1,
                         backgroundColor: isRevealed ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
                       }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
                       className="rounded-full p-2.5 border border-black/20 text-black"
                     >
                       <Plus size={24} />
@@ -702,7 +702,7 @@ export default function Site() {
                         initial={{ height: 0, opacity: 0, marginTop: 0 }}
                         animate={{ height: 'auto', opacity: 1, marginTop: 4 }}
                         exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.25, ease: 'easeOut' }}
                         className="overflow-hidden"
                       >
                         <div className="grid gap-6 pb-8 md:grid-cols-2 items-center">
@@ -780,11 +780,11 @@ export default function Site() {
               return (
                 <motion.div
                   key={tool.name}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -6 }}
+                  viewport={{ once: true, amount: 0.05 }}
+                  transition={{ duration: 0.25, delay: i * 0.05, ease: 'easeOut' }}
+                  whileHover={{ y: -4 }}
                   className="relative flex flex-col justify-between rounded-3xl border border-black/10 bg-neutral-50/70 p-8 transition-all duration-300 hover:border-black/30 shadow-sm"
                 >
                   <div>
@@ -842,10 +842,10 @@ export default function Site() {
           <div className="mt-12 grid gap-10 lg:grid-cols-2 items-start w-full max-w-full overflow-hidden">
             {/* Direct Contact Details */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
               className="space-y-8 w-full max-w-full"
             >
               <div className="space-y-4">
@@ -927,10 +927,10 @@ export default function Site() {
 
             {/* Quick Inquiry Form */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ duration: 0.25, delay: 0.05, ease: 'easeOut' }}
               className="w-full max-w-full overflow-hidden rounded-3xl border border-black/15 bg-white p-6 sm:p-8 shadow-sm backdrop-blur-md"
             >
               <h4 className="font-display text-2xl font-bold tracking-tight text-black mb-2">
