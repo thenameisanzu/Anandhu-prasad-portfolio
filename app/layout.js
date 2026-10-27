@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Anandhu Prasad | Video Editor & Colorist',
   description: 'Portfolio of Anandhu Prasad — Video Editor & Colorist specializing in DaVinci Resolve, Adobe Premiere Pro, and CapCut. Crafting cinematic stories and viral high-retention edits.',
 }
-export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#000000' }
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#ffffff' }
 export default function RootLayout({ children }) {
   return (<html lang="en" className={`${display.variable} ${body.variable}`}><body>{children}</body></html>)
 }

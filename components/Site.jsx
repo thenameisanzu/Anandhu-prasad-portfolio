@@ -20,28 +20,24 @@ import {
   Clock,
   Instagram,
   Youtube,
-  Plus,
-  Tv,
-  Share2
+  Plus
 } from 'lucide-react'
 
 // =========================================================================
-// 🎬 ANANDHU PRASAD - VIDEO EDITOR & COLORIST CONFIGURATION
-// Customize your details, images, and links right here!
+// 🎬 ANANDHU PRASAD - VIDEO EDITOR & COLORIST
+// Pure Minimal Monochrome Edition (Black & White Inverted)
 // =========================================================================
 export const PROFILE = {
   name: 'Anandhu Prasad',
   headline: 'Video Editor & Colorist',
   tagline: 'DaVinci Resolve • Premiere Pro • CapCut',
-  bio: 'Transforming raw clips into hypnotic visual stories. Specializing in high-retention pacing, narrative flow, dynamic sound design, and cinematic color grading.',
+  bio: 'Transforming raw footage into hypnotic visual stories. Specializing in high-retention narrative pacing, dynamic sound design, and precision cinematic color grading.',
   phone: '+91 98765 43210',
-  whatsapp: '919876543210', // format: CountryCode + Number (e.g., 919876543210)
+  whatsapp: '919876543210', // CountryCode + Number
   email: 'anandhuprasad.edit@gmail.com',
   location: 'Kerala, India • Available Worldwide (Remote)',
   
   // 📸 HERO IMAGE PLACEHOLDER:
-  // To use your own photo, place your picture in the 'public' folder (e.g. public/anandhu.jpg)
-  // and update the heroImage path below:
   heroImage: '/anandhu-portrait.jpg',
   
   socials: {
@@ -52,24 +48,21 @@ export const PROFILE = {
   
   stats: [
     { label: 'Videos Delivered', value: '180+' },
-    { label: 'Total Views Generated', value: '45M+' },
+    { label: 'Views Generated', value: '45M+' },
     { label: 'Client Satisfaction', value: '99.4%' },
-    { label: 'Avg Turnaround', value: '24-48h' },
+    { label: 'Turnaround Time', value: '24-48h' },
   ],
 }
 
-// 🛠️ PRIMARY SOFTWARE & SPECIALTIES
+// 🛠️ PRIMARY TOOLS & SOFTWARE (Strict Minimal Monochrome)
 export const TOOLS = [
   {
     name: 'DaVinci Resolve',
     category: 'Color Grading & Finishing',
     level: 'Advanced Master',
-    badge: 'Industry Standard Color',
+    badge: 'Industry Color Standard',
     icon: Sliders,
-    accent: 'from-amber-500/20 to-orange-600/10',
-    border: 'border-orange-500/30',
-    tagColor: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
-    desc: 'Deep color science, ACES/YRGB color management, S-Log3/Arri Log to Rec.709 conversions, custom 3D LUTs, skin-tone isolation, and Fairlight audio mixing.',
+    desc: 'Deep color science, ACES & DaVinci YRGB color management, Log to Rec.709 conversions, custom 3D LUTs, skin-tone isolation, and Fairlight audio mixing.',
     features: [
       'Advanced Node-Based Color Grading',
       'HDR & Rec.709 Cinematic Mastering',
@@ -83,9 +76,6 @@ export const TOOLS = [
     level: 'Expert Workflow',
     badge: 'Precision Pacing',
     icon: Scissors,
-    accent: 'from-purple-500/20 to-indigo-600/10',
-    border: 'border-purple-500/30',
-    tagColor: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
     desc: 'Seamless multi-cam switching, dynamic visual pacing, audio synchronization, speed-ramping, tight J/L cuts, and proxy workflows for high-resolution 4K/6K footage.',
     features: [
       'High-Retention YouTube & Docu-Style Pacing',
@@ -100,10 +90,7 @@ export const TOOLS = [
     level: 'High Velocity',
     badge: 'Viral Retention',
     icon: Sparkles,
-    accent: 'from-cyan-500/20 to-blue-600/10',
-    border: 'border-cyan-500/30',
-    tagColor: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20',
-    desc: 'Engineered specifically for short-attention spans on Instagram Reels, YouTube Shorts, and TikTok. Snappy 3-second hooks, kinetic subtitles, trending sound design, and motion presets.',
+    desc: 'Engineered specifically for short-attention spans on Instagram Reels, YouTube Shorts, and TikTok. Snappy 3-second hooks, kinetic subtitles, and trending sound design.',
     features: [
       'First 3-Second Hook Optimization',
       'Kinetic Styled Captions & Typography',
@@ -113,7 +100,7 @@ export const TOOLS = [
   },
 ]
 
-// 📽️ SELECTED WORKS & SHOWREEL
+// 📽️ SELECTED WORKS
 export const PROJECTS = [
   {
     id: 1,
@@ -124,7 +111,7 @@ export const PROJECTS = [
     views: '2.4M Views',
     duration: '01:15',
     ratio: '16:9 Widescreen',
-    desc: 'High-end commercial car spot with anamorphic framing, teal & amber palette separation, aggressive speed ramps, and roaring engine sound design.',
+    desc: 'High-end commercial car spot with anamorphic framing, tone separation, aggressive speed ramps, and roaring engine sound design.',
     image: '/projects/car-commercial.jpg',
   },
   {
@@ -160,7 +147,7 @@ export const PROJECTS = [
     views: '850K Views',
     duration: '02:30',
     ratio: '4:3 Vintage Arri',
-    desc: 'High-contrast black & gold aesthetic with fine 35mm grain integration, soft halation around highlights, and fluid transitions matched to orchestral beats.',
+    desc: 'High-contrast monochrome and gold aesthetic with fine 35mm grain integration, soft halation around highlights, and fluid transitions.',
     image: '/projects/tokyo-doc.jpg',
   },
   {
@@ -189,7 +176,7 @@ export const PROJECTS = [
   },
 ]
 
-// 💬 CLIENT REVIEWS & TESTIMONIALS
+// 💬 CLIENT REVIEWS
 export const REVIEWS = [
   {
     quote: 'Anandhu transformed our raw podcast footage into viral gold. His pacing in Premiere Pro and CapCut gained our channel over 4 million views in 60 days.',
@@ -204,7 +191,7 @@ export const REVIEWS = [
     rating: 5,
   },
   {
-    quote: 'Fast communication, spot-on music choices, and an incredible sense of comic & narrative timing. Anandhu is our go-to video editor for every commercial.',
+    quote: 'Fast communication, spot-on music choices, and an incredible sense of narrative timing. Anandhu is our go-to video editor for every commercial.',
     client: 'Karthik Pillai',
     role: 'Founder, BrandMotion Agency',
     rating: 5,
@@ -226,12 +213,12 @@ export const TABS = [
   ['contact', 'Hire Me', Mail],
 ]
 
-// Reusable Section Container
-const Sec = ({ id, dark, children }) => (
+// Minimal Inverted Section Container
+const Sec = ({ id, alternate, children }) => (
   <section
     id={id}
     className={`relative px-5 pb-32 pt-24 md:px-10 lg:min-h-screen lg:px-16 lg:py-28 max-lg:h-[100dvh] max-lg:min-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto ${
-      dark ? 'bg-black text-white' : 'bg-neutral-950 text-white border-y border-white/5'
+      alternate ? 'bg-neutral-50 text-black border-y border-black/10' : 'bg-white text-black'
     }`}
   >
     {children}
@@ -244,7 +231,7 @@ const H2 = ({ children, className = '' }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: false, amount: 0.3 }}
     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-    className={`font-display text-[13vw] font-bold leading-[.88] tracking-tighter md:text-[10vw] lg:text-[7.5rem] ${className}`}
+    className={`font-display text-[13vw] font-bold leading-[.88] tracking-tighter text-black md:text-[10vw] lg:text-[7.5rem] ${className}`}
   >
     {children}
   </motion.h2>
@@ -366,7 +353,7 @@ export default function Site() {
   }
 
   const field =
-    'w-full rounded-2xl border border-white/20 bg-neutral-900/60 px-5 py-4 text-base placeholder:text-white/40 focus:border-amber-400 focus:bg-neutral-900 focus:outline-none transition-all'
+    'w-full rounded-2xl border border-black/20 bg-white px-5 py-4 text-base text-black placeholder:text-black/40 focus:border-black focus:outline-none transition-all'
 
   const filteredProjects =
     selectedTag === 'All'
@@ -379,26 +366,26 @@ export default function Site() {
 
   return (
     <MotionConfig reducedMotion="user">
-      {/* Cinematic Top Scroll Progress Bar */}
+      {/* Pure Black Minimal Top Progress Indicator */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-amber-500 via-rose-500 to-cyan-400 z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-black z-50 origin-left"
         style={{ scaleX }}
       />
 
-      {/* FIXED HEADER WITH TIMECODE TICKER & BRAND */}
-      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-4 text-white backdrop-blur-md bg-black/40 border-b border-white/5 md:px-10 lg:px-16">
+      {/* FIXED INVERTED HEADER: Crisp White Background & Solid Black Accents */}
+      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-4 text-black backdrop-blur-md bg-white/80 border-b border-black/10 md:px-10 lg:px-16">
         <button
           onClick={() => go(0)}
-          className="group flex items-center gap-3 text-left hover:opacity-90 transition-opacity"
+          className="group flex items-center gap-3 text-left hover:opacity-75 transition-opacity"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-600 text-black font-bold text-xs shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform">
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-black text-white font-bold text-xs shadow-sm group-hover:scale-105 transition-transform">
             AP
           </div>
           <div>
-            <span className="font-display text-base font-bold tracking-tight block leading-tight">
+            <span className="font-display text-base font-bold tracking-tight block leading-tight text-black">
               {PROFILE.name}
             </span>
-            <span className="text-[10px] font-mono tracking-wider text-amber-400/90 uppercase block">
+            <span className="text-[10px] font-mono tracking-wider text-black/60 uppercase block">
               Editor & Colorist
             </span>
           </div>
@@ -410,7 +397,7 @@ export default function Site() {
             <button
               key={id}
               onClick={() => go(i + 1)}
-              className="relative py-1 text-white/70 hover:text-white transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-amber-400 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="relative py-1 text-black/60 hover:text-black transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1.5px] after:bg-black after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {label}
             </button>
@@ -419,13 +406,13 @@ export default function Site() {
 
         {/* Quick CTA */}
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-[11px] text-white/70">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="hidden sm:flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.03] px-3 py-1.5 font-mono text-[11px] text-black/70">
+            <span className="h-2 w-2 rounded-full bg-black animate-pulse" />
             <span>Open for Projects</span>
           </div>
           <button
             onClick={() => go(4)}
-            className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black hover:bg-neutral-200 hover:scale-105 active:scale-95 transition-all shadow-md"
+            className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-xs font-semibold text-white hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all shadow-md"
           >
             <span>Let&apos;s Cut</span>
             <ArrowUpRight size={14} />
@@ -439,70 +426,69 @@ export default function Site() {
         className="no-scrollbar max-lg:flex max-lg:h-[100dvh] max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto"
       >
         {/* =========================================================================
-            SECTION 1: HERO - WITH CINEMATIC EDITING SUITE & IMAGE PLACEHOLDER
+            SECTION 1: HERO - INVERTED MINIMAL (WHITE BG, SOLID BLACK TYPE)
             ========================================================================= */}
-        <Sec id="home" dark>
+        <Sec id="home">
           <div className="relative flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-8 lg:min-h-[calc(100vh-14rem)]">
             
-            {/* Top Viewfinder HUD Ticker */}
+            {/* Top Viewfinder Monochrome HUD Ticker */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-white/50 border-b border-white/10 pb-4"
+              className="mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-black/50 border-b border-black/10 pb-4"
             >
               <div className="flex items-center gap-3">
-                <span className="flex items-center gap-1.5 text-rose-400 font-semibold tracking-wide">
-                  <span className="h-2 w-2 rounded-full bg-rose-500 animate-ping inline-block" />
+                <span className="flex items-center gap-1.5 text-black font-semibold tracking-wide">
+                  <span className="h-2 w-2 rounded-full bg-black animate-ping inline-block" />
                   REC [●] 00:02:48:19
                 </span>
-                <span className="hidden sm:inline text-white/20">|</span>
+                <span className="hidden sm:inline text-black/20">|</span>
                 <span className="hidden sm:inline">4K DCI • 23.976 FPS</span>
-                <span className="hidden md:inline text-white/20">|</span>
-                <span className="hidden md:inline text-white/60">PRORES 422 HQ</span>
+                <span className="hidden md:inline text-black/20">|</span>
+                <span className="hidden md:inline text-black/70">PRORES 422 HQ</span>
               </div>
-              <div className="flex items-center gap-2 text-white/70">
-                <span className="text-[10px] uppercase tracking-widest text-white/40">LUT:</span>
-                <span className="rounded bg-white/10 px-2 py-0.5 text-[11px] text-amber-300">
-                  Davinci_Teal_Gold.cube
+              <div className="flex items-center gap-2 text-black/70">
+                <span className="text-[10px] uppercase tracking-widest text-black/40">COLOR PIPELINE:</span>
+                <span className="rounded border border-black/15 bg-black/[0.04] px-2 py-0.5 text-[11px] text-black font-medium">
+                  DaVinci YRGB Color Managed
                 </span>
               </div>
             </motion.div>
 
-            {/* Grid Layout: Left Typography & Bio | Right Portrait Placeholder */}
+            {/* Grid Layout: Left Typography & Bio | Right Portrait Frame */}
             <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
               
               {/* Left Column: Huge Headline & Bio */}
               <div className="lg:col-span-7 flex flex-col justify-center">
                 
-                {/* Software Badges Strip */}
+                {/* Software Badges Strip - Minimal Monochrome */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="mb-4 flex flex-wrap items-center gap-2"
                 >
-                  <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-300">
-                    DaVinci Resolve
-                  </span>
-                  <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300">
-                    Premiere Pro
-                  </span>
-                  <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300">
-                    CapCut Pro
-                  </span>
+                  {['DaVinci Resolve', 'Adobe Premiere Pro', 'CapCut Pro'].map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1 text-xs font-medium text-black"
+                    >
+                      {tool}
+                    </span>
+                  ))}
                 </motion.div>
 
                 {/* Animated Name Headline */}
                 <h1
                   aria-label={PROFILE.name}
-                  className="font-display text-[15vw] font-bold leading-[.85] tracking-tighter sm:text-[12vw] lg:text-[7.2rem]"
+                  className="font-display text-[15vw] font-bold leading-[.85] tracking-tighter text-black sm:text-[12vw] lg:text-[7.2rem]"
                 >
                   <span className="block overflow-hidden pb-[.06em]">
                     {'Anandhu'.split('').map((c, i) => (
                       <motion.span
                         key={i}
-                        className="inline-block text-white"
+                        className="inline-block text-black"
                         initial={{ y: '110%' }}
                         animate={{ y: 0 }}
                         transition={{ duration: 0.8, delay: 0.15 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
@@ -511,7 +497,7 @@ export default function Site() {
                       </motion.span>
                     ))}
                   </span>
-                  <span className="block overflow-hidden pb-[.06em] text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 via-neutral-300 to-neutral-500">
+                  <span className="block overflow-hidden pb-[.06em] text-black/80">
                     {'Prasad'.split('').map((c, i) => (
                       <motion.span
                         key={i}
@@ -531,12 +517,12 @@ export default function Site() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.7 }}
-                  className="mt-6 max-w-xl text-lg text-white/75 leading-relaxed md:text-xl font-normal"
+                  className="mt-6 max-w-xl text-lg text-black/75 leading-relaxed md:text-xl font-normal"
                 >
                   {PROFILE.bio}
                 </motion.p>
 
-                {/* Hero CTA Buttons */}
+                {/* Hero CTA Buttons - Inverted Monochrome */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -545,39 +531,39 @@ export default function Site() {
                 >
                   <button
                     onClick={() => go(1)}
-                    className="flex items-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-black hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-white/10"
+                    className="flex items-center gap-2 rounded-full bg-black px-7 py-4 font-semibold text-white hover:bg-neutral-800 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-black/10"
                   >
                     <Play size={18} fill="currentColor" />
                     <span>Watch Showreel</span>
                   </button>
                   <button
                     onClick={() => go(4)}
-                    className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-4 font-medium text-white hover:border-amber-400 hover:bg-white/10 transition-all hover:scale-105 active:scale-95"
+                    className="flex items-center gap-2 rounded-full border border-black/25 bg-transparent px-7 py-4 font-medium text-black hover:border-black hover:bg-black/5 transition-all hover:scale-105 active:scale-95"
                   >
                     <span>Hire For Edit</span>
                     <ArrowUpRight size={18} />
                   </button>
                 </motion.div>
 
-                {/* Quick Stats Grid under Hero */}
+                {/* Stats Grid under Hero */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.9, delay: 1 }}
-                  className="mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-6 sm:grid-cols-4"
+                  className="mt-10 grid grid-cols-2 gap-4 border-t border-black/10 pt-6 sm:grid-cols-4"
                 >
                   {PROFILE.stats.map((s, idx) => (
                     <div key={idx} className="space-y-1">
-                      <p className="font-display text-2xl font-bold tracking-tight text-white md:text-3xl">
+                      <p className="font-display text-2xl font-bold tracking-tight text-black md:text-3xl">
                         {s.value}
                       </p>
-                      <p className="font-mono text-xs text-white/50">{s.label}</p>
+                      <p className="font-mono text-xs text-black/50">{s.label}</p>
                     </div>
                   ))}
                 </motion.div>
               </div>
 
-              {/* Right Column: CINEMATIC PORTRAIT FRAME & PLACEHOLDER */}
+              {/* Right Column: MINIMAL CINEMATIC PORTRAIT FRAME */}
               <div className="lg:col-span-5 flex justify-center">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.92, y: 30 }}
@@ -585,25 +571,22 @@ export default function Site() {
                   transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="relative w-full max-w-[420px] group"
                 >
-                  {/* Subtle Glowing Aura */}
-                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-500/20 via-rose-500/10 to-cyan-500/20 blur-xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
-
-                  {/* Main Viewfinder Frame */}
-                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-neutral-900 border border-white/15 shadow-2xl">
+                  {/* Viewfinder Frame Container */}
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-neutral-100 border border-black/15 shadow-2xl">
                     
                     {/* Viewfinder Target / Crosshair Overlay */}
                     <div className="absolute inset-4 pointer-events-none z-20 flex flex-col justify-between">
                       {/* Top Bar with Timecode & Audio Bars */}
-                      <div className="flex items-center justify-between text-[11px] font-mono text-white/70">
-                        <span className="flex items-center gap-1 rounded bg-black/60 px-2 py-0.5 backdrop-blur-md border border-white/10">
-                          <Camera size={12} className="text-amber-400" />
+                      <div className="flex items-center justify-between text-[11px] font-mono text-white/90">
+                        <span className="flex items-center gap-1 rounded bg-black/75 px-2 py-0.5 backdrop-blur-md border border-white/20">
+                          <Camera size={12} className="text-white" />
                           <span>ISO 800</span>
                         </span>
                         <div className="flex items-center gap-1">
                           {[16, 24, 12, 28, 20, 10].map((h, i) => (
                             <motion.span
                               key={i}
-                              className="w-1 rounded-full bg-emerald-400"
+                              className="w-1 rounded-full bg-white"
                               animate={{ height: [6, h, 6] }}
                               transition={{ duration: 0.8 + i * 0.1, repeat: Infinity, ease: 'easeInOut' }}
                             />
@@ -612,23 +595,23 @@ export default function Site() {
                       </div>
 
                       {/* Viewfinder Corner Brackets */}
-                      <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-amber-400" />
-                      <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-amber-400" />
-                      <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-amber-400" />
-                      <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-amber-400" />
+                      <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-white" />
+                      <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-white" />
+                      <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-white" />
+                      <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-white" />
 
                       {/* Center Focus Reticle */}
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center opacity-40">
-                        <div className="h-8 w-8 rounded-full border border-white/40" />
-                        <div className="absolute h-3 w-3 rounded-full bg-white/50" />
+                        <div className="h-8 w-8 rounded-full border border-white/60" />
+                        <div className="absolute h-3 w-3 rounded-full bg-white/70" />
                       </div>
 
                       {/* Bottom Info Pill */}
-                      <div className="flex items-center justify-between text-[11px] font-mono text-white/80">
-                        <span className="rounded bg-black/70 px-2.5 py-1 backdrop-blur-md border border-white/10">
+                      <div className="flex items-center justify-between text-[11px] font-mono">
+                        <span className="rounded bg-black/80 text-white px-2.5 py-1 backdrop-blur-md border border-white/20">
                           {PROFILE.name}
                         </span>
-                        <span className="rounded bg-amber-400/90 text-black px-2 py-0.5 font-bold text-[10px]">
+                        <span className="rounded bg-white text-black px-2 py-0.5 font-bold text-[10px]">
                           HERO IMAGE
                         </span>
                       </div>
@@ -644,14 +627,14 @@ export default function Site() {
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
 
-                    {/* Gradient Vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
+                    {/* Subtle Gradient Vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
                   </div>
 
-                  {/* Image Placeholder Helper Tooltip / Badge */}
-                  <div className="mt-3 flex items-center justify-between px-2 text-xs font-mono text-white/50">
+                  {/* Image Placeholder Info */}
+                  <div className="mt-3 flex items-center justify-between px-2 text-xs font-mono text-black/50">
                     <span>✦ Profile Photo Frame</span>
-                    <span className="text-amber-400/80">
+                    <span className="text-black font-semibold">
                       public{PROFILE.heroImage}
                     </span>
                   </div>
@@ -664,7 +647,7 @@ export default function Site() {
             <motion.p
               animate={{ x: [0, 8, 0] }}
               transition={{ duration: 1.8, repeat: Infinity }}
-              className="mt-8 text-center text-xs font-mono text-white/40 lg:hidden"
+              className="mt-8 text-center text-xs font-mono text-black/40 lg:hidden"
             >
               Swipe to explore work &rarr;
             </motion.p>
@@ -672,31 +655,31 @@ export default function Site() {
         </Sec>
 
         {/* =========================================================================
-            SECTION 2: SELECTED PROJECTS & SHOWREEL (DA VINCI, PREMIERE, CAPCUT)
+            SECTION 2: SELECTED PROJECTS (MINIMAL INVERTED BLACK & WHITE)
             ========================================================================= */}
-        <Sec id="projects">
+        <Sec id="projects" alternate>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="font-mono text-xs text-amber-400 uppercase tracking-widest block mb-2">
+              <span className="font-mono text-xs text-black/50 uppercase tracking-widest block mb-2 font-semibold">
                 Portfolio Showcase
               </span>
               <H2>Selected Works</H2>
             </div>
-            <p className="max-w-md text-base text-white/70 md:text-lg">
+            <p className="max-w-md text-base text-black/70 md:text-lg">
               Cinematic color grading, retention-focused narrative pacing, and viral short-form edits.
             </p>
           </div>
 
-          {/* Tag Filter Strip */}
-          <div className="mt-8 flex flex-wrap gap-2 border-b border-white/10 pb-6">
+          {/* Tag Filter Strip - Pure Black & White */}
+          <div className="mt-8 flex flex-wrap gap-2 border-b border-black/10 pb-6">
             {['All', 'Commercial', 'YouTube Docu', 'Viral Reels', 'Color Grading'].map((tag) => (
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   selectedTag === tag
-                    ? 'bg-amber-400 text-black font-semibold shadow-lg shadow-amber-400/20'
-                    : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/10'
+                    ? 'bg-black text-white font-semibold shadow-sm'
+                    : 'bg-white text-black/70 hover:text-black border border-black/15 hover:border-black'
                 }`}
               >
                 {tag}
@@ -705,7 +688,7 @@ export default function Site() {
           </div>
 
           {/* Interactive Project Accordion List */}
-          <div className="mt-8 divide-y divide-white/15">
+          <div className="mt-8 divide-y divide-black/10">
             {filteredProjects.map((project, i) => {
               const isRevealed = hoveredProject === project.id
               return (
@@ -721,7 +704,7 @@ export default function Site() {
                     }
                   }}
                   className={`group relative transition-all duration-300 ${
-                    isRevealed ? 'bg-white/[0.04] -mx-4 px-4 rounded-3xl' : 'hover:bg-white/[0.02] -mx-4 px-4 rounded-3xl'
+                    isRevealed ? 'bg-black/[0.04] -mx-4 px-4 rounded-3xl' : 'hover:bg-black/[0.02] -mx-4 px-4 rounded-3xl'
                   }`}
                 >
                   <button
@@ -731,21 +714,19 @@ export default function Site() {
                     aria-expanded={isRevealed}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
-                      <span className="font-mono text-xs text-amber-400/80">
+                      <span className="font-mono text-xs text-black/40 font-semibold">
                         0{project.id}
                       </span>
                       <div>
                         <h3
-                          className={`font-display text-2xl font-bold tracking-tight transition-all duration-300 md:text-4xl lg:text-5xl ${
-                            isRevealed
-                              ? 'text-white translate-x-2'
-                              : 'text-white/80 group-hover:text-white group-hover:translate-x-1'
+                          className={`font-display text-2xl font-bold tracking-tight text-black transition-all duration-300 md:text-4xl lg:text-5xl ${
+                            isRevealed ? 'translate-x-2' : 'group-hover:translate-x-1'
                           }`}
                         >
                           {project.title}
                         </h3>
-                        <div className="mt-1 flex flex-wrap items-center gap-2 font-mono text-xs text-white/50">
-                          <span className="text-white/80">{project.software}</span>
+                        <div className="mt-1 flex flex-wrap items-center gap-2 font-mono text-xs text-black/60">
+                          <span className="text-black font-medium">{project.software}</span>
                           <span>•</span>
                           <span>{project.views}</span>
                           <span>•</span>
@@ -758,10 +739,10 @@ export default function Site() {
                       animate={{
                         rotate: isRevealed ? 45 : 0,
                         scale: isRevealed ? 1.15 : 1,
-                        backgroundColor: isRevealed ? 'rgba(251, 191, 36, 0.2)' : 'transparent',
+                        backgroundColor: isRevealed ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
                       }}
                       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="rounded-full p-2.5 border border-white/20 text-white"
+                      className="rounded-full p-2.5 border border-black/20 text-black"
                     >
                       <Plus size={24} />
                     </motion.div>
@@ -779,14 +760,14 @@ export default function Site() {
                         <div className="grid gap-6 pb-8 md:grid-cols-2 items-center">
                           <div className="space-y-4">
                             <div className="flex flex-wrap gap-2">
-                              <span className="rounded-md bg-amber-400/10 border border-amber-400/30 px-2.5 py-1 text-xs font-mono text-amber-300">
+                              <span className="rounded-md bg-black text-white px-2.5 py-1 text-xs font-mono">
                                 {project.software}
                               </span>
-                              <span className="rounded-md bg-white/10 px-2.5 py-1 text-xs font-mono text-white/80">
+                              <span className="rounded-md bg-black/5 border border-black/15 px-2.5 py-1 text-xs font-mono text-black">
                                 Duration: {project.duration}
                               </span>
                             </div>
-                            <p className="max-w-md text-base text-white/80 leading-relaxed font-normal">
+                            <p className="max-w-md text-base text-black/75 leading-relaxed font-normal">
                               {project.desc}
                             </p>
                             <div className="flex items-center gap-4 pt-2">
@@ -795,7 +776,7 @@ export default function Site() {
                                   e.stopPropagation()
                                   go(4)
                                 }}
-                                className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-5 py-2.5 text-xs font-bold text-black hover:bg-amber-300 transition-all hover:scale-105 active:scale-95"
+                                className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-xs font-bold text-white hover:bg-neutral-800 transition-all hover:scale-105 active:scale-95"
                               >
                                 <Play size={14} fill="currentColor" />
                                 <span>Request Similar Edit</span>
@@ -803,7 +784,7 @@ export default function Site() {
                             </div>
                           </div>
 
-                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-900 border border-white/15 shadow-2xl group/img">
+                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-200 border border-black/15 shadow-md group/img">
                             <Image
                               src={project.image}
                               alt={project.title}
@@ -812,8 +793,8 @@ export default function Site() {
                               className="object-cover transition-transform duration-700 group-hover/img:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                            <div className="absolute bottom-3 left-3 flex items-center gap-2 text-xs font-mono text-white/90">
-                              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                            <div className="absolute bottom-3 left-3 flex items-center gap-2 text-xs font-mono text-white">
+                              <span className="h-2 w-2 rounded-full bg-white" />
                               <span>{project.category}</span>
                             </div>
                           </div>
@@ -828,22 +809,22 @@ export default function Site() {
         </Sec>
 
         {/* =========================================================================
-            SECTION 3: SKILLS & ARSENAL (DAVINCI RESOLVE, PREMIERE PRO, CAPCUT)
+            SECTION 3: SKILLS & ARSENAL (MONOCHROME MINIMAL)
             ========================================================================= */}
-        <Sec id="skills" dark>
+        <Sec id="skills">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="font-mono text-xs text-amber-400 uppercase tracking-widest block mb-2">
+              <span className="font-mono text-xs text-black/50 uppercase tracking-widest block mb-2 font-semibold">
                 Software & Workflow
               </span>
               <H2>The Arsenal</H2>
             </div>
-            <p className="max-w-md text-base text-white/70 md:text-lg">
+            <p className="max-w-md text-base text-black/70 md:text-lg">
               Specialized mastery across the top 3 video post-production tools. Every cut is engineered with purpose.
             </p>
           </div>
 
-          {/* Software Spotlight Grid */}
+          {/* Software Cards - Clean Crisp Monochrome */}
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {TOOLS.map((tool, i) => {
               const Icon = tool.icon
@@ -855,44 +836,44 @@ export default function Site() {
                   viewport={{ once: false, amount: 0.2 }}
                   transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -6 }}
-                  className={`relative flex flex-col justify-between rounded-3xl border bg-gradient-to-b ${tool.accent} ${tool.border} p-8 backdrop-blur-sm transition-all duration-300 shadow-2xl`}
+                  className="relative flex flex-col justify-between rounded-3xl border border-black/10 bg-neutral-50/70 p-8 transition-all duration-300 hover:border-black/30 shadow-sm"
                 >
                   <div>
                     {/* Header with Icon & Category */}
                     <div className="flex items-center justify-between mb-6">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black/60 border border-white/20 text-white shadow-inner">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white shadow-sm">
                         <Icon size={24} />
                       </div>
-                      <span className={`rounded-full border px-3 py-1 font-mono text-[11px] font-semibold ${tool.tagColor}`}>
+                      <span className="rounded-full border border-black/15 bg-black/[0.04] px-3 py-1 font-mono text-[11px] font-semibold text-black">
                         {tool.badge}
                       </span>
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold tracking-tight text-white md:text-3xl">
+                    <h3 className="font-display text-2xl font-bold tracking-tight text-black md:text-3xl">
                       {tool.name}
                     </h3>
-                    <p className="font-mono text-xs text-white/50 mt-1 mb-4">
+                    <p className="font-mono text-xs text-black/50 mt-1 mb-4">
                       {tool.category}
                     </p>
 
-                    <p className="text-sm text-white/70 leading-relaxed">
+                    <p className="text-sm text-black/70 leading-relaxed">
                       {tool.desc}
                     </p>
 
                     {/* Features List */}
-                    <div className="mt-6 space-y-2.5 border-t border-white/10 pt-6">
+                    <div className="mt-6 space-y-2.5 border-t border-black/10 pt-6">
                       {tool.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-start gap-2.5 text-xs text-white/90">
-                          <CheckCircle2 size={15} className="text-amber-400 shrink-0 mt-0.5" />
+                        <div key={idx} className="flex items-start gap-2.5 text-xs text-black/90">
+                          <CheckCircle2 size={15} className="text-black shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs text-white/40">
+                  <div className="mt-8 pt-4 border-t border-black/10 flex items-center justify-between font-mono text-xs text-black/50">
                     <span>Proficiency Level</span>
-                    <span className="text-white font-semibold">{tool.level}</span>
+                    <span className="text-black font-semibold">{tool.level}</span>
                   </div>
                 </motion.div>
               )
@@ -905,22 +886,22 @@ export default function Site() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="mt-16 rounded-3xl border border-white/10 bg-white/[0.02] p-8 md:p-10"
+            className="mt-16 rounded-3xl border border-black/10 bg-neutral-50 p-8 md:p-10"
           >
-            <h4 className="font-display text-xl font-bold tracking-tight text-white mb-6">
-              Post-Production Pipeline: From Raw Footage to Final Export
+            <h4 className="font-display text-xl font-bold tracking-tight text-black mb-6">
+              Post-Production Pipeline: From Raw Footage to Final Master
             </h4>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                { step: '01', title: 'Ingest & Assembly', desc: 'Sync multi-cam, organize bins, select best takes, and build the story backbone.' },
-                { step: '02', title: 'Pacing & Micro-Cuts', desc: 'Cut dead weight, balance dialogue pauses, design J/L cuts for seamless rhythm.' },
+                { step: '01', title: 'Ingest & Assembly', desc: 'Sync multi-cam, organize bins, select best takes, and build story backbone.' },
+                { step: '02', title: 'Pacing & Micro-Cuts', desc: 'Cut dead weight, balance dialogue pauses, design J/L cuts for rhythm.' },
                 { step: '03', title: 'Sound & Foley Design', desc: 'Layer whooshes, ambient room tone, bass drops, and master clear vocals.' },
                 { step: '04', title: 'Color Science & Master', desc: 'Shot-matching, film emulation, power grades, and multi-format renders.' },
               ].map((p, idx) => (
-                <div key={idx} className="rounded-2xl border border-white/5 bg-black/40 p-5">
-                  <span className="font-mono text-xs text-amber-400 block mb-2">{p.step} // PHASE</span>
-                  <h5 className="font-display text-base font-bold text-white mb-2">{p.title}</h5>
-                  <p className="text-xs text-white/60 leading-relaxed">{p.desc}</p>
+                <div key={idx} className="rounded-2xl border border-black/10 bg-white p-5 shadow-xs">
+                  <span className="font-mono text-xs text-black/40 block mb-2 font-bold">{p.step} // PHASE</span>
+                  <h5 className="font-display text-base font-bold text-black mb-2">{p.title}</h5>
+                  <p className="text-xs text-black/60 leading-relaxed">{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -928,27 +909,27 @@ export default function Site() {
         </Sec>
 
         {/* =========================================================================
-            SECTION 4: CLIENT REVIEWS & METRICS
+            SECTION 4: CLIENT REVIEWS (MONOCHROME MINIMAL)
             ========================================================================= */}
-        <Sec id="reviews">
+        <Sec id="reviews" alternate>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="font-mono text-xs text-amber-400 uppercase tracking-widest block mb-2">
+              <span className="font-mono text-xs text-black/50 uppercase tracking-widest block mb-2 font-semibold">
                 Client Feedback
               </span>
               <H2>Reputation</H2>
             </div>
             <div className="flex items-center gap-4">
-              <span className="font-display text-7xl font-bold leading-none tracking-tighter text-white">
+              <span className="font-display text-7xl font-bold leading-none tracking-tighter text-black">
                 5.0
               </span>
               <div className="space-y-1">
-                <div className="flex gap-1 text-amber-400">
+                <div className="flex gap-1 text-black">
                   {[...Array(5)].map((_, k) => (
                     <Star key={k} size={16} fill="currentColor" />
                   ))}
                 </div>
-                <p className="font-mono text-xs text-white/60">
+                <p className="font-mono text-xs text-black/60 font-medium">
                   Flawless Delivery Rating
                 </p>
               </div>
@@ -964,24 +945,24 @@ export default function Site() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -4, backgroundColor: 'rgba(255, 255, 255, 0.04)' }}
-                className="rounded-3xl border border-white/10 bg-neutral-900/50 p-8 backdrop-blur-sm transition-all duration-300 flex flex-col justify-between"
+                whileHover={{ y: -4 }}
+                className="rounded-3xl border border-black/10 bg-white p-8 transition-all duration-300 shadow-sm flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex gap-1 text-amber-400 mb-6">
+                  <div className="flex gap-1 text-black mb-6">
                     {[...Array(rev.rating)].map((_, k) => (
                       <Star key={k} size={16} fill="currentColor" />
                     ))}
                   </div>
-                  <p className="font-display text-xl font-medium leading-snug tracking-tight text-white md:text-2xl">
+                  <p className="font-display text-xl font-medium leading-snug tracking-tight text-black md:text-2xl">
                     &ldquo;{rev.quote}&rdquo;
                   </p>
                 </div>
-                <div className="mt-8 border-t border-white/10 pt-4">
-                  <p className="font-display text-base font-semibold text-white">
+                <div className="mt-8 border-t border-black/10 pt-4">
+                  <p className="font-display text-base font-semibold text-black">
                     {rev.client}
                   </p>
-                  <p className="font-mono text-xs text-white/50">{rev.role}</p>
+                  <p className="font-mono text-xs text-black/50">{rev.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -989,17 +970,17 @@ export default function Site() {
         </Sec>
 
         {/* =========================================================================
-            SECTION 5: CONTACT & HIRE ME (WHATSAPP & FORM)
+            SECTION 5: CONTACT & HIRE ME (INVERTED BLACK & WHITE FORM)
             ========================================================================= */}
-        <Sec id="contact" dark>
+        <Sec id="contact">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="font-mono text-xs text-amber-400 uppercase tracking-widest block mb-2">
+              <span className="font-mono text-xs text-black/50 uppercase tracking-widest block mb-2 font-semibold">
                 Collaboration
               </span>
               <H2>Let&apos;s Cut</H2>
             </div>
-            <p className="max-w-md text-base text-white/70 md:text-lg">
+            <p className="max-w-md text-base text-black/70 md:text-lg">
               Have footage ready or planning an upcoming production? Send me your project specs and let&apos;s build something memorable.
             </p>
           </div>
@@ -1014,38 +995,38 @@ export default function Site() {
               className="space-y-8"
             >
               <div className="space-y-4">
-                <h3 className="font-display text-3xl font-bold tracking-tight text-white">
+                <h3 className="font-display text-3xl font-bold tracking-tight text-black">
                   Direct Inquiries
                 </h3>
-                <p className="text-base text-white/70 max-w-md">
+                <p className="text-base text-black/70 max-w-md">
                   I typically respond within 2-4 hours. Whether it is a single YouTube video, a viral reel campaign, or a full commercial grade, I am ready.
                 </p>
               </div>
 
-              <div className="space-y-3 font-mono text-sm text-white/80">
+              <div className="space-y-3 font-mono text-sm text-black">
                 <a
                   href={`tel:${PROFILE.phone}`}
-                  className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400 hover:text-white transition-all"
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-neutral-50 border border-black/15 hover:border-black transition-all"
                 >
-                  <Phone size={18} className="text-amber-400" />
+                  <Phone size={18} className="text-black" />
                   <span>{PROFILE.phone}</span>
                 </a>
                 <a
                   href={`mailto:${PROFILE.email}`}
-                  className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400 hover:text-white transition-all"
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-neutral-50 border border-black/15 hover:border-black transition-all"
                 >
-                  <Mail size={18} className="text-amber-400" />
+                  <Mail size={18} className="text-black" />
                   <span>{PROFILE.email}</span>
                 </a>
-                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 text-white/60">
-                  <Clock size={18} className="text-amber-400" />
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-neutral-50 border border-black/15 text-black/70">
+                  <Clock size={18} className="text-black" />
                   <span>{PROFILE.location}</span>
                 </div>
               </div>
 
               {/* Social Channels */}
               <div className="pt-2">
-                <p className="font-mono text-xs uppercase tracking-wider text-white/40 mb-3">
+                <p className="font-mono text-xs uppercase tracking-wider text-black/40 mb-3 font-semibold">
                   Follow & Connect
                 </p>
                 <div className="flex gap-3">
@@ -1053,7 +1034,7 @@ export default function Site() {
                     href={PROFILE.socials.instagram}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white hover:border-amber-400 hover:bg-white/10 transition-all"
+                    className="flex items-center gap-2 rounded-full border border-black/20 bg-white px-4 py-2 text-xs font-medium text-black hover:bg-black hover:text-white transition-all shadow-xs"
                   >
                     <Instagram size={15} />
                     <span>Instagram</span>
@@ -1062,7 +1043,7 @@ export default function Site() {
                     href={PROFILE.socials.youtube}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white hover:border-amber-400 hover:bg-white/10 transition-all"
+                    className="flex items-center gap-2 rounded-full border border-black/20 bg-white px-4 py-2 text-xs font-medium text-black hover:bg-black hover:text-white transition-all shadow-xs"
                   >
                     <Youtube size={15} />
                     <span>YouTube</span>
@@ -1071,10 +1052,10 @@ export default function Site() {
                     href={`https://wa.me/${PROFILE.whatsapp}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-300 hover:bg-emerald-500/20 transition-all"
+                    className="flex items-center gap-2 rounded-full bg-black text-white px-4 py-2 text-xs font-medium hover:bg-neutral-800 transition-all shadow-sm"
                   >
                     <Phone size={15} />
-                    <span>WhatsApp Chat</span>
+                    <span>WhatsApp</span>
                   </a>
                 </div>
               </div>
@@ -1086,18 +1067,18 @@ export default function Site() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-3xl border border-white/15 bg-neutral-900/60 p-8 shadow-2xl backdrop-blur-md"
+              className="rounded-3xl border border-black/15 bg-neutral-50/80 p-8 shadow-sm backdrop-blur-md"
             >
-              <h4 className="font-display text-2xl font-bold tracking-tight text-white mb-2">
+              <h4 className="font-display text-2xl font-bold tracking-tight text-black mb-2">
                 Book an Edit / Consultation
               </h4>
-              <p className="text-xs text-white/60 font-mono mb-6">
+              <p className="text-xs text-black/60 font-mono mb-6">
                 Fill the details below to start an instant WhatsApp conversation with Anandhu.
               </p>
 
               <form onSubmit={bookOnWhatsApp} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono text-white/60 mb-1.5">
+                  <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
                     Your Name / Channel / Company
                   </label>
                   <input
@@ -1110,12 +1091,12 @@ export default function Site() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="block text-xs font-mono text-white/60 mb-1.5">
+                    <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
                       Project Format
                     </label>
                     <select
                       name="service"
-                      className={`${field} bg-neutral-900 text-white cursor-pointer`}
+                      className={`${field} bg-white text-black cursor-pointer`}
                     >
                       <option value="YouTube Long-Form (Retention Edit)">YouTube Long-Form Video</option>
                       <option value="Commercial / Brand Ad Spot">Commercial / Brand Ad</option>
@@ -1127,12 +1108,12 @@ export default function Site() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-white/60 mb-1.5">
+                    <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
                       Editing Software
                     </label>
                     <select
                       name="software"
-                      className={`${field} bg-neutral-900 text-white cursor-pointer`}
+                      className={`${field} bg-white text-black cursor-pointer`}
                     >
                       <option value="DaVinci Resolve Studio">DaVinci Resolve Studio</option>
                       <option value="Adobe Premiere Pro">Adobe Premiere Pro</option>
@@ -1143,7 +1124,7 @@ export default function Site() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-white/60 mb-1.5">
+                  <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
                     Project Details / Footage Link / Timeline
                   </label>
                   <textarea
@@ -1156,7 +1137,7 @@ export default function Site() {
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-7 py-4 font-bold text-black hover:opacity-90 transition-all hover:scale-[1.01] active:scale-[0.99] shadow-xl shadow-orange-500/20"
+                  className="w-full flex items-center justify-center gap-2 rounded-full bg-black px-7 py-4 font-bold text-white hover:bg-neutral-800 transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md"
                 >
                   <span>Send Project Details on WhatsApp</span>
                   <ArrowUpRight size={18} />
@@ -1167,7 +1148,7 @@ export default function Site() {
         </Sec>
       </main>
 
-      {/* MOBILE STICKY PILL NAVIGATION (Interactive slide / scrub gesture) */}
+      {/* MOBILE STICKY PILL NAVIGATION (Inverted Monochrome) */}
       <nav
         ref={navRef}
         aria-label="Sections"
@@ -1176,7 +1157,7 @@ export default function Site() {
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
         style={{ bottom: 'max(12px, env(safe-area-inset-bottom))' }}
-        className="fixed inset-x-3 z-50 mx-auto flex max-w-[520px] rounded-full bg-black/85 p-1.5 text-white ring-1 ring-white/20 backdrop-blur-2xl lg:hidden shadow-2xl select-none touch-none active:scale-[0.99] transition-transform duration-200"
+        className="fixed inset-x-3 z-50 mx-auto flex max-w-[520px] rounded-full bg-white/95 p-1.5 text-black ring-1 ring-black/15 backdrop-blur-2xl lg:hidden shadow-2xl select-none touch-none active:scale-[0.99] transition-transform duration-200"
       >
         {TABS.map(([id, label, Icon], i) => (
           <button
@@ -1184,13 +1165,13 @@ export default function Site() {
             type="button"
             onClick={() => go(i)}
             className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors duration-200 ${
-              active === i ? 'text-black font-semibold' : 'text-white/70'
+              active === i ? 'text-white font-semibold' : 'text-black/60'
             }`}
           >
             {active === i && (
               <motion.span
                 layoutId="pill"
-                className="absolute inset-0 rounded-full bg-amber-400 shadow-md"
+                className="absolute inset-0 rounded-full bg-black shadow-md"
                 transition={{ type: 'spring', stiffness: 450, damping: 35 }}
               />
             )}
