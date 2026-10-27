@@ -530,12 +530,12 @@ export default function Site() {
                     ))}
                   </span>
 
-                  {/* Last Name: Stylised Hollow Cine-Stroke with Italic Flair */}
-                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase italic tracking-[-0.03em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.5px_#000] lg:[-webkit-text-stroke:3.5px_#000] hover:text-black transition-colors duration-300 cursor-default">
+                  {/* Last Name: Stylised Hollow Cine-Stroke - Clean Non-Overlapping Outline */}
+                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase tracking-[0.04em] text-transparent [-webkit-text-stroke:1.8px_#000] sm:[-webkit-text-stroke:2.2px_#000] lg:[-webkit-text-stroke:2.8px_#000] hover:text-black transition-colors duration-300 cursor-default">
                     {'PRASAD'.split('').map((c, i) => (
                       <motion.span
                         key={i}
-                        className="inline-block"
+                        className="inline-block mr-[0.035em] last:mr-0"
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}
                         transition={{ duration: 0.35, delay: 0.12 + i * 0.02, ease: 'easeOut' }}
@@ -547,7 +547,7 @@ export default function Site() {
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.2, delay: 0.25 }}
-                      className="inline-block text-black not-italic ml-1 [-webkit-text-stroke:0px]"
+                      className="inline-block text-black ml-0.5 [-webkit-text-stroke:0px]"
                     >
                       .
                     </motion.span>
