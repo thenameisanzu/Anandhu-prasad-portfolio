@@ -54,14 +54,63 @@ export const PROFILE = {
   ],
 }
 
-// 🛠️ PRIMARY TOOLS & SOFTWARE (Strict Minimal Monochrome)
+// =========================================================================
+// 🎨 OFFICIAL SOFTWARE VECTOR LOGOS
+// DaVinci Resolve, Adobe Premiere Pro, and CapCut (Clean Scalable Vectors)
+// =========================================================================
+export const LogoDaVinci = ({ size = 20, className = '' }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="currentColor"
+    className={`shrink-0 ${className}`}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>DaVinci Resolve</title>
+    <path d="M17.621 0 5.977.004c-1.37 0-2.756.345-3.762 1.11a4.925 4.925 0 0 0-1.61 2.003C.233 3.93 0 5.02 0 5.951l.012 12.2c.002 1.604.479 3.057 1.461 4.112.984 1.056 2.462 1.683 4.331 1.691L16.856 24c1.26.005 3.095-.036 4.303-.714 1.075-.605 2.025-1.556 2.497-2.984.278-.84.345-2.084.344-3.147l-.021-11.13c-.002-.888-.15-2.023-.547-2.934-.425-.976-1.181-1.815-2.322-2.425C20.353.26 19.123 0 17.622 0zm0 .93c1.378 0 2.538.295 3.04.565.977.523 1.544 1.166 1.889 1.96.315.721.47 1.793.473 2.572l.018 11.13c.002 1.013-.097 2.257-.298 2.86-.396 1.202-1.146 1.946-2.063 2.462-.814.457-2.612.593-3.82.588l-11.05-.044c-1.657-.007-2.832-.534-3.626-1.386-.792-.851-1.212-2.06-1.212-3.485L.999 5.95c0-.829.196-1.827.474-2.437.345-.757.75-1.207 1.365-1.674C3.585 1.27 4.868.97 6.08.97zm-5.66 3.423c-1.976.089-3.204 1.658-3.214 3.29.019 1.443 1.635 3.481 2.884 4.53.12.099.154.109.33.18.062.025.198-.047.327-.135.36-.245.993-.947 1.648-1.738a7.67 7.67 0 0 0 1.031-1.683c.409-.89.261-1.599.235-1.888a3.983 3.983 0 0 0-.99-1.692 3.36 3.36 0 0 0-2.251-.864zm4.172 7.922a10.185 10.185 0 0 0-3.244.61c-.15.058-.26.1-.374.17-.057.036-.11.135-.105.292.017.433.29 1.278.624 2.27.384 1.135 1.066 2.27 1.844 2.74a3.23 3.23 0 0 0 2.53.342c.832-.243 1.595-.868 1.962-1.546.986-1.818.19-3.548-1.121-4.417-.447-.296-1.133-.445-1.89-.46-.074 0-.15-.002-.226-.001zm-8.432.038a6.201 6.201 0 0 0-.752.047c-.596.078-.932.273-1.29.51a3.177 3.177 0 0 0-1.365 1.979c-.075.552-.086 1.053.033 1.507.433 1.389 1.326 2.222 2.847 2.452.636.028 1.37-.063 1.99-.45 1.269-.782 2.08-3.17 2.412-4.742.053-.176.035-.357-.013-.42-.005-.067-.044-.113-.19-.183-.398-.192-1.32-.417-2.375-.6a7.68 7.68 0 0 0-1.297-.1z"/>
+  </svg>
+)
+
+export const LogoPremiere = ({ size = 20, className = '' }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="currentColor"
+    className={`shrink-0 ${className}`}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>Adobe Premiere Pro</title>
+    <path d="M19.75 0H4.25A4.25 4.25 0 0 0 0 4.25v15.5A4.25 4.25 0 0 0 4.25 24h15.5A4.25 4.25 0 0 0 24 19.75V4.25A4.25 4.25 0 0 0 19.75 0zM10.15 8.42a2.93 2.93 0 0 0-1.18-.2 13.9 13.9 0 0 0-1.09.02v3.36l.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03a1.45 1.45 0 0 0-.93-1.46zM12.66 11.9a3.86 3.86 0 0 1-1.61 1.22c-.68.25-1.43.34-2.25.34l-.5-.01-.43-.01v3.21a.12.12 0 0 1-.11.14H5.82c-.08 0-.12-.04-.12-.13V6.42c0-.07.03-.11.1-.11l.56-.01.76-.02.87-.02.91-.01c.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.15.42.23.85.23 1.3 0 .86-.2 1.57-.6 2.13zm6.82-3.15v1.95c0 .08-.05.11-.16.11a4.35 4.35 0 0 0-1.92.37c-.19.09-.37.21-.51.37v5.1c0 .1-.04.14-.13.14h-1.97a.14.14 0 0 1-.16-.12v-5.58l-.01-.75-.02-.78c0-.23-.02-.45-.04-.68a.1.1 0 0 1 .07-.11h1.78c.1 0 .18.07.2.16a3.03 3.03 0 0 1 .13.92c.3-.35.67-.64 1.08-.86a3.1 3.1 0 0 1 1.52-.39c.07-.01.13.04.14.11z"/>
+  </svg>
+)
+
+export const LogoCapCut = ({ size = 20, className = '' }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24.5 24"
+    width={size}
+    height={size}
+    fill="currentColor"
+    className={`shrink-0 ${className}`}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>CapCut</title>
+    <path d="M24.189 6.442V2.671l-4.535 2.383V4.91c.002-1.505-1.078-2.411-2.638-2.411H2.64C.993 2.5 0 3.407 0 4.91V8.72L6.354 12 0 15.316v3.8C0 20.595 1 21.5 2.64 21.5h14.373c1.56 0 2.639-.907 2.639-2.382v-.197l4.536 2.409v-3.828L13.64 12 24.19 6.443zM9.982 13.873l7.797 4.083H2.157l7.825-4.083zm7.741-7.828l-7.742 4.057-7.825-4.057h15.567z"/>
+  </svg>
+)
+
+// 🛠️ PRIMARY TOOLS & SOFTWARE (Strict Minimal Monochrome with Official Logos)
 export const TOOLS = [
   {
     name: 'DaVinci Resolve',
     category: 'Color Grading & Finishing',
     level: 'Advanced Master',
     badge: 'Industry Color Standard',
-    icon: Sliders,
+    icon: LogoDaVinci,
     desc: 'Deep color science, ACES & DaVinci YRGB color management, Log to Rec.709 conversions, custom 3D LUTs, skin-tone isolation, and Fairlight audio mixing.',
     features: [
       'Advanced Node-Based Color Grading',
@@ -75,7 +124,7 @@ export const TOOLS = [
     category: 'Narrative & Commercial Editing',
     level: 'Expert Workflow',
     badge: 'Precision Pacing',
-    icon: Scissors,
+    icon: LogoPremiere,
     desc: 'Seamless multi-cam switching, dynamic visual pacing, audio synchronization, speed-ramping, tight J/L cuts, and proxy workflows for high-resolution 4K/6K footage.',
     features: [
       'High-Retention YouTube & Docu-Style Pacing',
@@ -89,7 +138,7 @@ export const TOOLS = [
     category: 'Viral Short-Form & Vertical Video',
     level: 'High Velocity',
     badge: 'Viral Retention',
-    icon: Sparkles,
+    icon: LogoCapCut,
     desc: 'Engineered specifically for short-attention spans on Instagram Reels, YouTube Shorts, and TikTok. Snappy 3-second hooks, kinetic subtitles, and trending sound design.',
     features: [
       'First 3-Second Hook Optimization',
@@ -236,6 +285,21 @@ const H2 = ({ children, className = '' }) => (
     {children}
   </motion.h2>
 )
+
+const renderSoftwareBadge = (software, dark = false) => {
+  const s = software.toLowerCase()
+  let Icon = null
+  if (s.includes('davinci')) Icon = LogoDaVinci
+  else if (s.includes('premiere')) Icon = LogoPremiere
+  else if (s.includes('capcut')) Icon = LogoCapCut
+
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      {Icon && <Icon size={14} className={dark ? 'text-white' : 'text-black'} />}
+      <span>{software}</span>
+    </span>
+  )
+}
 
 export default function Site() {
   const pager = useRef(null)
@@ -462,21 +526,25 @@ export default function Site() {
               {/* Left Column: Huge Headline & Bio */}
               <div className="lg:col-span-7 flex flex-col justify-center">
                 
-                {/* Software Badges Strip - Minimal Monochrome */}
+                {/* Software Badges Strip with Official Vector Logos */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="mb-4 flex flex-wrap items-center gap-2"
+                  className="mb-5 flex flex-wrap items-center gap-2.5"
                 >
-                  {['DaVinci Resolve', 'Adobe Premiere Pro', 'CapCut Pro'].map((tool) => (
-                    <span
-                      key={tool}
-                      className="rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1 text-xs font-medium text-black"
-                    >
-                      {tool}
-                    </span>
-                  ))}
+                  <span className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-black hover:border-black/30 transition-colors">
+                    <LogoDaVinci size={16} />
+                    <span>DaVinci Resolve</span>
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-black hover:border-black/30 transition-colors">
+                    <LogoPremiere size={16} />
+                    <span>Premiere Pro</span>
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-black hover:border-black/30 transition-colors">
+                    <LogoCapCut size={16} />
+                    <span>CapCut Pro</span>
+                  </span>
                 </motion.div>
 
                 {/* Animated Name Headline */}
@@ -726,7 +794,7 @@ export default function Site() {
                           {project.title}
                         </h3>
                         <div className="mt-1 flex flex-wrap items-center gap-2 font-mono text-xs text-black/60">
-                          <span className="text-black font-medium">{project.software}</span>
+                          <span className="text-black font-medium">{renderSoftwareBadge(project.software)}</span>
                           <span>•</span>
                           <span>{project.views}</span>
                           <span>•</span>
@@ -760,8 +828,8 @@ export default function Site() {
                         <div className="grid gap-6 pb-8 md:grid-cols-2 items-center">
                           <div className="space-y-4">
                             <div className="flex flex-wrap gap-2">
-                              <span className="rounded-md bg-black text-white px-2.5 py-1 text-xs font-mono">
-                                {project.software}
+                              <span className="rounded-md bg-black text-white px-2.5 py-1 text-xs font-mono inline-flex items-center gap-1.5">
+                                {renderSoftwareBadge(project.software, true)}
                               </span>
                               <span className="rounded-md bg-black/5 border border-black/15 px-2.5 py-1 text-xs font-mono text-black">
                                 Duration: {project.duration}
