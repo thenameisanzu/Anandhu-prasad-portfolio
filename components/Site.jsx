@@ -16,6 +16,7 @@ import {
   Youtube,
   Plus
 } from 'lucide-react'
+import { InteractiveGridPattern } from './InteractiveGridPattern'
 
 // =========================================================================
 // 🎬 ANANDU PRASAD - VIDEO EDITOR & COLORIST
@@ -447,8 +448,15 @@ export default function Site() {
         {/* =========================================================================
             SECTION 1: HERO - CLEAN MINIMAL MONOCHROME WITH GOOGLE DRIVE CTA
             ========================================================================= */}
-        <Sec id="home">
-          <div className="relative flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 lg:min-h-[calc(100vh-14rem)]">
+        <Sec id="home" className="overflow-hidden">
+          {/* Interactive Dynamic Grid Pattern Background */}
+          <InteractiveGridPattern
+            width={44}
+            height={44}
+            className="[mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,white_25%,transparent_90%)] opacity-85"
+          />
+
+          <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 lg:min-h-[calc(100vh-14rem)]">
             
             {/* Viewfinder HUD Ticker */}
             <motion.div
