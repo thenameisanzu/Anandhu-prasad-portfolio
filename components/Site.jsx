@@ -785,7 +785,7 @@ export default function Site() {
                   </span>
                 </div>
 
-                <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold font-syne tracking-tight mb-6 leading-snug ${
+                <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold font-display tracking-tight mb-6 leading-snug ${
                   isDark ? 'text-white' : 'text-black'
                 }`}>
                   I’m a passionate Video Editor who transforms ideas into engaging visual stories.
