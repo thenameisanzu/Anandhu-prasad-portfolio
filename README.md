@@ -35,13 +35,29 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🛠️ Editing Content & Projects
+## 📁 Adding Your Google Drive Video Links
 
-All portfolio data is easily customizable at the top of [`components/Site.jsx`](file:///Users/ansusmacbookair/Downloads/smilora-minimal/components/Site.jsx):
-- **`PROFILE`**: Name, bio, phone, WhatsApp number, social handles, and stats.
-- **`TOOLS`**: DaVinci Resolve, Premiere Pro, and CapCut skill cards and features.
-- **`PROJECTS`**: Your showcase videos, thumbnails, retention stats, and descriptions.
-- **`REVIEWS`**: Testimonials from clients, creators, and directors.
+All portfolio data and Google Drive links are in [`components/Site.jsx`](file:///Users/ansusmacbookair/Downloads/smilora-minimal/components/Site.jsx):
+- **Main Drive Showreel / Portfolio Folder**:
+  ```javascript
+  export const PROFILE = {
+    ...
+    showreelDriveUrl: 'https://drive.google.com/...', // Main Showreel Drive link
+  }
+  ```
+- **Project Specific Video Links**:
+  ```javascript
+  export const PROJECTS = [
+    {
+      id: 1,
+      title: 'Project Title',
+      software: 'DaVinci Resolve Studio',
+      driveUrl: 'https://drive.google.com/...', // Direct video Drive link
+      ...
+    },
+  ]
+  ```
+Visitors can click **"Open Video in Google Drive"** to immediately stream the master video or open the folder!
 
 ---
 
