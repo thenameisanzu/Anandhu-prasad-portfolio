@@ -40,7 +40,7 @@ export const PROFILE = {
   bio: 'Specializing in high-retention video editing, precision color grading, and dynamic sound design. Delivering polished, high-impact cuts for commercial brands, YouTube creators, and viral short-form content.',
   phone: '+91 8606502102',
   whatsapp: '918606502102',
-  email: 'ananduprasad.edit@gmail.com',
+  email: 'anandugraphy@gmail.com',
   location: 'Kerala, India • Available Worldwide (Remote)',
   
   heroImage: '/anandu-portrait.jpg',
