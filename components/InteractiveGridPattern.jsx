@@ -110,9 +110,9 @@ export function InteractiveGridPattern({
                 y={y}
                 width={width}
                 height={height}
-                className={`stroke-white/[0.08] transition-all duration-100 ease-in-out not-[&:hover]:duration-1000 ${
-                  isHovered ? 'fill-white/[0.14]' : 'fill-transparent hover:fill-white/[0.14]'
-                } ${squaresClassName}`}
+                stroke="var(--grid-stroke)"
+                fill={isHovered ? 'var(--grid-glow)' : 'transparent'}
+                className={`transition-all duration-100 ease-in-out not-[&:hover]:duration-1000 hover:fill-[var(--grid-glow)] ${squaresClassName}`}
               />
             )
           })}

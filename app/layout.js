@@ -1,12 +1,33 @@
 import './globals.css'
 import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google'
+
 const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display' })
 const body = Instrument_Sans({ subsets: ['latin'], variable: '--font-body' })
+
 export const metadata = {
   title: 'Anandu Prasad | Video Editor & Colorist',
   description: 'Portfolio of Anandu Prasad — Video Editor & Colorist specializing in DaVinci Resolve, Adobe Premiere Pro, and CapCut. Crafting cinematic stories and viral high-retention edits.',
 }
-export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#000000' }
+
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' }
+
 export default function RootLayout({ children }) {
-  return (<html lang="en" className={`dark bg-black text-white ${display.variable} ${body.variable}`}><body>{children}</body></html>)
+  return (
+    <html lang="en" className={`dark ${display.variable} ${body.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('anandu-portfolio-theme') || 'dark';
+                document.documentElement.classList.add(theme);
+                if (theme === 'light') document.documentElement.classList.remove('dark');
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
 }
