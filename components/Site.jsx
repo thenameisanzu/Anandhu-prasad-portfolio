@@ -203,11 +203,11 @@ export const TABS = [
   ['contact', 'Contact', Mail],
 ]
 
-// Reusable Section Container
+// Reusable Section Container with generous top clearance for fixed header
 const Sec = ({ id, alternate, children }) => (
   <section
     id={id}
-    className={`relative px-5 pb-28 pt-24 md:px-10 lg:min-h-screen lg:px-16 lg:py-28 max-lg:h-[100dvh] max-lg:min-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto ${
+    className={`relative px-5 pt-32 pb-32 md:px-10 lg:min-h-screen lg:px-16 lg:py-28 max-lg:h-[100dvh] max-lg:min-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto max-lg:pt-32 max-lg:pb-32 ${
       alternate ? 'bg-neutral-50 text-black border-y border-black/10' : 'bg-white text-black'
     }`}
   >
@@ -368,7 +368,7 @@ export default function Site() {
       />
 
       {/* FIXED HEADER */}
-      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-4 text-black backdrop-blur-md bg-white/80 border-b border-black/10 md:px-10 lg:px-16">
+      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-3 md:py-4 text-black backdrop-blur-md bg-white/90 border-b border-black/10 md:px-10 lg:px-16">
         <button
           onClick={() => go(0)}
           className="group flex items-center gap-3 text-left hover:opacity-75 transition-opacity"
@@ -429,7 +429,7 @@ export default function Site() {
             SECTION 1: HERO - CLEAN MINIMAL MONOCHROME WITH GOOGLE DRIVE CTA
             ========================================================================= */}
         <Sec id="home">
-          <div className="relative flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-8 lg:min-h-[calc(100vh-14rem)]">
+          <div className="relative flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 lg:min-h-[calc(100vh-14rem)]">
             
             {/* Viewfinder HUD Ticker */}
             <motion.div
