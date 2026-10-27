@@ -1010,6 +1010,15 @@ export default function Site() {
               </form>
             </motion.div>
           </div>
+
+          {/* FOOTER */}
+          <footer className="mt-20 border-t border-black/10 pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/60">
+            <p>© {new Date().getFullYear()} Anandhu Prasad. All rights reserved.</p>
+            <p className="flex items-center gap-1.5">
+              <span>Crafted by</span>
+              <span className="font-semibold text-black tracking-tight">Aethra Digital Solutions</span>
+            </p>
+          </footer>
         </Sec>
       </main>
 
