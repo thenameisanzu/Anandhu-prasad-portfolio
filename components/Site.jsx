@@ -502,16 +502,17 @@ export default function Site() {
                   </span>
                 </motion.div>
 
-                {/* Animated Name Headline */}
+                {/* Animated Stylised Name Headline */}
                 <h1
                   aria-label={PROFILE.name}
-                  className="font-display text-[15vw] font-bold leading-[.85] tracking-tighter text-black sm:text-[12vw] lg:text-[7.2rem]"
+                  className="select-none text-[16vw] font-black leading-[.82] tracking-tighter sm:text-[13vw] lg:text-[7.6rem] xl:text-[8.5rem]"
                 >
-                  <span className="block overflow-hidden pb-[.06em]">
-                    {'Anandu'.split('').map((c, i) => (
+                  {/* First Name: Solid Editorial Black */}
+                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase tracking-[-0.04em] text-black">
+                    {'ANANDU'.split('').map((c, i) => (
                       <motion.span
                         key={i}
-                        className="inline-block text-black"
+                        className="inline-block"
                         initial={{ y: '110%' }}
                         animate={{ y: 0 }}
                         transition={{ duration: 0.8, delay: 0.15 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
@@ -520,8 +521,10 @@ export default function Site() {
                       </motion.span>
                     ))}
                   </span>
-                  <span className="block overflow-hidden pb-[.06em] text-black/80">
-                    {'Prasad'.split('').map((c, i) => (
+
+                  {/* Last Name: Stylised Hollow Cine-Stroke with Italic Flair */}
+                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase italic tracking-[-0.03em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.5px_#000] lg:[-webkit-text-stroke:3.5px_#000] hover:text-black transition-colors duration-500 cursor-default">
+                    {'PRASAD'.split('').map((c, i) => (
                       <motion.span
                         key={i}
                         className="inline-block"
@@ -532,6 +535,14 @@ export default function Site() {
                         {c}
                       </motion.span>
                     ))}
+                    <motion.span
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.85 }}
+                      className="inline-block text-black not-italic ml-1 [-webkit-text-stroke:0px]"
+                    >
+                      .
+                    </motion.span>
                   </span>
                 </h1>
 

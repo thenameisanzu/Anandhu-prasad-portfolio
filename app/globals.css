@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Syne:wght@800;900&display=swap');
 @tailwind base;@tailwind components;@tailwind utilities;
 html{background:#fff;-webkit-tap-highlight-color:transparent}
 body{@apply font-sans bg-white text-black antialiased}
