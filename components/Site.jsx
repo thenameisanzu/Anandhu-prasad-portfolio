@@ -230,10 +230,10 @@ const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
   return (
     <section
       id={id}
-      className={`relative px-5 md:px-10 lg:px-16 max-md:h-[100dvh] max-md:min-w-full max-md:w-full max-md:max-w-full max-md:snap-start max-md:snap-always max-md:overflow-y-auto max-md:overflow-x-hidden ${
+      className={`relative px-5 md:px-10 lg:px-16 max-lg:h-[100dvh] max-lg:min-w-full max-lg:w-full max-lg:max-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto max-lg:overflow-x-hidden ${
         isFooter
-          ? 'pt-28 pb-28 md:pt-28 md:pb-6 md:min-h-0'
-          : 'pt-28 pb-28 md:py-24 md:min-h-screen'
+          ? 'pt-24 pb-28 lg:pt-28 lg:pb-6 lg:min-h-0'
+          : 'pt-24 pb-28 lg:py-24 lg:min-h-screen'
       } ${
         alternate
           ? isDark
@@ -343,7 +343,7 @@ export default function Site() {
     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
 
     const p = pager.current
-    if (window.innerWidth < 768 && p) {
+    if (window.innerWidth < 1024 && p) {
       p.scrollTo({ left: i * p.clientWidth, behavior: 'smooth' })
     } else {
       const el = document.getElementById(TABS[i][0])
@@ -370,7 +370,7 @@ export default function Site() {
         const p = pager.current
         if (!p) return
 
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 1024) {
           const newActive = Math.round(p.scrollLeft / p.clientWidth)
           if (newActive !== lastActiveRef.current && newActive >= 0 && newActive < TABS.length) {
             lastActiveRef.current = newActive
@@ -475,7 +475,7 @@ export default function Site() {
           </button>
 
           {/* Desktop / Tablet Navigation with Active Item Highlighting - Exactly Centered */}
-          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium">
+          <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium">
             {TABS.slice(1).map(([id, label], i) => {
               const tabIndex = i + 1
               const isActive = active === tabIndex
@@ -563,7 +563,7 @@ export default function Site() {
         {/* MAIN VIEWPORT */}
         <main
           ref={pager}
-          className="no-scrollbar max-md:flex max-md:h-[100dvh] max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto overscroll-x-contain"
+          className="no-scrollbar max-lg:flex max-lg:h-[100dvh] max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto overscroll-x-contain"
         >
           {/* =========================================================================
               SECTION 1: HERO
@@ -729,7 +729,7 @@ export default function Site() {
 
               </div>
 
-              <p className={`mt-8 text-center text-xs font-mono md:hidden ${
+              <p className={`mt-8 text-center text-xs font-mono lg:hidden ${
                 isDark ? 'text-white/40' : 'text-black/40'
               }`}>
                 Swipe to explore work &rarr;
@@ -1227,7 +1227,7 @@ export default function Site() {
         <nav
           aria-label="Sections"
           style={{ bottom: 'max(12px, env(safe-area-inset-bottom))' }}
-          className={`fixed inset-x-3 z-50 mx-auto flex max-w-[480px] rounded-full p-1.5 backdrop-blur-2xl md:hidden shadow-2xl select-none ring-1 transition-colors duration-150 ${
+          className={`fixed inset-x-3 z-50 mx-auto flex max-w-[480px] rounded-full p-1.5 backdrop-blur-2xl lg:hidden shadow-2xl select-none ring-1 transition-colors duration-150 ${
             isDark ? 'bg-neutral-950/90 text-white ring-white/15' : 'bg-white/95 text-black ring-black/15'
           }`}
         >

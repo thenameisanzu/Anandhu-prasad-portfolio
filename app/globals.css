@@ -59,7 +59,7 @@ body::before {
   display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   html, body {
     height: 100%;
     overflow: hidden;
