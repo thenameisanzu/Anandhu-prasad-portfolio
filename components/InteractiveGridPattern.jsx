@@ -110,8 +110,8 @@ export function InteractiveGridPattern({
                 y={y}
                 width={width}
                 height={height}
-                className={`stroke-black/[0.06] transition-all duration-100 ease-in-out not-[&:hover]:duration-1000 ${
-                  isHovered ? 'fill-black/[0.09]' : 'fill-transparent'
+                className={`stroke-white/[0.08] transition-all duration-100 ease-in-out not-[&:hover]:duration-1000 ${
+                  isHovered ? 'fill-white/[0.14]' : 'fill-transparent hover:fill-white/[0.14]'
                 } ${squaresClassName}`}
               />
             )

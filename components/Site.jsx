@@ -223,12 +223,12 @@ export const TABS = [
 const Sec = ({ id, alternate, isFooter = false, className = '', children }) => (
   <section
     id={id}
-    className={`relative px-5 md:px-10 lg:px-16 max-lg:h-[100dvh] max-lg:min-w-full max-lg:w-full max-lg:max-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto max-lg:overflow-x-hidden ${
+    className={`relative px-5 md:px-10 lg:px-16 max-md:h-[100dvh] max-md:min-w-full max-md:w-full max-md:max-w-full max-md:snap-start max-md:snap-always max-md:overflow-y-auto max-md:overflow-x-hidden ${
       isFooter
-        ? 'pt-32 pb-28 lg:pt-28 lg:pb-6 lg:min-h-0'
-        : 'pt-32 pb-32 lg:py-28 lg:min-h-screen'
+        ? 'pt-28 pb-28 md:pt-28 md:pb-6 md:min-h-0'
+        : 'pt-28 pb-28 md:py-24 md:min-h-screen'
     } ${
-      alternate ? 'bg-neutral-50 text-black border-y border-black/10' : 'bg-white text-black'
+      alternate ? 'bg-neutral-950 text-white border-y border-white/10' : 'bg-black text-white'
     } ${className}`}
   >
     {children}
@@ -241,7 +241,7 @@ const H2 = ({ children, className = '' }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.1 }}
     transition={{ duration: 0.35, ease: 'easeOut' }}
-    className={`font-display text-[13vw] font-bold leading-[.88] tracking-tighter text-black md:text-[10vw] lg:text-[7.5rem] ${className}`}
+    className={`font-display text-[13vw] font-bold leading-[.88] tracking-tighter text-white md:text-[10vw] lg:text-[7.5rem] ${className}`}
   >
     {children}
   </motion.h2>
@@ -256,7 +256,7 @@ const renderSoftwareBadge = (software, dark = false) => {
 
   return (
     <span className="inline-flex items-center gap-1.5">
-      {Icon && <Icon size={14} className={dark ? 'text-white' : 'text-black'} />}
+      {Icon && <Icon size={14} className={dark ? 'text-black' : 'text-white'} />}
       <span>{software}</span>
     </span>
   )
@@ -288,7 +288,7 @@ export default function Site() {
       if (isDraggingNav.current) return
       const p = pager.current
       if (!p) return
-      if (window.innerWidth < 1024) return setActive(Math.round(p.scrollLeft / p.clientWidth))
+      if (window.innerWidth < 768) return setActive(Math.round(p.scrollLeft / p.clientWidth))
       const i = TABS.findIndex(([id]) => {
         const el = document.getElementById(id)
         if (!el) return false
@@ -312,7 +312,7 @@ export default function Site() {
   const go = (i) => {
     setActive(i)
     const p = pager.current
-    if (window.innerWidth < 1024 && p) p.scrollTo({ left: i * p.clientWidth, behavior: 'smooth' })
+    if (window.innerWidth < 768 && p) p.scrollTo({ left: i * p.clientWidth, behavior: 'smooth' })
     else {
       const el = document.getElementById(TABS[i][0])
       if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -377,42 +377,42 @@ export default function Site() {
   }
 
   const field =
-    'w-full rounded-2xl border border-black/20 bg-white px-5 py-4 text-base text-black placeholder:text-black/40 focus:border-black focus:outline-none transition-all'
+    'w-full rounded-2xl border border-white/20 bg-white/[0.05] px-5 py-4 text-base text-white placeholder:text-white/40 focus:border-white focus:bg-white/[0.08] focus:outline-none transition-all'
 
   return (
     <MotionConfig reducedMotion="user">
-      {/* Pure Black Minimal Top Progress Bar */}
+      {/* Pure White Minimal Top Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-black z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-white z-50 origin-left"
         style={{ scaleX }}
       />
 
       {/* FIXED HEADER */}
-      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-3 md:py-4 text-black backdrop-blur-md bg-white/90 border-b border-black/10 md:px-10 lg:px-16">
+      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-3 md:py-4 text-white backdrop-blur-md bg-black/85 border-b border-white/10 md:px-10 lg:px-16">
         <button
           onClick={() => go(0)}
           className="group flex items-center gap-3 text-left hover:opacity-75 transition-opacity"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-black text-white font-bold text-xs shadow-sm group-hover:scale-105 transition-transform">
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-white text-black font-bold text-xs shadow-sm group-hover:scale-105 transition-transform">
             AP
           </div>
           <div>
-            <span className="font-display text-base font-bold tracking-tight block leading-tight text-black">
+            <span className="font-display text-base font-bold tracking-tight block leading-tight text-white">
               {PROFILE.name}
             </span>
-            <span className="text-[10px] font-mono tracking-wider text-black/60 uppercase block">
+            <span className="text-[10px] font-mono tracking-wider text-white/60 uppercase block">
               Editor & Colorist
             </span>
           </div>
         </button>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden gap-8 text-sm font-medium lg:flex">
+        {/* Desktop / Tablet Navigation */}
+        <nav className="hidden gap-8 text-sm font-medium md:flex">
           {TABS.slice(1).map(([id, label], i) => (
             <button
               key={id}
               onClick={() => go(i + 1)}
-              className="relative py-1 text-black/60 hover:text-black transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1.5px] after:bg-black after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="relative py-1 text-white/60 hover:text-white transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1.5px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {label}
             </button>
@@ -425,7 +425,7 @@ export default function Site() {
             href={PROFILE.showreelDriveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 font-mono text-xs text-black hover:border-black hover:bg-black hover:text-white transition-all shadow-xs"
+            className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 font-mono text-xs text-white hover:border-white hover:bg-white hover:text-black transition-all shadow-xs"
           >
             <LogoGoogleDrive size={15} />
             <span className="font-semibold">Drive Showreel</span>
@@ -433,7 +433,7 @@ export default function Site() {
           </a>
           <button
             onClick={() => go(3)}
-            className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-xs font-semibold text-white hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all shadow-md"
+            className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black hover:bg-neutral-200 hover:scale-105 active:scale-95 transition-all shadow-md"
           >
             <span>Let&apos;s Cut</span>
           </button>
@@ -443,7 +443,7 @@ export default function Site() {
       {/* MAIN VIEWPORT */}
       <main
         ref={pager}
-        className="no-scrollbar max-lg:flex max-lg:h-[100dvh] max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto overscroll-x-contain"
+        className="no-scrollbar max-md:flex max-md:h-[100dvh] max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto overscroll-x-contain"
       >
         {/* =========================================================================
             SECTION 1: HERO - CLEAN MINIMAL MONOCHROME WITH GOOGLE DRIVE CTA
@@ -456,38 +456,38 @@ export default function Site() {
             className="[mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,white_25%,transparent_90%)] opacity-85"
           />
 
-          <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 lg:min-h-[calc(100vh-14rem)]">
+          <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
             
             {/* Viewfinder HUD Ticker */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-black/50 border-b border-black/10 pb-4"
+              className="mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-white/50 border-b border-white/10 pb-4"
             >
               <div className="flex items-center gap-3">
-                <span className="flex items-center gap-1.5 text-black font-semibold tracking-wide">
-                  <span className="h-2 w-2 rounded-full bg-black animate-ping inline-block" />
+                <span className="flex items-center gap-1.5 text-white font-semibold tracking-wide">
+                  <span className="h-2 w-2 rounded-full bg-white animate-ping inline-block" />
                   REC [●] 00:02:48:19
                 </span>
-                <span className="hidden sm:inline text-black/20">|</span>
+                <span className="hidden sm:inline text-white/20">|</span>
                 <span className="hidden sm:inline">4K DCI • 23.976 FPS</span>
-                <span className="hidden md:inline text-black/20">|</span>
-                <span className="hidden md:inline text-black/70">PRORES 422 HQ</span>
+                <span className="hidden md:inline text-white/20">|</span>
+                <span className="hidden md:inline text-white/70">PRORES 422 HQ</span>
               </div>
-              <div className="flex items-center gap-2 text-black/70">
-                <span className="text-[10px] uppercase tracking-widest text-black/40">COLOR PIPELINE:</span>
-                <span className="rounded border border-black/15 bg-black/[0.04] px-2 py-0.5 text-[11px] text-black font-medium">
+              <div className="flex items-center gap-2 text-white/70">
+                <span className="text-[10px] uppercase tracking-widest text-white/40">COLOR PIPELINE:</span>
+                <span className="rounded border border-white/15 bg-white/[0.06] px-2 py-0.5 text-[11px] text-white font-medium">
                   DaVinci YRGB Color Managed
                 </span>
               </div>
             </motion.div>
 
-            {/* Grid Layout: Left Typography | Right Photo Frame */}
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            {/* Grid Layout: Left Typography | Right Photo Frame - Side-by-side on md (iPad) and lg (Desktop) */}
+            <div className="grid gap-8 md:gap-10 md:grid-cols-12 md:items-center">
               
               {/* Left Column: Headline, Bio & Google Drive Button */}
-              <div className="lg:col-span-7 flex flex-col justify-center">
+              <div className="md:col-span-7 flex flex-col justify-center">
                 
                 {/* Official Software Badges */}
                 <motion.div
@@ -496,15 +496,15 @@ export default function Site() {
                   transition={{ duration: 0.3, delay: 0.05 }}
                   className="mb-5 flex flex-wrap items-center gap-2.5"
                 >
-                  <span className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-black">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-xs font-semibold text-white">
                     <LogoDaVinci size={16} />
                     <span>DaVinci Resolve</span>
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-black">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-xs font-semibold text-white">
                     <LogoPremiere size={16} />
                     <span>Premiere Pro</span>
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-black">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-xs font-semibold text-white">
                     <LogoCapCut size={16} />
                     <span>CapCut Pro</span>
                   </span>
@@ -513,10 +513,10 @@ export default function Site() {
                 {/* Animated Stylised Name Headline - Unified Single Outlines */}
                 <h1
                   aria-label={PROFILE.name}
-                  className="select-none text-[16vw] leading-none tracking-normal sm:text-[13vw] lg:text-[7.6rem] xl:text-[8.5rem]"
+                  className="select-none text-[15vw] leading-none tracking-normal sm:text-[12vw] md:text-[5.5rem] lg:text-[7.2rem] xl:text-[8.2rem]"
                 >
-                  {/* First Name: Solid Editorial Black */}
-                  <span className="block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] text-black">
+                  {/* First Name: Solid Pure White */}
+                  <span className="block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] text-white">
                     {'ANANDU'.split('').map((c, i) => (
                       <motion.span
                         key={i}
@@ -530,8 +530,8 @@ export default function Site() {
                     ))}
                   </span>
 
-                  {/* Last Name: Stylised Hollow Cine-Stroke - Positioned Cleanly Below ANANDU */}
-                  <span className="block overflow-hidden pb-[.06em] mt-1 sm:mt-2 lg:mt-3 font-anton uppercase tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black transition-colors duration-300 cursor-default">
+                  {/* Last Name: Stylised Hollow White Outline - Clean Below ANANDU */}
+                  <span className="block overflow-hidden pb-[.06em] mt-1 sm:mt-2 font-anton uppercase tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#fff] sm:[-webkit-text-stroke:2.4px_#fff] lg:[-webkit-text-stroke:3px_#fff] hover:text-white transition-colors duration-300 cursor-default">
                     {'PRASAD'.split('').map((c, i) => (
                       <motion.span
                         key={i}
@@ -547,7 +547,7 @@ export default function Site() {
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.2, delay: 0.25 }}
-                      className="inline-block text-black ml-1 [-webkit-text-stroke:0px]"
+                      className="inline-block text-white ml-1 [-webkit-text-stroke:0px]"
                     >
                       .
                     </motion.span>
@@ -559,7 +559,7 @@ export default function Site() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.18, ease: 'easeOut' }}
-                  className="mt-6 max-w-xl text-lg text-black/75 leading-relaxed md:text-xl font-normal"
+                  className="mt-6 max-w-xl text-base sm:text-lg md:text-lg text-white/75 leading-relaxed font-normal"
                 >
                   {PROFILE.bio}
                 </motion.p>
@@ -575,7 +575,7 @@ export default function Site() {
                     href={PROFILE.showreelDriveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 rounded-full bg-black px-7 py-4 font-semibold text-white hover:bg-neutral-800 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-black/10"
+                    className="flex items-center gap-2.5 rounded-full bg-white px-7 py-4 font-semibold text-black hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
                   >
                     <LogoGoogleDrive size={18} />
                     <span>Watch Drive Showreel</span>
@@ -583,7 +583,7 @@ export default function Site() {
                   </a>
                   <button
                     onClick={() => go(3)}
-                    className="flex items-center gap-2 rounded-full border border-black/25 bg-transparent px-7 py-4 font-medium text-black hover:border-black hover:bg-black/5 transition-all hover:scale-105 active:scale-95"
+                    className="flex items-center gap-2 rounded-full border border-white/25 bg-transparent px-7 py-4 font-medium text-white hover:border-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95"
                   >
                     <span>Hire For Edit</span>
                     <ArrowUpRight size={18} />
@@ -591,21 +591,21 @@ export default function Site() {
                 </motion.div>
               </div>
 
-              {/* Right Column: CLEAN PORTRAIT IMAGE (3:4 Ratio, No Rounded Edges, No Overlay Text) */}
-              <div className="lg:col-span-5 flex justify-center">
+              {/* Right Column: CLEAN PORTRAIT IMAGE (3:4 Ratio, Rounded Edges, Side-by-Side on Tablet/Desktop) */}
+              <div className="md:col-span-5 flex justify-center">
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: 0.1, ease: 'easeOut' }}
-                  className="relative w-full max-w-[420px]"
+                  className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-none"
                 >
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 border border-black/15 shadow-xl">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-neutral-900 border border-white/15 shadow-2xl">
                     <Image
                       src={PROFILE.heroImage}
                       alt={`${PROFILE.name} - Video Editor Portrait`}
                       fill
                       priority
-                      sizes="(max-width: 768px) 100vw, 420px"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 420px"
                       className="object-cover object-top transition-transform duration-700 hover:scale-105"
                     />
                   </div>
@@ -617,7 +617,7 @@ export default function Site() {
             <motion.p
               animate={{ x: [0, 8, 0] }}
               transition={{ duration: 1.8, repeat: Infinity }}
-              className="mt-8 text-center text-xs font-mono text-black/40 lg:hidden"
+              className="mt-8 text-center text-xs font-mono text-white/40 md:hidden"
             >
               Swipe to explore work &rarr;
             </motion.p>
@@ -630,18 +630,18 @@ export default function Site() {
         <Sec id="projects" alternate>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="font-mono text-xs text-black/50 uppercase tracking-widest block mb-2 font-semibold">
+              <span className="font-mono text-xs text-white/50 uppercase tracking-widest block mb-2 font-semibold">
                 Portfolio Showcase
               </span>
               <H2>Selected Works</H2>
             </div>
-            <p className="max-w-md text-base text-black/70 md:text-lg">
+            <p className="max-w-md text-base text-white/70 md:text-lg">
               Click any project to view details or open the master video directly in Google Drive.
             </p>
           </div>
 
           {/* Project List */}
-          <div className="mt-12 divide-y divide-black/10">
+          <div className="mt-12 divide-y divide-white/10">
             {PROJECTS.map((project) => {
               const isRevealed = hoveredProject === project.id
               return (
@@ -652,7 +652,7 @@ export default function Site() {
                   viewport={{ once: true, amount: 0.05 }}
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                   className={`group relative transition-all duration-300 ${
-                    isRevealed ? 'bg-black/[0.04] -mx-4 px-4 rounded-3xl' : 'hover:bg-black/[0.02] -mx-4 px-4 rounded-3xl'
+                    isRevealed ? 'bg-white/[0.06] -mx-4 px-4 rounded-3xl' : 'hover:bg-white/[0.03] -mx-4 px-4 rounded-3xl'
                   }`}
                 >
                   <button
@@ -662,19 +662,19 @@ export default function Site() {
                     aria-expanded={isRevealed}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
-                      <span className="font-mono text-xs text-black/40 font-semibold">
+                      <span className="font-mono text-xs text-white/40 font-semibold">
                         0{project.id}
                       </span>
                       <div>
                         <h3
-                          className={`font-display text-2xl font-bold tracking-tight text-black transition-all duration-300 md:text-4xl lg:text-5xl ${
+                          className={`font-display text-2xl font-bold tracking-tight text-white transition-all duration-300 md:text-4xl lg:text-5xl ${
                             isRevealed ? 'translate-x-2' : 'group-hover:translate-x-1'
                           }`}
                         >
                           {project.title}
                         </h3>
-                        <div className="mt-1 flex flex-wrap items-center gap-2 font-mono text-xs text-black/60">
-                          <span className="text-black font-medium">{renderSoftwareBadge(project.software)}</span>
+                        <div className="mt-1 flex flex-wrap items-center gap-2 font-mono text-xs text-white/60">
+                          <span className="text-white font-medium">{renderSoftwareBadge(project.software)}</span>
                           <span>•</span>
                           <span>{project.category}</span>
                           <span>•</span>
@@ -687,10 +687,10 @@ export default function Site() {
                       animate={{
                         rotate: isRevealed ? 45 : 0,
                         scale: isRevealed ? 1.15 : 1,
-                        backgroundColor: isRevealed ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
+                        backgroundColor: isRevealed ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
                       }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
-                      className="rounded-full p-2.5 border border-black/20 text-black"
+                      className="rounded-full p-2.5 border border-white/20 text-white"
                     >
                       <Plus size={24} />
                     </motion.div>
@@ -708,14 +708,14 @@ export default function Site() {
                         <div className="grid gap-6 pb-8 md:grid-cols-2 items-center">
                           <div className="space-y-4">
                             <div className="flex flex-wrap gap-2">
-                              <span className="rounded-md bg-black text-white px-2.5 py-1 text-xs font-mono inline-flex items-center gap-1.5">
+                              <span className="rounded-md bg-white text-black px-2.5 py-1 text-xs font-mono inline-flex items-center gap-1.5 font-bold">
                                 {renderSoftwareBadge(project.software, true)}
                               </span>
-                              <span className="rounded-md bg-black/5 border border-black/15 px-2.5 py-1 text-xs font-mono text-black">
+                              <span className="rounded-md bg-white/5 border border-white/15 px-2.5 py-1 text-xs font-mono text-white">
                                 Duration: {project.duration}
                               </span>
                             </div>
-                            <p className="max-w-md text-base text-black/75 leading-relaxed font-normal">
+                            <p className="max-w-md text-base text-white/75 leading-relaxed font-normal">
                               {project.desc}
                             </p>
                             
@@ -725,7 +725,7 @@ export default function Site() {
                                 href={project.driveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-xs font-bold text-white hover:bg-neutral-800 transition-all hover:scale-105 active:scale-95 shadow-sm"
+                                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-bold text-black hover:bg-neutral-200 transition-all hover:scale-105 active:scale-95 shadow-sm"
                               >
                                 <LogoGoogleDrive size={15} />
                                 <span>Open Video in Google Drive</span>
@@ -734,7 +734,7 @@ export default function Site() {
                             </div>
                           </div>
 
-                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-200 border border-black/15 shadow-md group/img">
+                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-900 border border-white/15 shadow-md group/img">
                             <Image
                               src={project.image}
                               alt={project.title}
@@ -764,17 +764,17 @@ export default function Site() {
         <Sec id="skills">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="font-mono text-xs text-black/50 uppercase tracking-widest block mb-2 font-semibold">
+              <span className="font-mono text-xs text-white/50 uppercase tracking-widest block mb-2 font-semibold">
                 Software & Workflow
               </span>
               <H2>The Arsenal</H2>
             </div>
-            <p className="max-w-md text-base text-black/70 md:text-lg">
+            <p className="max-w-md text-base text-white/70 md:text-lg">
               Specialized mastery across the top 3 video post-production tools.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {TOOLS.map((tool, i) => {
               const Icon = tool.icon
               return (
@@ -785,33 +785,33 @@ export default function Site() {
                   viewport={{ once: true, amount: 0.05 }}
                   transition={{ duration: 0.25, delay: i * 0.05, ease: 'easeOut' }}
                   whileHover={{ y: -4 }}
-                  className="relative flex flex-col justify-between rounded-3xl border border-black/10 bg-neutral-50/70 p-8 transition-all duration-300 hover:border-black/30 shadow-sm"
+                  className="relative flex flex-col justify-between rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:border-white/30 shadow-sm"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white shadow-sm p-2.5">
-                        <Icon size={26} className="text-white" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-black shadow-sm p-2.5">
+                        <Icon size={26} className="text-black" />
                       </div>
-                      <span className="rounded-full border border-black/15 bg-black/[0.04] px-3 py-1 font-mono text-[11px] font-semibold text-black">
+                      <span className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 font-mono text-[11px] font-semibold text-white">
                         {tool.badge}
                       </span>
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold tracking-tight text-black md:text-3xl">
+                    <h3 className="font-display text-2xl font-bold tracking-tight text-white md:text-3xl">
                       {tool.name}
                     </h3>
-                    <p className="font-mono text-xs text-black/50 mt-1 mb-4">
+                    <p className="font-mono text-xs text-white/50 mt-1 mb-4">
                       {tool.category}
                     </p>
 
-                    <p className="text-sm text-black/70 leading-relaxed">
+                    <p className="text-sm text-white/70 leading-relaxed">
                       {tool.desc}
                     </p>
 
-                    <div className="mt-6 space-y-2.5 border-t border-black/10 pt-6">
+                    <div className="mt-6 space-y-2.5 border-t border-white/10 pt-6">
                       {tool.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-start gap-2.5 text-xs text-black/90">
-                          <CheckCircle2 size={15} className="text-black shrink-0 mt-0.5" />
+                        <div key={idx} className="flex items-start gap-2.5 text-xs text-white/90">
+                          <CheckCircle2 size={15} className="text-white shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </div>
                       ))}
@@ -829,17 +829,17 @@ export default function Site() {
         <Sec id="contact" alternate isFooter>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="font-mono text-xs text-black/50 uppercase tracking-widest block mb-2 font-semibold">
+              <span className="font-mono text-xs text-white/50 uppercase tracking-widest block mb-2 font-semibold">
                 Collaboration
               </span>
               <H2>Let&apos;s Cut</H2>
             </div>
-            <p className="max-w-md text-base text-black/70 md:text-lg">
+            <p className="max-w-md text-base text-white/70 md:text-lg">
               Have Google Drive footage ready? Send project details and let&apos;s get cutting.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-2 items-start w-full max-w-full overflow-hidden">
+          <div className="mt-12 grid gap-10 md:grid-cols-2 items-start w-full max-w-full overflow-hidden">
             {/* Direct Contact Details */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -849,48 +849,48 @@ export default function Site() {
               className="space-y-8 w-full max-w-full"
             >
               <div className="space-y-4">
-                <h3 className="font-display text-3xl font-bold tracking-tight text-black">
+                <h3 className="font-display text-3xl font-bold tracking-tight text-white">
                   Direct Inquiries
                 </h3>
-                <p className="text-base text-black/70 max-w-md">
+                <p className="text-base text-white/70 max-w-md">
                   Fast response within 2-4 hours. Send your raw footage links via Google Drive or Dropbox.
                 </p>
               </div>
 
-              <div className="space-y-3 font-mono text-sm text-black">
+              <div className="space-y-3 font-mono text-sm text-white">
                 <a
                   href={`tel:${PROFILE.phone}`}
-                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-black/15 hover:border-black transition-all"
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white transition-all text-white"
                 >
-                  <Phone size={18} className="text-black" />
+                  <Phone size={18} className="text-white" />
                   <span>{PROFILE.phone}</span>
                 </a>
                 <a
                   href={`mailto:${PROFILE.email}`}
-                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-black/15 hover:border-black transition-all"
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white transition-all text-white"
                 >
-                  <Mail size={18} className="text-black" />
+                  <Mail size={18} className="text-white" />
                   <span>{PROFILE.email}</span>
                 </a>
                 <a
                   href={PROFILE.showreelDriveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-black/15 hover:border-black transition-all"
+                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.04] border border-white/15 hover:border-white transition-all text-white"
                 >
-                  <LogoGoogleDrive size={18} className="text-black" />
+                  <LogoGoogleDrive size={18} className="text-white" />
                   <span>Google Drive Portfolio Folder</span>
-                  <ArrowUpRight size={14} className="ml-auto text-black/40" />
+                  <ArrowUpRight size={14} className="ml-auto text-white/40" />
                 </a>
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-black/15 text-black/70">
-                  <Clock size={18} className="text-black" />
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/[0.04] border border-white/15 text-white/70">
+                  <Clock size={18} className="text-white" />
                   <span>{PROFILE.location}</span>
                 </div>
               </div>
 
               {/* Social Channels */}
               <div className="pt-2">
-                <p className="font-mono text-xs uppercase tracking-wider text-black/40 mb-3 font-semibold">
+                <p className="font-mono text-xs uppercase tracking-wider text-white/40 mb-3 font-semibold">
                   Follow & Connect
                 </p>
                 <div className="flex flex-wrap gap-2.5">
@@ -898,7 +898,7 @@ export default function Site() {
                     href={PROFILE.socials.instagram}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-full border border-black/20 bg-white px-4 py-2 text-xs font-medium text-black hover:bg-black hover:text-white transition-all shadow-xs"
+                    className="flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-4 py-2 text-xs font-medium text-white hover:bg-white hover:text-black transition-all shadow-xs"
                   >
                     <Instagram size={15} />
                     <span>Instagram</span>
@@ -907,7 +907,7 @@ export default function Site() {
                     href={PROFILE.socials.youtube}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-full border border-black/20 bg-white px-4 py-2 text-xs font-medium text-black hover:bg-black hover:text-white transition-all shadow-xs"
+                    className="flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-4 py-2 text-xs font-medium text-white hover:bg-white hover:text-black transition-all shadow-xs"
                   >
                     <Youtube size={15} />
                     <span>YouTube</span>
@@ -916,7 +916,7 @@ export default function Site() {
                     href={`https://wa.me/${PROFILE.whatsapp}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-full bg-black text-white px-4 py-2 text-xs font-medium hover:bg-neutral-800 transition-all shadow-sm"
+                    className="flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-xs font-bold hover:bg-neutral-200 transition-all shadow-sm"
                   >
                     <LogoWhatsApp size={15} />
                     <span>WhatsApp</span>
@@ -931,18 +931,18 @@ export default function Site() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.25, delay: 0.05, ease: 'easeOut' }}
-              className="w-full max-w-full overflow-hidden rounded-3xl border border-black/15 bg-white p-6 sm:p-8 shadow-sm backdrop-blur-md"
+              className="w-full max-w-full overflow-hidden rounded-3xl border border-white/15 bg-white/[0.03] p-6 sm:p-8 shadow-sm backdrop-blur-md"
             >
-              <h4 className="font-display text-2xl font-bold tracking-tight text-black mb-2">
+              <h4 className="font-display text-2xl font-bold tracking-tight text-white mb-2">
                 Send Project Details
               </h4>
-              <p className="text-xs text-black/60 font-mono mb-6">
+              <p className="text-xs text-white/60 font-mono mb-6">
                 Paste your Google Drive link to send directly to Anandu on WhatsApp.
               </p>
 
               <form onSubmit={bookOnWhatsApp} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
+                  <label className="block text-xs font-mono text-white/60 mb-1.5 font-medium">
                     Your Name / Channel
                   </label>
                   <input
@@ -954,12 +954,12 @@ export default function Site() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
+                  <label className="block text-xs font-mono text-white/60 mb-1.5 font-medium">
                     Project Type
                   </label>
                   <select
                     name="service"
-                    className={`${field} bg-white text-black cursor-pointer`}
+                    className={`${field} bg-neutral-900 text-white cursor-pointer`}
                   >
                     <option value="YouTube Long-Form (Retention Edit)">YouTube Long-Form Video</option>
                     <option value="Commercial / Brand Ad Spot">Commercial / Brand Ad</option>
@@ -970,7 +970,7 @@ export default function Site() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
+                  <label className="block text-xs font-mono text-white/60 mb-1.5 font-medium">
                     Google Drive Footage Link (Optional)
                   </label>
                   <input
@@ -981,7 +981,7 @@ export default function Site() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-black/60 mb-1.5 font-medium">
+                  <label className="block text-xs font-mono text-white/60 mb-1.5 font-medium">
                     Project Notes / Deadline
                   </label>
                   <textarea
@@ -994,7 +994,7 @@ export default function Site() {
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2.5 rounded-full bg-black px-7 py-4 font-bold text-white hover:bg-neutral-800 transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2.5 rounded-full bg-white px-7 py-4 font-bold text-black hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md cursor-pointer"
                 >
                   <LogoWhatsApp size={18} />
                   <span>Send Details on WhatsApp</span>
@@ -1005,7 +1005,7 @@ export default function Site() {
           </div>
 
           {/* FOOTER */}
-          <footer className="mt-12 lg:mt-14 border-t border-black/10 pt-6 pb-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/60 w-full max-w-full overflow-hidden">
+          <footer className="mt-12 lg:mt-14 border-t border-white/10 pt-6 pb-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50 w-full max-w-full overflow-hidden">
             <p>© {new Date().getFullYear()} Anandu Prasad. All rights reserved.</p>
             <p className="flex items-center gap-1.5">
               <span>Crafted by</span>
@@ -1013,7 +1013,7 @@ export default function Site() {
                 href="https://aethrasolutions.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-black tracking-tight hover:underline underline-offset-4 transition-all"
+                className="font-semibold text-white tracking-tight hover:underline underline-offset-4 transition-all"
               >
                 Aethra Digital Solutions
               </a>
@@ -1031,7 +1031,7 @@ export default function Site() {
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
         style={{ bottom: 'max(12px, env(safe-area-inset-bottom))' }}
-        className="fixed inset-x-3 z-50 mx-auto flex max-w-[480px] rounded-full bg-white/95 p-1.5 text-black ring-1 ring-black/15 backdrop-blur-2xl lg:hidden shadow-2xl select-none touch-none active:scale-[0.99] transition-transform duration-200"
+        className="fixed inset-x-3 z-50 mx-auto flex max-w-[480px] rounded-full bg-neutral-950/90 p-1.5 text-white ring-1 ring-white/15 backdrop-blur-2xl md:hidden shadow-2xl select-none touch-none active:scale-[0.99] transition-transform duration-200"
       >
         {TABS.map(([id, label, Icon], i) => (
           <button
@@ -1039,13 +1039,13 @@ export default function Site() {
             type="button"
             onClick={() => go(i)}
             className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors duration-200 ${
-              active === i ? 'text-white font-semibold' : 'text-black/60'
+              active === i ? 'text-black font-semibold' : 'text-white/60'
             }`}
           >
             {active === i && (
               <motion.span
                 layoutId="pill"
-                className="absolute inset-0 rounded-full bg-black shadow-md"
+                className="absolute inset-0 rounded-full bg-white shadow-md"
                 transition={{ type: 'spring', stiffness: 450, damping: 35 }}
               />
             )}
