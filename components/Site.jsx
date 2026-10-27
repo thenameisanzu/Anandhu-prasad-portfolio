@@ -207,7 +207,7 @@ export const TABS = [
 const Sec = ({ id, alternate, children }) => (
   <section
     id={id}
-    className={`relative px-5 pt-32 pb-32 md:px-10 lg:min-h-screen lg:px-16 lg:py-28 max-lg:h-[100dvh] max-lg:min-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto max-lg:pt-32 max-lg:pb-32 ${
+    className={`relative px-5 pt-32 pb-32 md:px-10 lg:min-h-screen lg:px-16 lg:py-28 max-lg:h-[100dvh] max-lg:min-w-full max-lg:w-full max-lg:max-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto max-lg:overflow-x-hidden ${
       alternate ? 'bg-neutral-50 text-black border-y border-black/10' : 'bg-white text-black'
     }`}
   >
@@ -423,7 +423,7 @@ export default function Site() {
       {/* MAIN VIEWPORT */}
       <main
         ref={pager}
-        className="no-scrollbar max-lg:flex max-lg:h-[100dvh] max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto"
+        className="no-scrollbar max-lg:flex max-lg:h-[100dvh] max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto overscroll-x-contain"
       >
         {/* =========================================================================
             SECTION 1: HERO - CLEAN MINIMAL MONOCHROME WITH GOOGLE DRIVE CTA
@@ -801,14 +801,14 @@ export default function Site() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-2 items-start">
+          <div className="mt-12 grid gap-10 lg:grid-cols-2 items-start w-full max-w-full overflow-hidden">
             {/* Direct Contact Details */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-8"
+              className="space-y-8 w-full max-w-full"
             >
               <div className="space-y-4">
                 <h3 className="font-display text-3xl font-bold tracking-tight text-black">
@@ -855,7 +855,7 @@ export default function Site() {
                 <p className="font-mono text-xs uppercase tracking-wider text-black/40 mb-3 font-semibold">
                   Follow & Connect
                 </p>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-2.5">
                   <a
                     href={PROFILE.socials.instagram}
                     target="_blank"
@@ -889,11 +889,11 @@ export default function Site() {
 
             {/* Quick Inquiry Form */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-3xl border border-black/15 bg-white p-8 shadow-sm backdrop-blur-md"
+              className="w-full max-w-full overflow-hidden rounded-3xl border border-black/15 bg-white p-6 sm:p-8 shadow-sm backdrop-blur-md"
             >
               <h4 className="font-display text-2xl font-bold tracking-tight text-black mb-2">
                 Send Project Details
@@ -966,7 +966,7 @@ export default function Site() {
           </div>
 
           {/* FOOTER */}
-          <footer className="mt-20 border-t border-black/10 pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/60">
+          <footer className="mt-20 border-t border-black/10 pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-black/60 w-full max-w-full overflow-hidden">
             <p>© {new Date().getFullYear()} Anandu Prasad. All rights reserved.</p>
             <p className="flex items-center gap-1.5">
               <span>Crafted by</span>
