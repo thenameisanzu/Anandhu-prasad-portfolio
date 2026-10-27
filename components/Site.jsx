@@ -38,8 +38,7 @@ export const useTheme = () => useContext(ThemeContext)
 export const PROFILE = {
   name: 'Anandu Prasad',
   headline: 'Video Editor & Colorist',
-  tagline: 'DaVinci Resolve • Premiere Pro • CapCut',
-  bio: 'Specializing in high-retention video editing, precision color grading, and dynamic sound design. Delivering polished, high-impact cuts for commercial brands, YouTube creators, and viral short-form content.',
+  bio: 'Creative Video Editor passionate about visual storytelling, cinematic editing, and crafting engaging content that connects with audiences.',
   phone: '+91 8606502102',
   whatsapp: '918606502102',
   email: 'anandugraphy@gmail.com',
@@ -730,7 +729,7 @@ export default function Site() {
                         fill
                         priority
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 420px"
-                        className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                        className="object-cover object-center transition-transform duration-700 hover:scale-105"
                       />
                     </div>
                   </div>
@@ -757,174 +756,87 @@ export default function Site() {
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
-                  Who I Am // Story &amp; Vision
+                  Who I Am
                 </span>
                 <H2>About Me</H2>
               </div>
-              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-                Transforming raw timelines into high-retention cinematic stories that resonate.
+              <p className={`max-w-md text-base md:text-lg font-medium italic ${isDark ? 'text-white/70' : 'text-black/70'}`}>
+                &ldquo;Turning ideas into impactful visuals, one frame at a time.&rdquo;
               </p>
             </div>
 
-            <div className="mt-12 grid gap-8 lg:grid-cols-12 items-start">
-              {/* Left Column: Editorial Bio & Creative Philosophy */}
-              <div className="lg:col-span-7 flex flex-col gap-6">
-                <div
-                  className={`rounded-3xl border p-7 sm:p-9 transition-colors duration-150 shadow-sm ${
-                    isDark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
-                  }`}
-                >
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className={`inline-flex items-center justify-center h-8 w-8 rounded-full border text-xs font-mono font-bold ${
-                      isDark ? 'border-white/20 bg-white/10 text-white' : 'border-black/20 bg-black/5 text-black'
-                    }`}>
-                      AP
-                    </span>
-                    <span className={`font-mono text-xs uppercase tracking-wider font-semibold ${
-                      isDark ? 'text-white/60' : 'text-black/60'
-                    }`}>
-                      Anandu Prasad &bull; Kerala, India
-                    </span>
-                  </div>
-
-                  <h3 className={`text-2xl sm:text-3xl font-bold font-syne tracking-tight mb-4 ${
-                    isDark ? 'text-white' : 'text-black'
+            <div className="mt-12 max-w-4xl mx-auto flex flex-col gap-6">
+              {/* Main narrative card */}
+              <div
+                className={`rounded-3xl border p-7 sm:p-10 transition-colors duration-150 shadow-sm ${
+                  isDark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <span className={`inline-flex items-center justify-center h-8 w-8 rounded-full border text-xs font-mono font-bold ${
+                    isDark ? 'border-white/20 bg-white/10 text-white' : 'border-black/20 bg-black/5 text-black'
                   }`}>
-                    Editing isn&apos;t just cutting clips—it&apos;s sculpting emotion and momentum.
-                  </h3>
-
-                  <div className={`space-y-4 text-sm sm:text-base leading-relaxed ${
-                    isDark ? 'text-white/70' : 'text-black/70'
+                    AP
+                  </span>
+                  <span className={`font-mono text-xs uppercase tracking-wider font-semibold ${
+                    isDark ? 'text-white/60' : 'text-black/60'
                   }`}>
-                    <p>
-                      I am a video editor and colorist with over 3+ years of hands-on post-production experience. I specialize in crafting high-retention video content for YouTube creators, commercial brands, and documentary storytellers.
-                    </p>
-                    <p>
-                      My approach blends rhythmic pacing, surgical sound design, and color precision graded in DaVinci Resolve. Whether it&apos;s an intense 30-second automotive commercial, an immersive 20-minute travel documentary, or a viral vertical reel, I build cuts that capture attention in the first 3 seconds and never let go.
-                    </p>
-                  </div>
-
-                  {/* Core Badges */}
-                  <div className="mt-6 pt-6 border-t border-white/10 flex flex-wrap gap-2">
-                    {['High-Retention Pacing', 'Color Grading (DaVinci)', 'Sound Design & Foley', 'Fast 48h Turnaround', 'Remote Collaboration'].map((tag) => (
-                      <span
-                        key={tag}
-                        className={`rounded-full border px-3 py-1 font-mono text-[11px] font-medium ${
-                          isDark ? 'border-white/15 bg-white/[0.05] text-white/80' : 'border-black/15 bg-black/[0.03] text-black/80'
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                    Anandhu Prasad
+                  </span>
                 </div>
 
-                {/* Philosophy Quote Card */}
-                <div
-                  className={`rounded-3xl border p-6 sm:p-8 flex items-start gap-4 transition-colors ${
-                    isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
-                  }`}
-                >
-                  <Sparkles size={24} className={`shrink-0 mt-1 ${isDark ? 'text-amber-300' : 'text-amber-600'}`} />
-                  <div>
-                    <p className="font-serif italic text-base sm:text-lg leading-relaxed mb-2">
-                      &ldquo;Every cut must earn its place. If a frame does not elevate the narrative rhythm or push emotion forward, it belongs on the cutting room floor.&rdquo;
-                    </p>
-                    <span className={`font-mono text-xs uppercase tracking-wider block font-semibold ${
-                      isDark ? 'text-white/50' : 'text-black/50'
-                    }`}>
-                      &mdash; The Creative Philosophy
-                    </span>
-                  </div>
+                <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold font-syne tracking-tight mb-6 leading-snug ${
+                  isDark ? 'text-white' : 'text-black'
+                }`}>
+                  I’m a passionate Video Editor who transforms ideas into engaging visual stories.
+                </h3>
+
+                <div className={`space-y-4 text-base sm:text-lg leading-relaxed ${
+                  isDark ? 'text-white/75' : 'text-black/75'
+                }`}>
+                  <p>
+                    I’m a creative Video Editor passionate about visual storytelling, cinematic editing, and crafting engaging content that connects with audiences.
+                  </p>
+                  <p>
+                    With a strong eye for detail, rhythm, and creativity, I focus on crafting videos that capture attention, communicate emotions, and leave a lasting impact.
+                  </p>
+                  <p>
+                    From cinematic edits and social media reels to promotional videos and creative content, I aim to bring every vision to life through impactful storytelling, smooth transitions, and compelling visuals.
+                  </p>
                 </div>
               </div>
 
-              {/* Right Column: Experience Metrics & Editing Workflow */}
-              <div className="lg:col-span-5 flex flex-col gap-6">
-                {/* 4 Key Stat Cards */}
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { label: 'Experience', val: '3+', sub: 'Years in Post-Production' },
-                    { label: 'Projects', val: '150+', sub: 'Commercials & Films' },
-                    { label: 'Audience Reach', val: '10M+', sub: 'Organic Video Views' },
-                    { label: 'Client Rating', val: '100%', sub: 'On-Time Delivery' },
-                  ].map((stat) => (
-                    <div
-                      key={stat.label}
-                      className={`rounded-2xl border p-5 transition-colors ${
-                        isDark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
-                      }`}
-                    >
-                      <span className={`font-mono text-[10px] uppercase tracking-wider block mb-1 ${
-                        isDark ? 'text-white/50' : 'text-black/50'
-                      }`}>
-                        {stat.label}
-                      </span>
-                      <span className={`text-3xl font-extrabold font-anton block tracking-tight ${
-                        isDark ? 'text-white' : 'text-black'
-                      }`}>
-                        {stat.val}
-                      </span>
-                      <span className={`text-xs mt-1 block leading-tight ${
-                        isDark ? 'text-white/60' : 'text-black/60'
-                      }`}>
-                        {stat.sub}
-                      </span>
-                    </div>
-                  ))}
+              {/* Goal statement callout */}
+              <div
+                className={`rounded-3xl border p-7 sm:p-8 transition-colors duration-150 flex flex-col sm:flex-row sm:items-center justify-between gap-6 ${
+                  isDark
+                    ? 'border-white/15 bg-gradient-to-r from-white/[0.06] to-white/[0.02]'
+                    : 'border-black/15 bg-gradient-to-r from-black/[0.04] to-black/[0.01]'
+                }`}
+              >
+                <div className="flex items-start sm:items-center gap-4">
+                  <Sparkles size={24} className={`shrink-0 mt-1 sm:mt-0 ${isDark ? 'text-amber-300' : 'text-amber-600'}`} />
+                  <p className={`text-base sm:text-lg md:text-xl font-semibold tracking-tight ${
+                    isDark ? 'text-white' : 'text-black'
+                  }`}>
+                    My goal is simple — to turn ordinary footage into extraordinary stories.
+                  </p>
                 </div>
 
-                {/* 4-Step Editing Protocol */}
-                <div
-                  className={`rounded-3xl border p-6 sm:p-7 transition-colors ${
-                    isDark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
+                <button
+                  onClick={() => {
+                    const contactIndex = TABS.findIndex(([id]) => id === 'contact')
+                    go(contactIndex >= 0 ? contactIndex : 4)
+                  }}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-xs font-semibold font-mono uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shrink-0 cursor-pointer ${
+                    isDark
+                      ? 'bg-white text-black hover:bg-neutral-200'
+                      : 'bg-black text-white hover:bg-neutral-800'
                   }`}
                 >
-                  <span className={`font-mono text-xs uppercase tracking-widest block mb-4 font-semibold ${
-                    isDark ? 'text-white/50' : 'text-black/50'
-                  }`}>
-                    Editing Protocol
-                  </span>
-                  <div className="space-y-4">
-                    {[
-                      { step: '01', title: 'Ingest & Story Spine', desc: 'Logging footage, identifying hero beats, and establishing narrative flow.' },
-                      { step: '02', title: 'Rough Assembly & Pacing', desc: 'Cutting for momentum, micro-hooks, and high viewer retention curves.' },
-                      { step: '03', title: 'Color Grade & Textures', desc: 'DaVinci Wide Gamut grading, film halation, tone separation, and contrast.' },
-                      { step: '04', title: 'Foley & Master Polish', desc: 'Layered sound effects, punchy audio balancing, and export in 4K Cinema.' },
-                    ].map((item) => (
-                      <div key={item.step} className="flex items-start gap-3.5">
-                        <span className={`font-mono text-xs font-bold px-2 py-0.5 rounded border shrink-0 ${
-                          isDark ? 'border-white/15 bg-white/5 text-white/70' : 'border-black/15 bg-black/5 text-black/70'
-                        }`}>
-                          {item.step}
-                        </span>
-                        <div>
-                          <h4 className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-black'}`}>
-                            {item.title}
-                          </h4>
-                          <p className={`text-xs mt-0.5 leading-relaxed ${isDark ? 'text-white/60' : 'text-black/60'}`}>
-                            {item.desc}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 pt-5 border-t border-white/10 flex justify-end">
-                    <button
-                      onClick={() => {
-                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
-                        go(contactIndex >= 0 ? contactIndex : 4)
-                      }}
-                      className={`inline-flex items-center gap-1.5 text-xs font-semibold font-mono uppercase tracking-wider transition-colors cursor-pointer ${
-                        isDark ? 'text-white hover:text-white/70' : 'text-black hover:text-black/70'
-                      }`}
-                    >
-                      <span>Start A Project With Anandu</span>
-                      <ArrowUpRight size={14} />
-                    </button>
-                  </div>
-                </div>
+                  <span>Let&apos;s Connect</span>
+                  <ArrowUpRight size={14} />
+                </button>
               </div>
             </div>
           </Sec>
