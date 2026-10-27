@@ -224,16 +224,12 @@ export const TABS = [
   ['contact', 'Contact', Mail],
 ]
 
-// Fluid Section Container with effortless spring entrance and generous viewport
+// Solid Static Section Container (No physical motion on outer container = zero scroll glitch)
 const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
   const { isDark } = useTheme()
   return (
-    <motion.section
+    <section
       id={id}
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1, margin: '-50px' }}
-      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
       className={`relative px-5 md:px-10 lg:px-16 max-md:h-[100dvh] max-md:min-w-full max-md:w-full max-md:max-w-full max-md:snap-start max-md:snap-always max-md:overflow-y-auto max-md:overflow-x-hidden ${
         isFooter
           ? 'pt-28 pb-28 md:pt-28 md:pb-6 md:min-h-0'
@@ -246,24 +242,25 @@ const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
           : isDark
           ? 'bg-black text-white'
           : 'bg-white text-black'
-      } transition-colors duration-300 ${className}`}
+      } transition-colors duration-150 ${className}`}
     >
       {children}
-    </motion.section>
+    </section>
   )
 }
 
+// Basic clean fade for Headings
 const H2 = ({ children, className = '' }) => {
   const { isDark } = useTheme()
   return (
     <motion.h2
-      initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3 }}
       className={`font-display text-[13vw] font-bold leading-[.88] tracking-tighter md:text-[10vw] lg:text-[7.5rem] ${
         isDark ? 'text-white' : 'text-black'
-      } transition-colors duration-300 ${className}`}
+      } transition-colors duration-150 ${className}`}
     >
       {children}
     </motion.h2>
@@ -305,7 +302,7 @@ export default function Site() {
   const dragTimeoutRef = useRef(null)
   const lastActiveRef = useRef(active)
 
-  // Initialize theme from localStorage without lag
+  // Initialize theme from localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem('anandu-portfolio-theme')
@@ -321,13 +318,11 @@ export default function Site() {
     } catch (_) {}
   }, [])
 
-  // Silky Smooth & Fast Theme Switcher
+  // Fast, Stutter-Free Theme Toggle
   const toggleTheme = () => {
     const nextTheme = isDark ? 'light' : 'dark'
     const root = document.documentElement
 
-    // Enable temporary smooth transition on elements
-    root.classList.add('theme-transitioning')
     root.classList.toggle('dark', nextTheme === 'dark')
     root.classList.toggle('light', nextTheme === 'light')
 
@@ -335,17 +330,13 @@ export default function Site() {
     try {
       localStorage.setItem('anandu-portfolio-theme', nextTheme)
     } catch (_) {}
-
-    setTimeout(() => {
-      root.classList.remove('theme-transitioning')
-    }, 280)
   }
 
   useEffect(() => {
     lastActiveRef.current = active
   }, [active])
 
-  // Throttled RAF scroll listener to eliminate scroll stutter and layout thrashing
+  // Simple throttled scroll listener
   useEffect(() => {
     let ticking = false
     const fn = () => {
@@ -454,7 +445,7 @@ export default function Site() {
     window.open(`https://wa.me/${PROFILE.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
-  const field = `w-full rounded-2xl border px-5 py-4 text-base transition-all ${
+  const field = `w-full rounded-2xl border px-5 py-4 text-base transition-colors ${
     isDark
       ? 'border-white/20 bg-white/[0.05] text-white placeholder:text-white/40 focus:border-white focus:bg-white/[0.08]'
       : 'border-black/20 bg-black/[0.04] text-black placeholder:text-black/40 focus:border-black focus:bg-white'
@@ -465,7 +456,7 @@ export default function Site() {
       <MotionConfig reducedMotion="user">
         {/* Top Minimal Progress Bar */}
         <motion.div
-          className={`fixed top-0 left-0 right-0 h-[2.5px] z-50 origin-left transition-colors duration-300 ${
+          className={`fixed top-0 left-0 right-0 h-[2.5px] z-50 origin-left transition-colors duration-150 ${
             isDark ? 'bg-white' : 'bg-black'
           }`}
           style={{ scaleX }}
@@ -473,7 +464,7 @@ export default function Site() {
 
         {/* FIXED HEADER */}
         <header
-          className={`fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-3 md:py-4 backdrop-blur-md border-b transition-colors duration-300 md:px-10 lg:px-16 ${
+          className={`fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-3 md:py-4 backdrop-blur-md border-b transition-colors duration-150 md:px-10 lg:px-16 ${
             isDark ? 'bg-black/85 text-white border-white/10' : 'bg-white/85 text-black border-black/10'
           }`}
         >
@@ -482,7 +473,7 @@ export default function Site() {
             className="group flex items-center gap-3 text-left hover:opacity-75 transition-opacity cursor-pointer"
           >
             <div
-              className={`relative flex h-8 w-8 items-center justify-center rounded-xl font-bold text-xs shadow-sm group-hover:scale-105 transition-all ${
+              className={`relative flex h-8 w-8 items-center justify-center rounded-xl font-bold text-xs shadow-sm transition-colors ${
                 isDark ? 'bg-white text-black' : 'bg-black text-white'
               }`}
             >
@@ -525,31 +516,23 @@ export default function Site() {
 
           {/* Action Area: Theme Switcher & CTAs */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* 🌗 FAST & FLUID THEME TOGGLE BUTTON */}
+            {/* 🌗 INSTANT & STUTTER-FREE THEME TOGGLE BUTTON */}
             <button
               onClick={toggleTheme}
               type="button"
               title={isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
               aria-label="Toggle Theme"
-              className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-mono font-semibold transition-all hover:scale-105 active:scale-95 shadow-xs cursor-pointer border ${
+              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-mono font-semibold transition-colors cursor-pointer border ${
                 isDark
-                  ? 'border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-white/40'
-                  : 'border-black/20 bg-black/5 text-black hover:bg-black/10 hover:border-black/40'
+                  ? 'border-white/20 bg-white/10 text-white hover:bg-white/20'
+                  : 'border-black/20 bg-black/5 text-black hover:bg-black/10'
               }`}
             >
-              <motion.div
-                key={theme}
-                initial={{ rotate: -90, scale: 0.7 }}
-                animate={{ rotate: 0, scale: 1 }}
-                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center"
-              >
-                {isDark ? (
-                  <Sun size={14} className="text-amber-300" />
-                ) : (
-                  <Moon size={14} className="text-neutral-900" />
-                )}
-              </motion.div>
+              {isDark ? (
+                <Sun size={14} className="text-amber-300 shrink-0" />
+              ) : (
+                <Moon size={14} className="text-neutral-900 shrink-0" />
+              )}
               <span className="hidden sm:inline text-[11px] font-mono uppercase tracking-wider">
                 {isDark ? 'Light' : 'Dark'}
               </span>
@@ -560,7 +543,7 @@ export default function Site() {
               href={PROFILE.showreelDriveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`hidden sm:flex items-center gap-2 rounded-full border px-3.5 py-1.5 font-mono text-xs transition-all shadow-xs ${
+              className={`hidden sm:flex items-center gap-2 rounded-full border px-3.5 py-1.5 font-mono text-xs transition-colors shadow-xs ${
                 isDark
                   ? 'border-white/15 bg-white/[0.06] text-white hover:border-white hover:bg-white hover:text-black'
                   : 'border-black/15 bg-black/[0.04] text-black hover:border-black hover:bg-black hover:text-white'
@@ -589,10 +572,9 @@ export default function Site() {
           className="no-scrollbar max-md:flex max-md:h-[100dvh] max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto overscroll-x-contain"
         >
           {/* =========================================================================
-              SECTION 1: HERO - CLEAN MINIMAL MONOCHROME WITH GOOGLE DRIVE CTA
+              SECTION 1: HERO
               ========================================================================= */}
           <Sec id="home" className="overflow-hidden">
-            {/* Ultra-Fast Hardware Accelerated Grid Background */}
             <InteractiveGridPattern
               width={44}
               height={44}
@@ -602,10 +584,7 @@ export default function Site() {
             <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
               
               {/* Viewfinder HUD Ticker */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              <div
                 className={`mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs border-b pb-4 transition-colors ${
                   isDark ? 'text-white/50 border-white/10' : 'text-black/50 border-black/10'
                 }`}
@@ -632,21 +611,16 @@ export default function Site() {
                     DaVinci YRGB Color Managed
                   </span>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Grid Layout: Left Typography | Right Photo Frame */}
               <div className="grid gap-8 md:gap-10 md:grid-cols-12 md:items-center">
                 
-                {/* Left Column: Headline, Bio & Google Drive Button */}
+                {/* Left Column */}
                 <div className="md:col-span-7 flex flex-col justify-center">
                   
                   {/* Official Software Badges */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-                    className="mb-5 flex flex-wrap items-center gap-2.5"
-                  >
+                  <div className="mb-5 flex flex-wrap items-center gap-2.5">
                     <span
                       className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold ${
                         isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
@@ -671,7 +645,7 @@ export default function Site() {
                       <LogoCapCut size={16} />
                       <span>CapCut Pro</span>
                     </span>
-                  </motion.div>
+                  </div>
 
                   {/* Stylised Name Headline */}
                   <h1
@@ -679,71 +653,38 @@ export default function Site() {
                     className="select-none text-[15vw] leading-none tracking-normal sm:text-[12vw] md:text-[5.5rem] lg:text-[7.2rem] xl:text-[8.2rem]"
                   >
                     <span
-                      className={`block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] transition-colors duration-300 ${
+                      className={`block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] transition-colors duration-150 ${
                         isDark ? 'text-white' : 'text-black'
                       }`}
                     >
-                      {'ANANDU'.split('').map((c, i) => (
-                        <motion.span
-                          key={i}
-                          className="inline-block"
-                          initial={{ y: '100%' }}
-                          animate={{ y: 0 }}
-                          transition={{ duration: 0.4, delay: 0.04 + i * 0.02, ease: [0.16, 1, 0.3, 1] }}
-                        >
-                          {c}
-                        </motion.span>
-                      ))}
+                      ANANDU
                     </span>
 
                     <span
-                      className={`block overflow-hidden pb-[.06em] mt-1 sm:mt-2 font-anton uppercase tracking-[0.05em] text-transparent transition-colors duration-300 cursor-default ${
+                      className={`block overflow-hidden pb-[.06em] mt-1 sm:mt-2 font-anton uppercase tracking-[0.05em] text-transparent transition-colors duration-150 cursor-default ${
                         isDark
                           ? '[-webkit-text-stroke:2px_#fff] sm:[-webkit-text-stroke:2.4px_#fff] lg:[-webkit-text-stroke:3px_#fff] hover:text-white'
                           : '[-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black'
                       }`}
                     >
-                      {'PRASAD'.split('').map((c, i) => (
-                        <motion.span
-                          key={i}
-                          className="inline-block mr-[0.02em] last:mr-0"
-                          initial={{ y: '100%' }}
-                          animate={{ y: 0 }}
-                          transition={{ duration: 0.4, delay: 0.12 + i * 0.02, ease: [0.16, 1, 0.3, 1] }}
-                        >
-                          {c}
-                        </motion.span>
-                      ))}
-                      <motion.span
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.25, delay: 0.25 }}
-                        className={`inline-block ml-1 [-webkit-text-stroke:0px] ${isDark ? 'text-white' : 'text-black'}`}
-                      >
+                      PRASAD
+                      <span className={`inline-block ml-1 [-webkit-text-stroke:0px] ${isDark ? 'text-white' : 'text-black'}`}>
                         .
-                      </motion.span>
+                      </span>
                     </span>
                   </h1>
 
                   {/* Subtitle Bio */}
-                  <motion.p
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                    className={`mt-6 max-w-xl text-base sm:text-lg md:text-lg leading-relaxed font-normal transition-colors ${
+                  <p
+                    className={`mt-6 max-w-xl text-base sm:text-lg md:text-lg leading-relaxed font-normal transition-colors duration-150 ${
                       isDark ? 'text-white/75' : 'text-black/75'
                     }`}
                   >
                     {PROFILE.bio}
-                  </motion.p>
+                  </p>
 
                   {/* Hero CTAs */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-8 flex flex-wrap items-center gap-4"
-                  >
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
                     <a
                       href={PROFILE.showreelDriveUrl}
                       target="_blank"
@@ -769,19 +710,14 @@ export default function Site() {
                       <span>Hire For Edit</span>
                       <ArrowUpRight size={18} />
                     </button>
-                  </motion.div>
+                  </div>
                 </div>
 
-                {/* Right Column: CLEAN PORTRAIT IMAGE (3:4 Ratio, Rounded Edges) */}
+                {/* Right Column: CLEAN PORTRAIT IMAGE */}
                 <div className="md:col-span-5 flex justify-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-none"
-                  >
+                  <div className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-none">
                     <div
-                      className={`relative aspect-[3/4] w-full overflow-hidden rounded-3xl border shadow-2xl transition-all duration-500 ${
+                      className={`relative aspect-[3/4] w-full overflow-hidden rounded-3xl border shadow-2xl transition-colors duration-150 ${
                         isDark ? 'bg-neutral-900 border-white/15' : 'bg-neutral-100 border-black/10'
                       }`}
                     >
@@ -794,65 +730,51 @@ export default function Site() {
                         className="object-cover object-top transition-transform duration-700 hover:scale-105"
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
               </div>
 
-              <motion.p
-                animate={{ x: [0, 8, 0] }}
-                transition={{ duration: 1.8, repeat: Infinity }}
-                className={`mt-8 text-center text-xs font-mono md:hidden ${
-                  isDark ? 'text-white/40' : 'text-black/40'
-                }`}
-              >
+              <p className={`mt-8 text-center text-xs font-mono md:hidden ${
+                isDark ? 'text-white/40' : 'text-black/40'
+              }`}>
                 Swipe to explore work &rarr;
-              </motion.p>
+              </p>
             </div>
           </Sec>
 
           {/* =========================================================================
-              SECTION 2: SELECTED PROJECTS WITH FLUID REVEALS
+              SECTION 2: SELECTED PROJECTS WITH BASIC FADE
               ========================================================================= */}
           <Sec id="projects" alternate>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <motion.span
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                <span
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
                   Portfolio Showcase
-                </motion.span>
+                </span>
                 <H2>Selected Works</H2>
               </div>
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}
-              >
+              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
                 Click any project to view details or open the master video directly in Google Drive.
-              </motion.p>
+              </p>
             </div>
 
-            {/* Fluid Staggered Project List */}
+            {/* Project List */}
             <div className={`mt-12 divide-y ${isDark ? 'divide-white/10' : 'divide-black/10'}`}>
-              {PROJECTS.map((project, idx) => {
+              {PROJECTS.map((project) => {
                 const isRevealed = hoveredProject === project.id
                 return (
                   <motion.div
                     key={project.id}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.08, margin: '-30px' }}
-                    transition={{ duration: 0.55, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                    className={`group relative transition-all duration-300 ${
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.25 }}
+                    className={`group relative transition-colors duration-150 ${
                       isRevealed
                         ? isDark
                           ? 'bg-white/[0.06] -mx-4 px-4 rounded-3xl'
@@ -874,9 +796,9 @@ export default function Site() {
                         </span>
                         <div>
                           <h3
-                            className={`font-display text-2xl font-bold tracking-tight transition-all duration-300 md:text-4xl lg:text-5xl ${
+                            className={`font-display text-2xl font-bold tracking-tight transition-colors duration-150 md:text-4xl lg:text-5xl ${
                               isDark ? 'text-white' : 'text-black'
-                            } ${isRevealed ? 'translate-x-2' : 'group-hover:translate-x-1'}`}
+                            }`}
                           >
                             {project.title}
                           </h3>
@@ -894,32 +816,22 @@ export default function Site() {
                         </div>
                       </div>
 
-                      <motion.div
-                        animate={{
-                          rotate: isRevealed ? 45 : 0,
-                          scale: isRevealed ? 1.15 : 1,
-                          backgroundColor: isRevealed
-                            ? isDark
-                              ? 'rgba(255, 255, 255, 0.15)'
-                              : 'rgba(0, 0, 0, 0.1)'
-                            : 'transparent',
-                        }}
-                        transition={{ duration: 0.2, ease: 'easeOut' }}
+                      <div
                         className={`rounded-full p-2.5 border transition-colors ${
                           isDark ? 'border-white/20 text-white' : 'border-black/20 text-black'
                         }`}
                       >
-                        <Plus size={24} />
-                      </motion.div>
+                        <Plus size={24} className={`transition-transform duration-200 ${isRevealed ? 'rotate-45' : ''}`} />
+                      </div>
                     </button>
 
                     <AnimatePresence initial={false}>
                       {isRevealed && (
                         <motion.div
-                          initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                          animate={{ height: 'auto', opacity: 1, marginTop: 4 }}
-                          exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
                           className="overflow-hidden"
                         >
                           <div className="grid gap-6 pb-8 md:grid-cols-2 items-center">
@@ -946,7 +858,6 @@ export default function Site() {
                                 {project.desc}
                               </p>
                               
-                              {/* GOOGLE DRIVE ACTION BUTTON */}
                               <div className="flex flex-wrap items-center gap-3 pt-2">
                                 <a
                                   href={project.driveUrl}
@@ -966,7 +877,7 @@ export default function Site() {
                             </div>
 
                             <div
-                              className={`relative aspect-[16/9] w-full overflow-hidden rounded-2xl border shadow-md group/img transition-all ${
+                              className={`relative aspect-[16/9] w-full overflow-hidden rounded-2xl border shadow-md group/img transition-colors ${
                                 isDark ? 'bg-neutral-900 border-white/15' : 'bg-neutral-100 border-black/10'
                               }`}
                             >
@@ -994,47 +905,36 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 3: SOFTWARE & ARSENAL WITH FLUID STAGGER
+              SECTION 3: SOFTWARE & ARSENAL
               ========================================================================= */}
           <Sec id="skills">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <motion.span
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                <span
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
                   Software & Workflow
-                </motion.span>
+                </span>
                 <H2>The Arsenal</H2>
               </div>
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}
-              >
+              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
                 Specialized mastery across the top 3 video post-production tools.
-              </motion.p>
+              </p>
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {TOOLS.map((tool, i) => {
+              {TOOLS.map((tool) => {
                 const Icon = tool.icon
                 return (
                   <motion.div
                     key={tool.name}
-                    initial={{ opacity: 0, y: 28 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.08, margin: '-20px' }}
-                    transition={{ duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                    whileHover={{ y: -4 }}
-                    className={`relative flex flex-col justify-between rounded-3xl border p-8 transition-all duration-300 shadow-sm ${
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.25 }}
+                    className={`relative flex flex-col justify-between rounded-3xl border p-8 transition-colors duration-150 shadow-sm ${
                       isDark
                         ? 'border-white/10 bg-white/[0.03] hover:border-white/30'
                         : 'border-black/10 bg-black/[0.02] hover:border-black/30'
@@ -1043,7 +943,7 @@ export default function Site() {
                     <div>
                       <div className="flex items-center justify-between mb-6">
                         <div
-                          className={`flex h-12 w-12 items-center justify-center rounded-2xl shadow-sm p-2.5 transition-all ${
+                          className={`flex h-12 w-12 items-center justify-center rounded-2xl shadow-sm p-2.5 transition-colors ${
                             isDark ? 'bg-white text-black' : 'bg-black text-white'
                           }`}
                         >
@@ -1094,37 +994,27 @@ export default function Site() {
           <Sec id="contact" alternate isFooter>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <div>
-                <motion.span
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                <span
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
                   Collaboration
-                </motion.span>
+                </span>
                 <H2>Let&apos;s Cut</H2>
               </div>
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}
-              >
+              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
                 Have Google Drive footage ready? Send project details and let&apos;s get cutting.
-              </motion.p>
+              </p>
             </div>
 
             <div className="mt-12 grid gap-10 md:grid-cols-2 items-start w-full max-w-full overflow-hidden">
               {/* Direct Contact Details */}
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.08 }}
-                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.25 }}
                 className="space-y-8 w-full max-w-full"
               >
                 <div className="space-y-4">
@@ -1139,7 +1029,7 @@ export default function Site() {
                 <div className={`space-y-3 font-mono text-sm ${isDark ? 'text-white' : 'text-black'}`}>
                   <a
                     href={`tel:${PROFILE.phone}`}
-                    className={`flex items-center gap-3 p-3.5 rounded-2xl border transition-all ${
+                    className={`flex items-center gap-3 p-3.5 rounded-2xl border transition-colors ${
                       isDark
                         ? 'bg-white/[0.04] border-white/15 hover:border-white text-white'
                         : 'bg-black/[0.03] border-black/15 hover:border-black text-black'
@@ -1150,7 +1040,7 @@ export default function Site() {
                   </a>
                   <a
                     href={`mailto:${PROFILE.email}`}
-                    className={`flex items-center gap-3 p-3.5 rounded-2xl border transition-all ${
+                    className={`flex items-center gap-3 p-3.5 rounded-2xl border transition-colors ${
                       isDark
                         ? 'bg-white/[0.04] border-white/15 hover:border-white text-white'
                         : 'bg-black/[0.03] border-black/15 hover:border-black text-black'
@@ -1163,7 +1053,7 @@ export default function Site() {
                     href={PROFILE.showreelDriveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-3 p-3.5 rounded-2xl border transition-all ${
+                    className={`flex items-center gap-3 p-3.5 rounded-2xl border transition-colors ${
                       isDark
                         ? 'bg-white/[0.04] border-white/15 hover:border-white text-white'
                         : 'bg-black/[0.03] border-black/15 hover:border-black text-black'
@@ -1195,7 +1085,7 @@ export default function Site() {
                       href={PROFILE.socials.instagram}
                       target="_blank"
                       rel="noreferrer"
-                      className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition-all shadow-xs ${
+                      className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition-colors shadow-xs ${
                         isDark
                           ? 'border-white/20 bg-white/[0.04] text-white hover:bg-white hover:text-black'
                           : 'border-black/20 bg-black/[0.04] text-black hover:bg-black hover:text-white'
@@ -1208,7 +1098,7 @@ export default function Site() {
                       href={PROFILE.socials.youtube}
                       target="_blank"
                       rel="noreferrer"
-                      className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition-all shadow-xs ${
+                      className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition-colors shadow-xs ${
                         isDark
                           ? 'border-white/20 bg-white/[0.04] text-white hover:bg-white hover:text-black'
                           : 'border-black/20 bg-black/[0.04] text-black hover:bg-black hover:text-white'
@@ -1234,11 +1124,11 @@ export default function Site() {
 
               {/* Quick Inquiry Form */}
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.08 }}
-                transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className={`w-full max-w-full overflow-hidden rounded-3xl border p-6 sm:p-8 shadow-sm backdrop-blur-md ${
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.25 }}
+                className={`w-full max-w-full overflow-hidden rounded-3xl border p-6 sm:p-8 shadow-sm backdrop-blur-md transition-colors duration-150 ${
                   isDark ? 'border-white/15 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
                 }`}
               >
@@ -1328,7 +1218,7 @@ export default function Site() {
                   href="https://aethrasolutions.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`font-semibold tracking-tight hover:underline underline-offset-4 transition-all ${
+                  className={`font-semibold tracking-tight hover:underline underline-offset-4 transition-colors ${
                     isDark ? 'text-white' : 'text-black'
                   }`}
                 >
@@ -1357,7 +1247,7 @@ export default function Site() {
               key={id}
               type="button"
               onClick={() => go(i)}
-              className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors duration-200 ${
+              className={`relative flex flex-1 flex-col items-center gap-0.5 rounded-full py-2 text-[11px] transition-colors duration-150 ${
                 active === i
                   ? isDark
                     ? 'text-black font-semibold'
