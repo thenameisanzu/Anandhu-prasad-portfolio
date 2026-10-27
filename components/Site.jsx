@@ -513,7 +513,7 @@ export default function Site() {
                 {/* Animated Stylised Name Headline - Unified Single Outlines */}
                 <h1
                   aria-label={PROFILE.name}
-                  className="select-none text-[16vw] leading-[.82] tracking-normal sm:text-[13vw] lg:text-[7.6rem] xl:text-[8.5rem]"
+                  className="select-none text-[16vw] leading-none tracking-normal sm:text-[13vw] lg:text-[7.6rem] xl:text-[8.5rem]"
                 >
                   {/* First Name: Solid Editorial Black */}
                   <span className="block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] text-black">
@@ -530,8 +530,8 @@ export default function Site() {
                     ))}
                   </span>
 
-                  {/* Last Name: Stylised Hollow Cine-Stroke - Moved Up Snug Under ANANDU */}
-                  <span className="block overflow-hidden pb-[.06em] -mt-3 sm:-mt-5 lg:-mt-8 font-anton uppercase tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black transition-colors duration-300 cursor-default">
+                  {/* Last Name: Stylised Hollow Cine-Stroke - Positioned Cleanly Below ANANDU */}
+                  <span className="block overflow-hidden pb-[.06em] mt-1 sm:mt-2 lg:mt-3 font-anton uppercase tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black transition-colors duration-300 cursor-default">
                     {'PRASAD'.split('').map((c, i) => (
                       <motion.span
                         key={i}
