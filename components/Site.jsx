@@ -510,13 +510,13 @@ export default function Site() {
                   </span>
                 </motion.div>
 
-                {/* Animated Stylised Name Headline */}
+                {/* Animated Stylised Name Headline - Unified Single Outlines */}
                 <h1
                   aria-label={PROFILE.name}
-                  className="select-none text-[16vw] font-black leading-[.82] tracking-tighter sm:text-[13vw] lg:text-[7.6rem] xl:text-[8.5rem]"
+                  className="select-none text-[16vw] leading-[.82] tracking-normal sm:text-[13vw] lg:text-[7.6rem] xl:text-[8.5rem]"
                 >
                   {/* First Name: Solid Editorial Black */}
-                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase tracking-[-0.04em] text-black">
+                  <span className="block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] text-black">
                     {'ANANDU'.split('').map((c, i) => (
                       <motion.span
                         key={i}
@@ -530,12 +530,12 @@ export default function Site() {
                     ))}
                   </span>
 
-                  {/* Last Name: Stylised Hollow Cine-Stroke - Clean Non-Overlapping Outline */}
-                  <span className="block overflow-hidden pb-[.06em] font-display font-black uppercase tracking-[0.04em] text-transparent [-webkit-text-stroke:1.8px_#000] sm:[-webkit-text-stroke:2.2px_#000] lg:[-webkit-text-stroke:2.8px_#000] hover:text-black transition-colors duration-300 cursor-default">
+                  {/* Last Name: Stylised Hollow Cine-Stroke - 100% Single Unified Outline (No Internal Overlaps) */}
+                  <span className="block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black transition-colors duration-300 cursor-default">
                     {'PRASAD'.split('').map((c, i) => (
                       <motion.span
                         key={i}
-                        className="inline-block mr-[0.035em] last:mr-0"
+                        className="inline-block mr-[0.02em] last:mr-0"
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}
                         transition={{ duration: 0.35, delay: 0.12 + i * 0.02, ease: 'easeOut' }}
@@ -547,7 +547,7 @@ export default function Site() {
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.2, delay: 0.25 }}
-                      className="inline-block text-black ml-0.5 [-webkit-text-stroke:0px]"
+                      className="inline-block text-black ml-1 [-webkit-text-stroke:0px]"
                     >
                       .
                     </motion.span>
