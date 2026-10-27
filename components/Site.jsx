@@ -474,8 +474,8 @@ export default function Site() {
             </div>
           </button>
 
-          {/* Desktop / Tablet Navigation with Active Item Highlighting */}
-          <nav className="hidden gap-8 text-sm font-medium md:flex items-center">
+          {/* Desktop / Tablet Navigation with Active Item Highlighting - Exactly Centered */}
+          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium">
             {TABS.slice(1).map(([id, label], i) => {
               const tabIndex = i + 1
               const isActive = active === tabIndex
