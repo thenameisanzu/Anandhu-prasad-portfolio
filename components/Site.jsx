@@ -1016,7 +1016,14 @@ export default function Site() {
             <p>© {new Date().getFullYear()} Anandu Prasad. All rights reserved.</p>
             <p className="flex items-center gap-1.5">
               <span>Crafted by</span>
-              <span className="font-semibold text-black tracking-tight">Aethra Digital Solutions</span>
+              <a
+                href="https://aethrasolutions.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-black tracking-tight hover:underline underline-offset-4 transition-all"
+              >
+                Aethra Digital Solutions
+              </a>
             </p>
           </footer>
         </Sec>
