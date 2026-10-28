@@ -735,14 +735,13 @@ export default function Site() {
             />
 
             <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
-              {/* Nothing Style Ndot55 Sub-header */}
-              <div className="mb-3 sm:mb-4">
+              {/* Nothing Style Ndot55 Centered Header */}
+              <div className="mb-5 sm:mb-6 flex justify-center items-center text-center w-full">
                 <span
-                  className={`font-ndot text-sm sm:text-base md:text-lg tracking-[0.25em] uppercase select-none inline-flex items-center gap-2.5 transition-colors ${
-                    isDark ? 'text-white/80' : 'text-black/80'
+                  className={`font-ndot text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.28em] uppercase select-none transition-colors ${
+                    isDark ? 'text-white/90' : 'text-black/90'
                   }`}
                 >
-                  <span className={`inline-block h-1.5 w-1.5 rounded-full ${isDark ? 'bg-white' : 'bg-black'}`} />
                   VIDEO EDITOR
                 </span>
               </div>
