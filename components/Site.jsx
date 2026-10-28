@@ -735,11 +735,13 @@ export default function Site() {
             />
 
             <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
-              {/* Nothing Style Ndot55 Centered Header */}
-              <div className="mb-5 sm:mb-6 flex justify-center items-center text-center w-full">
+              {/* Outlined Anton Centered Header matching PRASAD style */}
+              <div className="mb-4 sm:mb-6 flex justify-center items-center text-center w-full">
                 <span
-                  className={`font-ndot text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.28em] uppercase select-none transition-colors ${
-                    isDark ? 'text-white/90' : 'text-black/90'
+                  className={`font-anton uppercase tracking-[0.06em] text-transparent select-none transition-colors duration-200 text-3xl sm:text-4xl md:text-5xl lg:text-6xl cursor-default ${
+                    isDark
+                      ? '[-webkit-text-stroke:1.5px_#fff] sm:[-webkit-text-stroke:2px_#fff] hover:text-white/20'
+                      : '[-webkit-text-stroke:1.5px_#000] sm:[-webkit-text-stroke:2px_#000] hover:text-black/20'
                   }`}
                 >
                   VIDEO EDITOR
