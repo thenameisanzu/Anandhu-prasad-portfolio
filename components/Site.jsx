@@ -18,6 +18,11 @@ import {
   Moon,
   User,
   Sparkles,
+  X,
+  LayoutGrid,
+  List,
+  FolderOpen,
+  Maximize2,
 } from 'lucide-react'
 import { InteractiveGridPattern } from './InteractiveGridPattern'
 
@@ -35,6 +40,8 @@ export const useTheme = () => useContext(ThemeContext)
 // 🎬 ANANDU PRASAD - VIDEO EDITOR & COLORIST
 // Ultra-Minimal Monochrome Portfolio with Google Drive Integration
 // =========================================================================
+export const DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/1sV2acpQ12Ff7tiz_OJNOH6e6PONIAK__'
+
 export const PROFILE = {
   name: 'Anandu Prasad',
   headline: 'Video Editor & Colorist',
@@ -45,7 +52,7 @@ export const PROFILE = {
   location: 'Kerala, India • Available Worldwide (Remote)',
   
   heroImage: '/anandu-portrait.jpg',
-  showreelDriveUrl: 'https://drive.google.com/',
+  showreelDriveUrl: DRIVE_FOLDER_URL,
 
   socials: {
     instagram: 'https://www.instagram.com/ananduprasad._/',
@@ -84,6 +91,21 @@ export const LogoPremiere = ({ size = 20, className = '' }) => (
   </svg>
 )
 
+export const LogoAfterEffects = ({ size = 20, className = '' }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="currentColor"
+    className={`shrink-0 ${className}`}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>Adobe After Effects</title>
+    <path d="M8.54 10.73c-.1-.31-.19-.61-.29-.92s-.19-.6-.27-.89c-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.13.51-.29.98-.44 1.4h2.54c-.06-.21-.14-.46-.23-.72-.09-.27-.18-.56-.27-.86zm8.58-.29c-.55-.03-1.07.26-1.33.76-.12.23-.19.47-.22.72h2.109c.26 0 .45 0 .57-.01.08-.01.16-.03.23-.08v-.1c0-.13-.021-.25-.061-.37-.178-.56-.708-.94-1.298-.92zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.04 16.511h-2.09c-.07.01-.14-.041-.16-.11l-.82-2.4H5.92l-.76 2.36c-.02.09-.1.15-.19.14H3.09c-.11 0-.14-.06-.11-.18L6.2 7.39c.03-.1.06-.19.1-.31.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.07 0 .12.03.13.08l3.65 10.25c.03.11.001.161-.1.161zm7.851-3.991c-.021.189-.031.33-.041.42-.01.07-.069.13-.14.13-.06 0-.17.01-.33.021-.159.02-.35.029-.579.029-.23 0-.471-.04-.73-.04h-3.17c.039.31.14.62.31.89.181.271.431.48.729.601.4.17.841.26 1.281.25.35-.011.699-.04 1.039-.11.311-.039.61-.119.891-.23.05-.039.08-.02.08.08v1.531c0 .039-.01.08-.021.119-.021.03-.04.051-.069.07-.32.14-.65.24-1 .3-.471.09-.94.13-1.42.12-.761 0-1.4-.12-1.92-.35-.49-.211-.921-.541-1.261-.95-.319-.39-.55-.83-.69-1.31-.14-.471-.209-.961-.209-1.461 0-.539.08-1.07.25-1.59.16-.5.41-.96.75-1.37.33-.4.739-.72 1.209-.95.471-.23 1.03-.31 1.67-.31.531-.01 1.06.09 1.55.31.41.18.77.45 1.05.8.26.34.47.72.601 1.14.129.4.189.81.189 1.22 0 .24-.01.45-.019.64z"/>
+  </svg>
+)
+
 export const LogoCapCut = ({ size = 20, className = '' }) => (
   <svg
     role="img"
@@ -102,15 +124,19 @@ export const LogoCapCut = ({ size = 20, className = '' }) => (
 export const LogoGoogleDrive = ({ size = 18, className = '' }) => (
   <svg
     role="img"
-    viewBox="0 0 24 24"
+    viewBox="0 0 87.3 78"
     width={size}
     height={size}
-    fill="currentColor"
     className={`shrink-0 ${className}`}
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Google Drive</title>
-    <path d="M7.74 2.25h8.52l7.74 13.5h-8.52L7.74 2.25zm8.12 14.25L11.61 23H3.09l4.25-6.5h8.52zM2.26 15.25L6.51 7.75l4.25 7.5H2.26z"/>
+    <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+    <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44c-.8 1.4-1.2 2.95-1.2 4.5h27.5z" fill="#00ac47"/>
+    <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+    <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+    <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+    <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
   </svg>
 )
 
@@ -156,6 +182,18 @@ export const TOOLS = [
     ],
   },
   {
+    name: 'Adobe After Effects',
+    category: 'Motion Design & Visual FX',
+    badge: 'Motion & Visual FX',
+    icon: LogoAfterEffects,
+    desc: 'Kinetic typography, 3D camera tracking, seamless rotoscoping, custom VFX clean-ups, dynamic title animations, and cinematic transitions.',
+    features: [
+      'Advanced Kinetic Typography & Motion Design',
+      '3D Camera Tracking & Clean-Plate Rotoscoping',
+      'Custom Visual FX & Dynamic Transitions',
+    ],
+  },
+  {
     name: 'CapCut / CapCut Pro',
     category: 'Viral Short-Form & Vertical Video',
     badge: 'Viral Retention',
@@ -169,51 +207,150 @@ export const TOOLS = [
   },
 ]
 
-// 📽️ SELECTED WORKS
+// 📽️ SELECTED WORKS - REAL MASTER CUTS SYNCED WITH GOOGLE DRIVE
+export const PROJECT_CATEGORIES = [
+  { id: 'all', label: 'All Works' },
+  { id: 'commercial', label: 'Commercial & Auto' },
+  { id: 'social', label: 'Brand & Reels' },
+  { id: 'narrative', label: 'Cultural & Narrative' },
+]
+
 export const PROJECTS = [
   {
     id: 1,
-    title: 'Velocity: Coastal Drive Commercial',
-    category: 'Commercial / Color Grading',
+    title: 'Kia Seltos: Automotive Spot',
+    file: 'KIA SELTOS.mov',
+    driveId: '1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4',
+    category: 'Commercial / Automotive',
+    filterCategory: 'commercial',
     software: 'DaVinci Resolve Studio',
-    duration: '01:15',
-    ratio: '16:9 Widescreen',
-    desc: 'High-end commercial car spot with anamorphic framing, tone separation, aggressive speed ramps, and roaring engine sound design.',
-    driveUrl: 'https://drive.google.com/',
-    image: '/projects/car-commercial.jpg',
+    duration: '01:05',
+    size: '93.5 MB',
+    ratio: '16:9 Cinema 4K',
+    desc: 'High-octane commercial automotive cut for Kia Seltos. Highlights precision speed-ramping, tone separation, engine roar sound design, and cool-blue anamorphic grade.',
+    driveUrl: 'https://drive.google.com/file/d/1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4/preview',
+    image: '/projects/kia-seltos.jpg',
+    tags: ['Automotive Spot', 'Speed Curves', 'DaVinci Resolve'],
   },
   {
     id: 2,
-    title: 'Neon Echoes: Tokyo Night Odyssey',
-    category: 'Documentary / YouTube Long-Form',
+    title: 'Red Bull: Kinetic Motion Cut',
+    file: 'REDBULL',
+    driveId: '17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB',
+    category: 'Commercial / High-Energy',
+    filterCategory: 'commercial',
     software: 'Adobe Premiere Pro',
-    duration: '18:40',
-    ratio: '16:9 Cinema',
-    desc: 'Immersive travel documentary cut for maximum retention. Multi-layered ambient foley, textured film grain overlays, and chaptered storytelling.',
-    driveUrl: 'https://drive.google.com/',
-    image: '/projects/tokyo-doc.jpg',
+    duration: '00:58',
+    size: '77.3 MB',
+    ratio: '16:9 Widescreen',
+    desc: 'Adrenaline-fueled sports campaign edit. Synchronized micro-cuts on fast BPM audio, aggressive whip transitions, and vivid neon-saturated grading.',
+    driveUrl: 'https://drive.google.com/file/d/17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB/preview',
+    image: '/projects/redbull.jpg',
+    tags: ['Action Sports', 'Beat Sync', 'Premiere Pro'],
   },
   {
     id: 3,
-    title: 'Street Pulse: Kinetic Reels Campaign',
-    category: 'Vertical Short-Form (9:16)',
-    software: 'CapCut Pro & Premiere Pro',
-    duration: '00:45',
-    ratio: '9:16 Vertical',
-    desc: 'Viral lifestyle short-form series designed to maximize engagement and re-watches. Micro-cuts on 120BPM beats, zoom bursts, and hook typography.',
-    driveUrl: 'https://drive.google.com/',
-    image: '/projects/car-commercial.jpg',
+    title: 'Moothappa: The Sacred Rite',
+    file: 'MOOTHAPPA FINAL.mov',
+    driveId: '14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m',
+    category: 'Cultural Narrative / Heritage',
+    filterCategory: 'narrative',
+    software: 'DaVinci Resolve',
+    duration: '01:30',
+    size: '49.5 MB',
+    ratio: '16:9 Cinematic',
+    desc: 'Atmospheric heritage documentary capturing the spiritual energy of Muthappan ritual ceremonies in Kerala. Rich warm halation, fiery ambient torch glow, and traditional percussion layering.',
+    driveUrl: 'https://drive.google.com/file/d/14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m/preview',
+    image: '/projects/moothappa.jpg',
+    tags: ['Cultural Heritage', 'Film Halation', 'DaVinci Resolve'],
   },
   {
     id: 4,
-    title: 'Shadows & Silk: Fashion Film',
-    category: 'Editorial / Color Grading',
+    title: 'Velocity: Coastal Drive Spot',
+    file: 'CAR FINAL .mov',
+    driveId: '11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ',
+    category: 'Commercial / Color Grading',
+    filterCategory: 'commercial',
+    software: 'DaVinci Resolve Studio',
+    duration: '01:15',
+    size: '59.3 MB',
+    ratio: '16:9 Cinema',
+    desc: 'Cinematic coastal sports car sequence with anamorphic framing, tone separation, aggressive speed curves, and rumbling engine sound design.',
+    driveUrl: 'https://drive.google.com/file/d/11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ/preview',
+    image: '/projects/car-commercial.jpg',
+    tags: ['Automotive', 'Anamorphic Framing', 'DaVinci Studio'],
+  },
+  {
+    id: 5,
+    title: 'Kalyani: Wedding & Fashion Aesthetic',
+    file: 'KALYANI',
+    driveId: '1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ',
+    category: 'Wedding & Fashion / Aesthetic',
+    filterCategory: 'social',
+    software: 'DaVinci Resolve & CapCut Pro',
+    duration: '00:45',
+    size: '20.5 MB',
+    ratio: '9:16 Vertical Reel',
+    desc: 'Dreamy traditional wedding & fashion visual reel with luminous skin tones, soft gold highlight rolls, rhythmic pacing, and emotional music bed.',
+    driveUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/preview',
+    image: '/projects/kalyani.jpg',
+    tags: ['Wedding Reel', 'Skin Tone Color', 'CapCut Pro'],
+  },
+  {
+    id: 6,
+    title: 'Noolab: Streetwear Brand Campaign',
+    file: 'NOOLAB',
+    driveId: '1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO',
+    category: 'Brand Campaign / Vertical Reel',
+    filterCategory: 'social',
+    software: 'CapCut Pro & Premiere Pro',
+    duration: '00:35',
+    size: '10.7 MB',
+    ratio: '9:16 Vertical Reel',
+    desc: 'Modern streetwear apparel campaign designed for high viral retention on Instagram Reels and TikTok. Quick punch-ins, kinetic typography sync, and crisp bass drops.',
+    driveUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/preview',
+    image: '/projects/noolab.jpg',
+    tags: ['Brand Reel', 'Kinetic Typography', 'CapCut Pro'],
+  },
+  {
+    id: 7,
+    title: 'Thakshi: Cinematic Mood & Rain',
+    file: 'THAKSHI',
+    driveId: '18ED_WzMm5fwGJUcf4RXnF21dVHD7xzmw',
+    category: 'Cinematic Portrait / Mood',
+    filterCategory: 'narrative',
     software: 'DaVinci Resolve',
-    duration: '02:30',
-    ratio: '4:3 Vintage Arri',
-    desc: 'High-contrast monochrome and gold aesthetic with fine 35mm grain integration, soft halation around highlights, and fluid transitions.',
-    driveUrl: 'https://drive.google.com/',
+    duration: '01:10',
+    size: '49.4 MB',
+    ratio: '16:9 Cinema',
+    desc: 'Atmospheric neon-lit night portrait. Intimate character pacing, ambient rain soundscapes, and subtle 35mm print film emulation.',
+    driveUrl: 'https://drive.google.com/file/d/18ED_WzMm5fwGJUcf4RXnF21dVHD7xzmw/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/18ED_WzMm5fwGJUcf4RXnF21dVHD7xzmw/preview',
+    image: '/projects/thakshi.jpg',
+    tags: ['Cinematic Mood', 'Film Grain', 'DaVinci Resolve'],
+  },
+  {
+    id: 8,
+    title: 'Motion Dynamics: B1 & V1 Series',
+    file: 'V1 & B1',
+    driveId: '1BbQGGyZU2tltSyAGUQAeTHf6lubeEyaK',
+    category: 'Showreel / Motion Edit',
+    filterCategory: 'commercial',
+    software: 'Adobe Premiere Pro & DaVinci',
+    duration: '01:25',
+    size: '60.1 MB',
+    ratio: '16:9 Widescreen',
+    desc: 'High-retention rhythm & motion edit combining fast-paced visual storytelling, custom speed ramping curves, and seamless sound bridges.',
+    driveUrl: 'https://drive.google.com/file/d/1BbQGGyZU2tltSyAGUQAeTHf6lubeEyaK/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/1BbQGGyZU2tltSyAGUQAeTHf6lubeEyaK/preview',
     image: '/projects/tokyo-doc.jpg',
+    tags: ['Motion Dynamics', 'Sound Bridge', 'Premiere Pro'],
   },
 ]
 
@@ -274,6 +411,7 @@ const renderSoftwareBadge = (software, dark = false) => {
   let Icon = null
   if (s.includes('davinci')) Icon = LogoDaVinci
   else if (s.includes('premiere')) Icon = LogoPremiere
+  else if (s.includes('after effects') || s.includes('aftereffects')) Icon = LogoAfterEffects
   else if (s.includes('capcut')) Icon = LogoCapCut
 
   return (
@@ -289,6 +427,9 @@ export default function Site() {
   const [active, setActive] = useState(0)
   const [hoveredProject, setHoveredProject] = useState(1)
   const [theme, setTheme] = useState('dark')
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [viewMode, setViewMode] = useState('grid')
+  const [playingVideo, setPlayingVideo] = useState(null)
 
   const isDark = theme === 'dark'
 
@@ -302,6 +443,15 @@ export default function Site() {
   const lastActiveRef = useRef(active)
   const isProgrammaticScroll = useRef(false)
   const scrollTimeoutRef = useRef(null)
+
+  // Close video modal on Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setPlayingVideo(null)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   // Initialize theme from localStorage
   useEffect(() => {
@@ -449,15 +599,26 @@ export default function Site() {
         >
           <button
             onClick={() => go(0)}
-            className="group flex items-center gap-3 text-left hover:opacity-75 transition-opacity cursor-pointer"
+            className="group flex items-center gap-3 text-left cursor-pointer"
+            aria-label="Scroll to top"
           >
+            {/* Circular mini avatar */}
             <div
-              className={`relative flex h-8 w-8 items-center justify-center rounded-xl font-bold text-xs shadow-sm transition-colors ${
-                isDark ? 'bg-white text-black' : 'bg-black text-white'
+              className={`relative h-9 w-9 shrink-0 overflow-hidden rounded-full border transition-transform duration-300 group-hover:scale-105 shadow-sm ${
+                isDark
+                  ? 'border-white/20 bg-neutral-900 group-hover:border-white/40'
+                  : 'border-black/20 bg-neutral-100 group-hover:border-black/40'
               }`}
             >
-              AP
+              <Image
+                src={PROFILE.heroImage}
+                alt={`${PROFILE.name} - Avatar`}
+                fill
+                sizes="36px"
+                className="object-cover object-center grayscale contrast-[1.08] brightness-[0.98]"
+              />
             </div>
+
             <div>
               <span
                 className={`font-display text-base font-bold tracking-tight block leading-tight transition-colors ${
@@ -616,7 +777,7 @@ export default function Site() {
               <div className="grid gap-8 md:gap-10 md:grid-cols-12 md:items-center">
                 
                 {/* Left Column */}
-                <div className="md:col-span-7 flex flex-col justify-center">
+                <div className="md:col-span-6 lg:col-span-6 flex flex-col justify-center">
                   
                   {/* Official Software Badges */}
                   <div className="mb-5 flex flex-wrap items-center gap-2.5">
@@ -635,6 +796,14 @@ export default function Site() {
                     >
                       <LogoPremiere size={16} />
                       <span>Premiere Pro</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
+                      }`}
+                    >
+                      <LogoAfterEffects size={16} />
+                      <span>After Effects</span>
                     </span>
                     <span
                       className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold ${
@@ -715,12 +884,22 @@ export default function Site() {
                   </div>
                 </div>
 
-                {/* Right Column: CLEAN PORTRAIT IMAGE */}
-                <div className="md:col-span-5 flex justify-center">
-                  <div className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-none">
+                {/* Right Column: CINEMATIC CIRCULAR PORTRAIT */}
+                <div className="md:col-span-6 lg:col-span-6 flex justify-center items-center">
+                  <div className="relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[440px] lg:max-w-[480px] xl:max-w-[500px] aspect-square group">
+                    {/* Ambient Glow behind circle */}
                     <div
-                      className={`relative aspect-[3/4] w-full overflow-hidden rounded-3xl border shadow-2xl transition-colors duration-150 ${
-                        isDark ? 'bg-neutral-900 border-white/15' : 'bg-neutral-100 border-black/10'
+                      className={`absolute inset-4 rounded-full blur-3xl opacity-35 transition-opacity duration-700 group-hover:opacity-70 ${
+                        isDark ? 'bg-white/25' : 'bg-black/15'
+                      }`}
+                    />
+
+                    {/* Circular Frame with Border & Shadow */}
+                    <div
+                      className={`relative w-full h-full overflow-hidden rounded-full border-2 transition-all duration-700 ease-out shadow-2xl group-hover:scale-[1.02] ${
+                        isDark
+                          ? 'border-white/20 bg-neutral-900 group-hover:border-white/40 shadow-white/5'
+                          : 'border-black/15 bg-neutral-100 group-hover:border-black/30 shadow-black/5'
                       }`}
                     >
                       <Image
@@ -728,8 +907,8 @@ export default function Site() {
                         alt={`${PROFILE.name} - Video Editor Portrait`}
                         fill
                         priority
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 420px"
-                        className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 550px"
+                        className="object-cover object-center grayscale contrast-[1.08] brightness-[0.98] transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                   </div>
@@ -842,164 +1021,170 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 3: SELECTED PROJECTS WITH BASIC FADE
+              SECTION 3: SELECTED WORKS (ULTRA-MINIMAL CINEMATIC SHOWCASE)
               ========================================================================= */}
           <Sec id="projects">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            {/* Minimal Header */}
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 sm:mb-12">
               <div>
                 <span
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
-                  Portfolio Showcase
+                  Selected Cuts
                 </span>
                 <H2>Selected Works</H2>
               </div>
-              <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-                Click any project to view details or open the master video directly in Google Drive.
-              </p>
+
+              <div className="flex items-center gap-3">
+                <a
+                  href={DRIVE_FOLDER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-xs font-semibold transition-all hover:scale-105 active:scale-95 ${
+                    isDark
+                      ? 'border-white/20 bg-white/5 text-white/90 hover:bg-white hover:text-black hover:border-white'
+                      : 'border-black/20 bg-black/5 text-black/90 hover:bg-black hover:text-white hover:border-black'
+                  }`}
+                >
+                  <LogoGoogleDrive size={15} />
+                  <span>Google Drive Archive</span>
+                  <ArrowUpRight size={13} />
+                </a>
+              </div>
             </div>
 
-            {/* Project List */}
-            <div className={`mt-12 divide-y ${isDark ? 'divide-white/10' : 'divide-black/10'}`}>
-              {PROJECTS.map((project) => {
-                const isRevealed = hoveredProject === project.id
+            {/* Clean Minimal Category Tabs */}
+            <div className={`mb-10 flex flex-wrap items-center gap-2 border-b pb-4 ${
+              isDark ? 'border-white/10' : 'border-black/10'
+            }`}>
+              {PROJECT_CATEGORIES.map((cat) => {
+                const isCatActive = selectedCategory === cat.id
                 return (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.25 }}
-                    className={`group relative transition-colors duration-150 ${
-                      isRevealed
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`rounded-full px-4 py-1.5 text-xs font-mono transition-all cursor-pointer ${
+                      isCatActive
                         ? isDark
-                          ? 'bg-white/[0.06] -mx-4 px-4 rounded-3xl'
-                          : 'bg-black/[0.04] -mx-4 px-4 rounded-3xl'
+                          ? 'bg-white text-black font-bold shadow-sm'
+                          : 'bg-black text-white font-bold shadow-sm'
                         : isDark
-                        ? 'hover:bg-white/[0.03] -mx-4 px-4 rounded-3xl'
-                        : 'hover:bg-black/[0.02] -mx-4 px-4 rounded-3xl'
+                        ? 'text-white/60 hover:text-white hover:bg-white/10'
+                        : 'text-black/60 hover:text-black hover:bg-black/5'
                     }`}
                   >
-                    <button
-                      type="button"
-                      onClick={() => setHoveredProject((prev) => (prev === project.id ? null : project.id))}
-                      className="flex w-full items-center justify-between py-6 text-left cursor-pointer select-none"
-                      aria-expanded={isRevealed}
+                    {cat.label}
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Ultra-Minimal Typographic Works Directory (No Thumbnails) */}
+            <motion.div layout className="space-y-3">
+              <AnimatePresence>
+                {PROJECTS.filter(
+                  (p) => selectedCategory === 'all' || p.filterCategory === selectedCategory
+                ).map((project, index) => {
+                  const itemIndex = String(index + 1).padStart(2, '0')
+                  return (
+                    <motion.div
+                      key={project.id}
+                      layout
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.2 }}
+                      onClick={() => setPlayingVideo(project)}
+                      className={`group relative flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 sm:p-6 rounded-2xl border transition-all duration-300 cursor-pointer select-none ${
+                        isDark
+                          ? 'border-white/10 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.05]'
+                          : 'border-black/10 bg-black/[0.015] hover:border-black/30 hover:bg-black/[0.04]'
+                      }`}
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
-                        <span className={`font-mono text-xs font-semibold ${isDark ? 'text-white/40' : 'text-black/40'}`}>
-                          0{project.id}
+                      {/* Left: Index number + Title + Category */}
+                      <div className="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
+                        <span
+                          className={`font-mono text-xs sm:text-sm font-semibold tracking-wider pt-1 sm:pt-0 shrink-0 transition-colors ${
+                            isDark
+                              ? 'text-white/40 group-hover:text-white'
+                              : 'text-black/40 group-hover:text-black'
+                          }`}
+                        >
+                          {itemIndex}
                         </span>
-                        <div>
+
+                        <div className="min-w-0">
                           <h3
-                            className={`font-display text-2xl font-bold tracking-tight transition-colors duration-150 md:text-4xl lg:text-5xl ${
+                            className={`font-display text-lg sm:text-2xl md:text-3xl font-bold tracking-tight transition-transform duration-300 group-hover:translate-x-1 ${
                               isDark ? 'text-white' : 'text-black'
                             }`}
                           >
                             {project.title}
                           </h3>
-                          <div className={`mt-1 flex flex-wrap items-center gap-2 font-mono text-xs ${
-                            isDark ? 'text-white/60' : 'text-black/60'
-                          }`}>
-                            <span className={isDark ? 'text-white font-medium' : 'text-black font-medium'}>
-                              {renderSoftwareBadge(project.software, isDark)}
+                          <div className="flex flex-wrap items-center gap-2 mt-1">
+                            <span
+                              className={`text-xs sm:text-sm font-mono ${
+                                isDark ? 'text-white/50' : 'text-black/50'
+                              }`}
+                            >
+                              {project.category}
                             </span>
-                            <span>•</span>
-                            <span>{project.category}</span>
-                            <span>•</span>
-                            <span>{project.ratio}</span>
+                            <span className={isDark ? 'text-white/20' : 'text-black/20'}>•</span>
+                            <span
+                              className={`text-xs font-mono ${
+                                isDark ? 'text-white/40' : 'text-black/40'
+                              }`}
+                            >
+                              {project.ratio}
+                            </span>
                           </div>
                         </div>
                       </div>
 
-                      <div
-                        className={`rounded-full p-2.5 border transition-colors ${
-                          isDark ? 'border-white/20 text-white' : 'border-black/20 text-black'
-                        }`}
-                      >
-                        <Plus size={24} className={`transition-transform duration-200 ${isRevealed ? 'rotate-45' : ''}`} />
-                      </div>
-                    </button>
+                      {/* Right: Software badge + Duration + Play Action */}
+                      <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-4 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-inherit">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`hidden sm:inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] font-medium ${
+                              isDark
+                                ? 'border-white/10 bg-white/5 text-white/80'
+                                : 'border-black/10 bg-black/5 text-black/80'
+                            }`}
+                          >
+                            {renderSoftwareBadge(project.software, isDark)}
+                          </span>
 
-                    <AnimatePresence initial={false}>
-                      {isRevealed && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
+                          <span
+                            className={`font-mono text-xs px-2.5 py-1 rounded-md border ${
+                              isDark
+                                ? 'border-white/10 text-white/60 bg-white/[0.02]'
+                                : 'border-black/10 text-black/60 bg-black/[0.02]'
+                            }`}
+                          >
+                            {project.duration}
+                          </span>
+                        </div>
+
+                        {/* Interactive Play Button Pill */}
+                        <div
+                          className={`flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-xs font-semibold transition-all duration-300 ${
+                            isDark
+                              ? 'border-white/20 bg-white/5 text-white group-hover:bg-white group-hover:text-black group-hover:border-white group-hover:shadow-lg group-hover:shadow-white/10'
+                              : 'border-black/20 bg-black/5 text-black group-hover:bg-black group-hover:text-white group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/10'
+                          }`}
                         >
-                          <div className="grid gap-6 pb-8 md:grid-cols-2 items-center">
-                            <div className="space-y-4">
-                              <div className="flex flex-wrap gap-2">
-                                <span
-                                  className={`rounded-md px-2.5 py-1 text-xs font-mono inline-flex items-center gap-1.5 font-bold ${
-                                    isDark ? 'bg-white text-black' : 'bg-black text-white'
-                                  }`}
-                                >
-                                  {renderSoftwareBadge(project.software, isDark)}
-                                </span>
-                                <span
-                                  className={`rounded-md border px-2.5 py-1 text-xs font-mono ${
-                                    isDark ? 'bg-white/5 border-white/15 text-white' : 'bg-black/5 border-black/15 text-black'
-                                  }`}
-                                >
-                                  Duration: {project.duration}
-                                </span>
-                              </div>
-                              <p className={`max-w-md text-base leading-relaxed font-normal ${
-                                isDark ? 'text-white/75' : 'text-black/75'
-                              }`}>
-                                {project.desc}
-                              </p>
-                              
-                              <div className="flex flex-wrap items-center gap-3 pt-2">
-                                <a
-                                  href={project.driveUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition-all hover:scale-105 active:scale-95 shadow-sm ${
-                                    isDark
-                                      ? 'bg-white text-black hover:bg-neutral-200'
-                                      : 'bg-black text-white hover:bg-neutral-800'
-                                  }`}
-                                >
-                                  <LogoGoogleDrive size={15} />
-                                  <span>Open Video in Google Drive</span>
-                                  <ArrowUpRight size={14} />
-                                </a>
-                              </div>
-                            </div>
-
-                            <div
-                              className={`relative aspect-[16/9] w-full overflow-hidden rounded-2xl border shadow-md group/img transition-colors ${
-                                isDark ? 'bg-neutral-900 border-white/15' : 'bg-neutral-100 border-black/10'
-                              }`}
-                            >
-                              <Image
-                                src={project.image}
-                                alt={project.title}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-cover transition-transform duration-700 group-hover/img:scale-105"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                              <div className="absolute bottom-3 left-3 flex items-center gap-2 text-xs font-mono text-white">
-                                <span className="h-2 w-2 rounded-full bg-white" />
-                                <span>{project.category}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                )
-              })}
-            </div>
+                          <Play size={13} className="fill-current ml-0.5" />
+                          <span>Watch</span>
+                          <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )
+                })}
+              </AnimatePresence>
+            </motion.div>
           </Sec>
 
           {/* =========================================================================
@@ -1018,11 +1203,11 @@ export default function Site() {
                 <H2>The Arsenal</H2>
               </div>
               <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-                Specialized mastery across the top 3 video post-production tools.
+                Specialized mastery across industry-standard video post-production, VFX, and motion graphics tools.
               </p>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {TOOLS.map((tool) => {
                 const Icon = tool.icon
                 return (
@@ -1032,7 +1217,7 @@ export default function Site() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.25 }}
-                    className={`relative flex flex-col justify-between rounded-3xl border p-8 transition-colors duration-150 shadow-sm ${
+                    className={`relative flex flex-col justify-between rounded-3xl border p-6 sm:p-7 transition-colors duration-150 shadow-sm ${
                       isDark
                         ? 'border-white/10 bg-white/[0.03] hover:border-white/30'
                         : 'border-black/10 bg-black/[0.02] hover:border-black/30'
@@ -1365,6 +1550,123 @@ export default function Site() {
             )
           })}
         </nav>
+
+        {/* =========================================================================
+            🎬 GOOGLE DRIVE MASTER VIDEO PLAYER MODAL
+            ========================================================================= */}
+        <AnimatePresence>
+          {playingVideo && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-black/85 backdrop-blur-md"
+              onClick={() => setPlayingVideo(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                onClick={(e) => e.stopPropagation()}
+                className={`relative w-full max-w-4xl overflow-hidden rounded-3xl border shadow-2xl transition-colors ${
+                  isDark
+                    ? 'border-white/20 bg-neutral-950 text-white shadow-black/80'
+                    : 'border-black/20 bg-white text-black shadow-2xl'
+                }`}
+              >
+                {/* Modal Header */}
+                <div
+                  className={`flex items-center justify-between px-5 py-4 border-b ${
+                    isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`flex h-9 w-9 items-center justify-center rounded-xl font-mono text-xs font-bold border ${
+                        isDark ? 'border-white/20 bg-white/10 text-white' : 'border-black/20 bg-black/5 text-black'
+                      }`}
+                    >
+                      {renderSoftwareBadge(playingVideo.software, isDark)}
+                    </div>
+                    <div>
+                      <h4 className="font-display text-base sm:text-lg font-bold tracking-tight leading-tight">
+                        {playingVideo.title}
+                      </h4>
+                      <p className={`text-xs font-mono ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                        {playingVideo.category} • {playingVideo.duration}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setPlayingVideo(null)}
+                    aria-label="Close video player"
+                    className={`rounded-full p-2 border transition-colors cursor-pointer ${
+                      isDark
+                        ? 'border-white/20 hover:bg-white/10 text-white'
+                        : 'border-black/20 hover:bg-black/10 text-black'
+                    }`}
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                {/* Video Player */}
+                <div className="relative w-full bg-black aspect-video flex items-center justify-center">
+                  <iframe
+                    src={playingVideo.previewUrl}
+                    title={playingVideo.title}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    className="h-full w-full border-0"
+                  />
+                </div>
+
+                {/* Modal Footer */}
+                <div
+                  className={`flex items-center justify-between gap-3 px-5 py-3.5 border-t ${
+                    isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
+                  }`}
+                >
+                  <span className={`text-xs font-mono ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+                    Direct preview from portfolio drive
+                  </span>
+
+                  <div className="flex items-center gap-2.5">
+                    <a
+                      href={playingVideo.driveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold font-mono transition-all ${
+                        isDark
+                          ? 'border-white/20 bg-white/10 text-white hover:bg-white hover:text-black'
+                          : 'border-black/20 bg-black/5 text-black hover:bg-black hover:text-white'
+                      }`}
+                    >
+                      <LogoGoogleDrive size={15} />
+                      <span>Open in Drive</span>
+                      <ArrowUpRight size={14} />
+                    </a>
+                    <button
+                      onClick={() => {
+                        setPlayingVideo(null)
+                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
+                        go(contactIndex >= 0 ? contactIndex : 4)
+                      }}
+                      className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-all shadow-sm cursor-pointer ${
+                        isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'
+                      }`}
+                    >
+                      <span>Hire For This Style</span>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </MotionConfig>
     </ThemeContext.Provider>
   )
