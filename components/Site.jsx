@@ -727,21 +727,21 @@ export default function Site() {
           {/* =========================================================================
               SECTION 1: HERO
               ========================================================================= */}
-          <Sec id="home" className="overflow-hidden">
+          <Sec id="home" className="overflow-hidden !pt-16 sm:!pt-20 lg:!pt-20 lg:!pb-12">
             <InteractiveGridPattern
               width={44}
               height={44}
               className="[mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,white_25%,transparent_90%)] opacity-85"
             />
 
-            <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
+            <div className="relative z-10 flex flex-col justify-start pt-1 sm:pt-2">
               {/* Outlined Anton Centered Header matching PRASAD style */}
               <div className="mb-4 sm:mb-6 flex justify-center items-center text-center w-full">
                 <span
-                  className={`font-anton uppercase tracking-[0.06em] text-transparent select-none transition-colors duration-200 text-3xl sm:text-4xl md:text-5xl lg:text-6xl cursor-default ${
+                  className={`font-anton uppercase tracking-[0.04em] leading-none text-transparent select-none transition-colors duration-200 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl cursor-default ${
                     isDark
-                      ? '[-webkit-text-stroke:1.5px_#fff] sm:[-webkit-text-stroke:2px_#fff] hover:text-white/20'
-                      : '[-webkit-text-stroke:1.5px_#000] sm:[-webkit-text-stroke:2px_#000] hover:text-black/20'
+                      ? '[-webkit-text-stroke:1.8px_#fff] sm:[-webkit-text-stroke:2.4px_#fff] lg:[-webkit-text-stroke:3px_#fff] hover:text-white/20'
+                      : '[-webkit-text-stroke:1.8px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black/20'
                   }`}
                 >
                   VIDEO EDITOR
