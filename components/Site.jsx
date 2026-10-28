@@ -738,7 +738,7 @@ export default function Site() {
               {/* Outlined Anton Centered Header matching PRASAD style */}
               <div className="mb-4 sm:mb-6 flex justify-center items-center text-center w-full">
                 <span
-                  className={`font-anton uppercase tracking-[0.04em] leading-none text-transparent select-none transition-colors duration-200 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl cursor-default ${
+                  className={`font-anton uppercase tracking-[0.04em] leading-none text-transparent select-none transition-all duration-300 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl cursor-default opacity-60 hover:opacity-90 ${
                     isDark
                       ? '[-webkit-text-stroke:1.8px_#fff] sm:[-webkit-text-stroke:2.4px_#fff] lg:[-webkit-text-stroke:3px_#fff] hover:text-white/20'
                       : '[-webkit-text-stroke:1.8px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black/20'
