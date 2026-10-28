@@ -727,17 +727,17 @@ export default function Site() {
           {/* =========================================================================
               SECTION 1: HERO
               ========================================================================= */}
-          <Sec id="home" className="overflow-hidden !pt-28 sm:!pt-32 lg:!pt-36 lg:!pb-16">
+          <Sec id="home" className="overflow-hidden !pt-20 sm:!pt-24 md:!pt-28 lg:!pt-32 pb-14 sm:pb-16">
             <InteractiveGridPattern
               width={44}
               height={44}
               className="[mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,white_25%,transparent_90%)] opacity-85"
             />
 
-            <div className="relative z-10 flex flex-col justify-start pt-2 sm:pt-4">
-              {/* Viewfinder HUD Ticker */}
+            <div className="relative z-10 flex flex-col justify-start">
+              {/* Viewfinder HUD Ticker: Desktop Top (Hidden on mobile to prioritize Face & Name) */}
               <div
-                className={`mb-6 sm:mb-8 flex flex-wrap items-center justify-between gap-3 font-mono text-xs transition-colors ${
+                className={`mb-6 sm:mb-8 hidden md:flex flex-wrap items-center justify-between gap-3 font-mono text-xs transition-colors ${
                   isDark ? 'text-white/50' : 'text-black/50'
                 }`}
               >
@@ -765,120 +765,14 @@ export default function Site() {
                 </div>
               </div>
 
-              {/* Grid Layout: Left Typography | Right Photo Frame */}
-              <div className="grid gap-8 md:gap-10 md:grid-cols-12 md:items-center">
-                
-                {/* Left Column */}
-                <div className="md:col-span-6 lg:col-span-6 flex flex-col justify-center">
-                  
-                  {/* Official Software Badges */}
-                  <div className="mb-5 flex flex-wrap items-center gap-2.5">
-                    <span
-                      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoDaVinci size={16} />
-                      <span>DaVinci Resolve</span>
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoPremiere size={16} />
-                      <span>Premiere Pro</span>
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoAfterEffects size={16} />
-                      <span>After Effects</span>
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoCapCut size={16} />
-                      <span>CapCut Pro</span>
-                    </span>
-                  </div>
+              {/* Responsive Hero Layout:
+                  - Mobile (< md): Portrait (order-1) -> Headline Name (order-2) -> CTAs (order-3) -> Badges & Bio (scrollable)
+                  - Desktop (>= md): 2-Column Grid (Left: Badges, Name, Bio, CTAs | Right: Large Portrait) */}
+              <div className="flex flex-col md:grid md:gap-10 md:grid-cols-12 md:items-center">
 
-                  {/* Stylised Name Headline */}
-                  <h1
-                    aria-label={PROFILE.name}
-                    className="select-none text-[15vw] leading-none tracking-normal sm:text-[12vw] md:text-[5.5rem] lg:text-[7.2rem] xl:text-[8.2rem]"
-                  >
-                    <span
-                      className={`block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] transition-colors duration-150 ${
-                        isDark ? 'text-white' : 'text-black'
-                      }`}
-                    >
-                      ANANDU
-                    </span>
-
-                    <span
-                      className={`block overflow-hidden pb-[.06em] mt-1 sm:mt-2 font-anton uppercase tracking-[0.05em] text-transparent transition-colors duration-150 cursor-default ${
-                        isDark
-                          ? '[-webkit-text-stroke:2px_#fff] sm:[-webkit-text-stroke:2.4px_#fff] lg:[-webkit-text-stroke:3px_#fff] hover:text-white'
-                          : '[-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black'
-                      }`}
-                    >
-                      PRASAD
-                      <span className={`inline-block ml-1 [-webkit-text-stroke:0px] ${isDark ? 'text-white' : 'text-black'}`}>
-                        .
-                      </span>
-                    </span>
-                  </h1>
-
-                  {/* Subtitle Bio */}
-                  <p
-                    className={`mt-6 max-w-xl text-base sm:text-lg md:text-lg leading-relaxed font-normal transition-colors duration-150 ${
-                      isDark ? 'text-white/75' : 'text-black/75'
-                    }`}
-                  >
-                    {PROFILE.bio}
-                  </p>
-
-                  {/* Hero CTAs */}
-                  <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <a
-                      href={PROFILE.showreelDriveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-2.5 rounded-full px-7 py-4 font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg ${
-                        isDark
-                          ? 'bg-white text-black hover:bg-neutral-200 shadow-white/10'
-                          : 'bg-black text-white hover:bg-neutral-800 shadow-black/10'
-                      }`}
-                    >
-                      <LogoGoogleDrive size={18} />
-                      <span>Watch Drive Showreel</span>
-                      <ArrowUpRight size={16} />
-                    </a>
-                    <button
-                      onClick={() => {
-                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
-                        go(contactIndex >= 0 ? contactIndex : 4)
-                      }}
-                      className={`flex items-center gap-2 rounded-full border px-7 py-4 font-medium transition-all hover:scale-105 active:scale-95 cursor-pointer ${
-                        isDark
-                          ? 'border-white/25 bg-transparent text-white hover:border-white hover:bg-white/10'
-                          : 'border-black/25 bg-transparent text-black hover:border-black hover:bg-black/5'
-                      }`}
-                    >
-                      <span>Hire For Edit</span>
-                      <ArrowUpRight size={18} />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Right Column: CINEMATIC CIRCULAR PORTRAIT WITH ROTATING LENS RING */}
-                <div className="md:col-span-6 lg:col-span-6 flex justify-center items-center py-4 sm:py-6">
-                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[460px] aspect-square group">
+                {/* Portrait Column: Renders First on Mobile (order-1), Right Column on Desktop (md:order-2) */}
+                <div className="order-1 md:order-2 md:col-span-6 lg:col-span-6 flex justify-center items-center py-2 sm:py-4 md:py-6">
+                  <div className="relative w-full max-w-[200px] sm:max-w-[260px] md:max-w-[420px] lg:max-w-[460px] aspect-square group">
                     {/* Ambient Glow behind circle */}
                     <div
                       className={`absolute inset-4 rounded-full blur-3xl opacity-35 transition-opacity duration-700 group-hover:opacity-70 ${
@@ -890,7 +784,7 @@ export default function Site() {
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
-                      className="absolute -inset-6 sm:-inset-8 md:-inset-9 pointer-events-none z-20 flex items-center justify-center select-none"
+                      className="absolute -inset-5 sm:-inset-7 md:-inset-9 pointer-events-none z-20 flex items-center justify-center select-none"
                     >
                       <svg viewBox="0 0 500 500" className="w-full h-full overflow-visible">
                         <defs>
@@ -950,13 +844,137 @@ export default function Site() {
                         alt={`${PROFILE.name} - Video Editor Portrait`}
                         fill
                         priority
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 550px"
+                        sizes="(max-width: 768px) 240px, (max-width: 1024px) 50vw, 550px"
                         className="object-cover object-center grayscale contrast-[1.08] brightness-[0.98] transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                   </div>
                 </div>
 
+                {/* Text & Details Column: Renders Second on Mobile (order-2), Left Column on Desktop (md:order-1) */}
+                <div className="order-2 md:order-1 md:col-span-6 lg:col-span-6 flex flex-col justify-center text-center md:text-left items-center md:items-start mt-3 md:mt-0">
+                  
+                  {/* Stylised Name Headline: Renders directly under portrait on Mobile */}
+                  <h1
+                    aria-label={PROFILE.name}
+                    className="select-none text-[13vw] leading-[0.92] tracking-tight sm:text-[10vw] md:text-[5.5rem] lg:text-[7.2rem] xl:text-[8.2rem] order-1 md:order-2"
+                  >
+                    <span
+                      className={`block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] transition-colors duration-150 ${
+                        isDark ? 'text-white' : 'text-black'
+                      }`}
+                    >
+                      ANANDU
+                    </span>
+
+                    <span
+                      className={`block overflow-hidden pb-[.06em] mt-0.5 sm:mt-1 font-anton uppercase tracking-[0.05em] text-transparent transition-colors duration-150 cursor-default ${
+                        isDark
+                          ? '[-webkit-text-stroke:2px_#fff] sm:[-webkit-text-stroke:2.4px_#fff] lg:[-webkit-text-stroke:3px_#fff] hover:text-white'
+                          : '[-webkit-text-stroke:2px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black'
+                      }`}
+                    >
+                      PRASAD
+                      <span className={`inline-block ml-1 [-webkit-text-stroke:0px] ${isDark ? 'text-white' : 'text-black'}`}>
+                        .
+                      </span>
+                    </span>
+                  </h1>
+
+                  {/* Hero CTAs: Side-by-side action buttons on mobile */}
+                  <div className="mt-4 sm:mt-8 flex flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-4 w-full sm:w-auto order-2 md:order-4">
+                    <a
+                      href={PROFILE.showreelDriveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 rounded-full px-4 sm:px-7 py-2.5 sm:py-4 text-xs sm:text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg ${
+                        isDark
+                          ? 'bg-white text-black hover:bg-neutral-200 shadow-white/10'
+                          : 'bg-black text-white hover:bg-neutral-800 shadow-black/10'
+                      }`}
+                    >
+                      <LogoGoogleDrive size={15} />
+                      <span className="whitespace-nowrap">Drive Showreel</span>
+                      <ArrowUpRight size={13} />
+                    </a>
+                    <button
+                      onClick={() => {
+                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
+                        go(contactIndex >= 0 ? contactIndex : 4)
+                      }}
+                      className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-4 sm:px-7 py-2.5 sm:py-4 text-xs sm:text-sm font-medium transition-all hover:scale-105 active:scale-95 cursor-pointer ${
+                        isDark
+                          ? 'border-white/25 bg-transparent text-white hover:border-white hover:bg-white/10'
+                          : 'border-black/25 bg-transparent text-black hover:border-black hover:bg-black/5'
+                      }`}
+                    >
+                      <span className="whitespace-nowrap">Hire For Edit</span>
+                      <ArrowUpRight size={13} />
+                    </button>
+                  </div>
+
+                  {/* Official Software Badges: Above Name on desktop (md:order-1), below CTAs on mobile (order-3) */}
+                  <div className="mb-0 md:mb-5 mt-6 md:mt-0 flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-2.5 order-3 md:order-1">
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
+                      }`}
+                    >
+                      <LogoDaVinci size={14} />
+                      <span>DaVinci Resolve</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
+                      }`}
+                    >
+                      <LogoPremiere size={14} />
+                      <span>Premiere Pro</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
+                      }`}
+                    >
+                      <LogoAfterEffects size={14} />
+                      <span>After Effects</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
+                      }`}
+                    >
+                      <LogoCapCut size={14} />
+                      <span>CapCut Pro</span>
+                    </span>
+                  </div>
+
+                  {/* Subtitle Bio: Scrollable below on mobile */}
+                  <p
+                    className={`mt-4 sm:mt-6 max-w-xl text-xs sm:text-base md:text-lg leading-relaxed font-normal transition-colors duration-150 order-4 md:order-3 ${
+                      isDark ? 'text-white/75' : 'text-black/75'
+                    }`}
+                  >
+                    {PROFILE.bio}
+                  </p>
+
+                  {/* Mobile Ticker: Appears when scrolling down on mobile */}
+                  <div
+                    className={`mt-6 w-full flex md:hidden flex-col items-center gap-2 border-t pt-4 font-mono text-[11px] transition-colors order-5 ${
+                      isDark ? 'text-white/50 border-white/10' : 'text-black/50 border-black/10'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className={`flex items-center gap-1.5 font-semibold ${isDark ? 'text-white' : 'text-black'}`}>
+                        <span className={`h-1.5 w-1.5 rounded-full inline-block animate-ping ${isDark ? 'bg-white' : 'bg-red-500'}`} />
+                        REC [●] 00:02:48:19
+                      </span>
+                      <span>•</span>
+                      <span>4K DCI • 24 FPS</span>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
               <p className={`mt-8 text-center text-xs font-mono lg:hidden ${
