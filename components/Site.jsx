@@ -727,27 +727,14 @@ export default function Site() {
           {/* =========================================================================
               SECTION 1: HERO
               ========================================================================= */}
-          <Sec id="home" className="overflow-hidden !pt-16 sm:!pt-20 lg:!pt-20 lg:!pb-12">
+          <Sec id="home" className="overflow-hidden">
             <InteractiveGridPattern
               width={44}
               height={44}
               className="[mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,white_25%,transparent_90%)] opacity-85"
             />
 
-            <div className="relative z-10 flex flex-col justify-start pt-1 sm:pt-2">
-              {/* Outlined Anton Centered Header matching PRASAD style */}
-              <div className="mb-4 sm:mb-6 flex justify-center items-center text-center w-full">
-                <span
-                  className={`font-anton uppercase tracking-[0.04em] leading-none text-transparent select-none transition-all duration-300 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl cursor-default opacity-60 hover:opacity-90 ${
-                    isDark
-                      ? '[-webkit-text-stroke:1.8px_#fff] sm:[-webkit-text-stroke:2.4px_#fff] lg:[-webkit-text-stroke:3px_#fff] hover:text-white/20'
-                      : '[-webkit-text-stroke:1.8px_#000] sm:[-webkit-text-stroke:2.4px_#000] lg:[-webkit-text-stroke:3px_#000] hover:text-black/20'
-                  }`}
-                >
-                  VIDEO EDITOR
-                </span>
-              </div>
-
+            <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
               {/* Viewfinder HUD Ticker */}
               <div
                 className={`mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs border-b pb-4 transition-colors ${
@@ -889,15 +876,66 @@ export default function Site() {
                   </div>
                 </div>
 
-                {/* Right Column: CINEMATIC CIRCULAR PORTRAIT */}
-                <div className="md:col-span-6 lg:col-span-6 flex justify-center items-center">
-                  <div className="relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[440px] lg:max-w-[480px] xl:max-w-[500px] aspect-square group">
+                {/* Right Column: CINEMATIC CIRCULAR PORTRAIT WITH ROTATING LENS RING */}
+                <div className="md:col-span-6 lg:col-span-6 flex justify-center items-center py-4 sm:py-6">
+                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[460px] aspect-square group">
                     {/* Ambient Glow behind circle */}
                     <div
                       className={`absolute inset-4 rounded-full blur-3xl opacity-35 transition-opacity duration-700 group-hover:opacity-70 ${
                         isDark ? 'bg-white/25' : 'bg-black/15'
                       }`}
                     />
+
+                    {/* Rotating Camera Lens Aperture Ring Overlapping the Portrait Edge */}
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
+                      className="absolute -inset-6 sm:-inset-8 md:-inset-9 pointer-events-none z-20 flex items-center justify-center select-none"
+                    >
+                      <svg viewBox="0 0 500 500" className="w-full h-full overflow-visible">
+                        <defs>
+                          <path
+                            id="lensRingCircle"
+                            d="M 250, 250 m -230, 0 a 230,230 0 1,1 460,0 a 230,230 0 1,1 -460,0"
+                            fill="none"
+                          />
+                        </defs>
+
+                        {/* Outer optical lens calibration ring */}
+                        <circle
+                          cx="250"
+                          cy="250"
+                          r="244"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeDasharray="2 6"
+                          className={isDark ? 'text-white/20' : 'text-black/20'}
+                        />
+
+                        {/* Inner focal ring border */}
+                        <circle
+                          cx="250"
+                          cy="250"
+                          r="216"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          className={isDark ? 'text-white/15' : 'text-black/15'}
+                        />
+
+                        {/* Revolving Lens Typography */}
+                        <text
+                          className={`font-mono text-[11px] sm:text-[12px] uppercase font-semibold tracking-[0.28em] fill-current ${
+                            isDark ? 'text-white/75' : 'text-black/75'
+                          }`}
+                        >
+                          <textPath href="#lensRingCircle" startOffset="0%">
+                            ✦ VIDEO EDITOR ✦ COLORIST ✦ POST-PRODUCTION ✦ ANANDU PRASAD ✦ VIDEO EDITOR ✦ COLORIST ✦ POST-PRODUCTION ✦ ANANDU PRASAD
+                          </textPath>
+                        </text>
+                      </svg>
+                    </motion.div>
 
                     {/* Circular Frame with Border & Shadow */}
                     <div
