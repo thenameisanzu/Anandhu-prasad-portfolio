@@ -627,13 +627,6 @@ export default function Site() {
               >
                 {PROFILE.name}
               </span>
-              <span
-                className={`text-[10px] font-mono tracking-wider uppercase block transition-colors ${
-                  isDark ? 'text-white/60' : 'text-black/60'
-                }`}
-              >
-                Editor & Colorist
-              </span>
             </div>
           </button>
 
@@ -742,7 +735,18 @@ export default function Site() {
             />
 
             <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
-              
+              {/* Nothing Style Ndot55 Sub-header */}
+              <div className="mb-3 sm:mb-4">
+                <span
+                  className={`font-ndot text-sm sm:text-base md:text-lg tracking-[0.25em] uppercase select-none inline-flex items-center gap-2.5 transition-colors ${
+                    isDark ? 'text-white/80' : 'text-black/80'
+                  }`}
+                >
+                  <span className={`inline-block h-1.5 w-1.5 rounded-full ${isDark ? 'bg-white' : 'bg-black'}`} />
+                  VIDEO EDITOR
+                </span>
+              </div>
+
               {/* Viewfinder HUD Ticker */}
               <div
                 className={`mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs border-b pb-4 transition-colors ${

@@ -1,4 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@1,700;1,900&family=Syne:wght@800;900&display=swap');
+
+@font-face {
+  font-family: 'Ndot55';
+  src: url('/fonts/Ndot55-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ndot55Caps';
+  src: url('/fonts/Ndot55Caps-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
