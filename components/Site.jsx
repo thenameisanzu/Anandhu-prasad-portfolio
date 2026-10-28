@@ -727,18 +727,18 @@ export default function Site() {
           {/* =========================================================================
               SECTION 1: HERO
               ========================================================================= */}
-          <Sec id="home" className="overflow-hidden">
+          <Sec id="home" className="overflow-hidden !pt-16 sm:!pt-20 lg:!pt-20 lg:!pb-12">
             <InteractiveGridPattern
               width={44}
               height={44}
               className="[mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,white_25%,transparent_90%)] opacity-85"
             />
 
-            <div className="relative z-10 flex min-h-[calc(100dvh-12rem)] flex-col justify-center pt-2 sm:pt-6 md:min-h-[calc(100vh-12rem)]">
+            <div className="relative z-10 flex flex-col justify-start pt-1 sm:pt-2">
               {/* Viewfinder HUD Ticker */}
               <div
-                className={`mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs border-b pb-4 transition-colors ${
-                  isDark ? 'text-white/50 border-white/10' : 'text-black/50 border-black/10'
+                className={`mb-4 sm:mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-xs transition-colors ${
+                  isDark ? 'text-white/50' : 'text-black/50'
                 }`}
               >
                 <div className="flex items-center gap-3">
