@@ -1424,7 +1424,7 @@ export default function Site() {
                   </p>
                 </div>
 
-                <div className={`space-y-3 font-mono text-sm ${isDark ? 'text-white' : 'text-black'}`}>
+                <div className={`space-y-3 font-montserrat font-medium text-sm ${isDark ? 'text-white' : 'text-black'}`}>
                   <a
                     href={`tel:${PROFILE.phone}`}
                     className={`flex items-center gap-3 p-3.5 rounded-2xl border transition-colors ${
@@ -1473,7 +1473,7 @@ export default function Site() {
 
                 {/* Social Channels */}
                 <div className="pt-2">
-                  <p className={`font-mono text-xs uppercase tracking-wider mb-3 font-semibold ${
+                  <p className={`font-montserrat text-xs uppercase tracking-wider mb-3 font-semibold ${
                     isDark ? 'text-white/40' : 'text-black/40'
                   }`}>
                     Follow & Connect
@@ -1520,13 +1520,13 @@ export default function Site() {
                 <h4 className={`font-display text-2xl font-bold tracking-tight mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
                   Send Project Details
                 </h4>
-                <p className={`text-xs font-mono mb-6 ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                <p className={`text-xs font-montserrat mb-6 ${isDark ? 'text-white/60' : 'text-black/60'}`}>
                   Paste your Google Drive link to send directly to Anandu on WhatsApp.
                 </p>
 
                 <form onSubmit={bookOnWhatsApp} className="space-y-4">
                   <div>
-                    <label className={`block text-xs font-mono mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                    <label className={`block text-xs font-montserrat mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
                       Your Name / Channel
                     </label>
                     <input
@@ -1538,7 +1538,7 @@ export default function Site() {
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-mono mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                    <label className={`block text-xs font-montserrat mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
                       Project Type
                     </label>
                     <select
@@ -1554,7 +1554,7 @@ export default function Site() {
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-mono mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                    <label className={`block text-xs font-montserrat mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
                       Google Drive Footage Link (Optional)
                     </label>
                     <input
@@ -1565,7 +1565,7 @@ export default function Site() {
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-mono mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                    <label className={`block text-xs font-montserrat mb-1.5 font-medium ${isDark ? 'text-white/60' : 'text-black/60'}`}>
                       Project Notes / Deadline
                     </label>
                     <textarea
