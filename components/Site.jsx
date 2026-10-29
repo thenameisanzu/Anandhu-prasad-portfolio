@@ -44,8 +44,11 @@ export const DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/1sV2acpQ
 
 export const PROFILE = {
   name: 'Anandu Prasad',
-  headline: 'Video Editor & Colorist',
-  bio: 'Creative Video Editor passionate about visual storytelling, cinematic editing, and crafting engaging content that connects with audiences.',
+  headline: 'VIDEO EDITOR · COLOR GRADING · POST-PRODUCTION',
+  bio: 'I shape raw footage into cinematic stories through precise editing, thoughtful sound design, and intentional color.',
+  tagline: 'Editing with purpose. Storytelling with feeling.',
+  aboutBio: 'A video editor focused on storytelling, rhythm, sound design, and cinematic color — creating visuals that feel intentional, immersive, and memorable.',
+  heroTags: ['Wedding Films', 'Cinematic Edits', 'Social Content'],
   phone: '+91 8606502102',
   whatsapp: '918606502102',
   email: 'anandugraphy@gmail.com',
@@ -207,90 +210,23 @@ export const TOOLS = [
   },
 ]
 
-// 📽️ SELECTED WORKS - REAL MASTER CUTS SYNCED WITH GOOGLE DRIVE
+// 📽️ SELECTED WORKS - 2025/26 SYNCED WITH GOOGLE DRIVE
 export const PROJECT_CATEGORIES = [
   { id: 'all', label: 'All Works' },
-  { id: 'commercial', label: 'Commercial & Auto' },
-  { id: 'social', label: 'Brand & Reels' },
-  { id: 'narrative', label: 'Cultural & Narrative' },
+  { id: 'weddings', label: 'Wedding Films & Highlights' },
+  { id: 'cinematic', label: 'Cinematic & Travel Edits' },
+  { id: 'reels', label: 'Reels & Social Media Content' },
+  { id: 'brand', label: 'Brand Films & Promos' },
 ]
 
 export const PROJECTS = [
   {
     id: 1,
-    title: 'Kia Seltos: Automotive Spot',
-    file: 'KIA SELTOS.mov',
-    driveId: '1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4',
-    category: 'Commercial / Automotive',
-    filterCategory: 'commercial',
-    software: 'DaVinci Resolve Studio',
-    duration: '01:05',
-    size: '93.5 MB',
-    ratio: '16:9 Cinema 4K',
-    desc: 'High-octane commercial automotive cut for Kia Seltos. Highlights precision speed-ramping, tone separation, engine roar sound design, and cool-blue anamorphic grade.',
-    driveUrl: 'https://drive.google.com/file/d/1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4/view?usp=sharing',
-    previewUrl: 'https://drive.google.com/file/d/1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4/preview',
-    image: '/projects/kia-seltos.jpg',
-    tags: ['Automotive Spot', 'Speed Curves', 'DaVinci Resolve'],
-  },
-  {
-    id: 2,
-    title: 'Red Bull: Kinetic Motion Cut',
-    file: 'REDBULL',
-    driveId: '17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB',
-    category: 'Commercial / High-Energy',
-    filterCategory: 'commercial',
-    software: 'Adobe Premiere Pro',
-    duration: '00:58',
-    size: '77.3 MB',
-    ratio: '16:9 Widescreen',
-    desc: 'Adrenaline-fueled sports campaign edit. Synchronized micro-cuts on fast BPM audio, aggressive whip transitions, and vivid neon-saturated grading.',
-    driveUrl: 'https://drive.google.com/file/d/17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB/view?usp=sharing',
-    previewUrl: 'https://drive.google.com/file/d/17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB/preview',
-    image: '/projects/redbull.jpg',
-    tags: ['Action Sports', 'Beat Sync', 'Premiere Pro'],
-  },
-  {
-    id: 3,
-    title: 'Moothappa: The Sacred Rite',
-    file: 'MOOTHAPPA FINAL.mov',
-    driveId: '14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m',
-    category: 'Cultural Narrative / Heritage',
-    filterCategory: 'narrative',
-    software: 'DaVinci Resolve',
-    duration: '01:30',
-    size: '49.5 MB',
-    ratio: '16:9 Cinematic',
-    desc: 'Atmospheric heritage documentary capturing the spiritual energy of Muthappan ritual ceremonies in Kerala. Rich warm halation, fiery ambient torch glow, and traditional percussion layering.',
-    driveUrl: 'https://drive.google.com/file/d/14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m/view?usp=sharing',
-    previewUrl: 'https://drive.google.com/file/d/14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m/preview',
-    image: '/projects/moothappa.jpg',
-    tags: ['Cultural Heritage', 'Film Halation', 'DaVinci Resolve'],
-  },
-  {
-    id: 4,
-    title: 'Velocity: Coastal Drive Spot',
-    file: 'CAR FINAL .mov',
-    driveId: '11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ',
-    category: 'Commercial / Color Grading',
-    filterCategory: 'commercial',
-    software: 'DaVinci Resolve Studio',
-    duration: '01:15',
-    size: '59.3 MB',
-    ratio: '16:9 Cinema',
-    desc: 'Cinematic coastal sports car sequence with anamorphic framing, tone separation, aggressive speed curves, and rumbling engine sound design.',
-    driveUrl: 'https://drive.google.com/file/d/11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ/view?usp=sharing',
-    previewUrl: 'https://drive.google.com/file/d/11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ/preview',
-    image: '/projects/car-commercial.jpg',
-    tags: ['Automotive', 'Anamorphic Framing', 'DaVinci Studio'],
-  },
-  {
-    id: 5,
     title: 'Kalyani: Wedding & Fashion Aesthetic',
     file: 'KALYANI',
     driveId: '1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ',
-    category: 'Wedding & Fashion / Aesthetic',
-    filterCategory: 'social',
+    category: 'Wedding Films & Highlights',
+    filterCategory: 'weddings',
     software: 'DaVinci Resolve & CapCut Pro',
     duration: '00:45',
     size: '20.5 MB',
@@ -298,33 +234,33 @@ export const PROJECTS = [
     desc: 'Dreamy traditional wedding & fashion visual reel with luminous skin tones, soft gold highlight rolls, rhythmic pacing, and emotional music bed.',
     driveUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/preview',
-    image: '/projects/kalyani.jpg',
-    tags: ['Wedding Reel', 'Skin Tone Color', 'CapCut Pro'],
+    thumbnailImage: null, // Replace with '/projects/kalyani.jpg' when image is ready
+    tags: ['Wedding Film', 'Skin Tone Color', 'DaVinci Resolve'],
   },
   {
-    id: 6,
-    title: 'Noolab: Streetwear Brand Campaign',
-    file: 'NOOLAB',
-    driveId: '1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO',
-    category: 'Brand Campaign / Vertical Reel',
-    filterCategory: 'social',
-    software: 'CapCut Pro & Premiere Pro',
-    duration: '00:35',
-    size: '10.7 MB',
-    ratio: '9:16 Vertical Reel',
-    desc: 'Modern streetwear apparel campaign designed for high viral retention on Instagram Reels and TikTok. Quick punch-ins, kinetic typography sync, and crisp bass drops.',
-    driveUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/view?usp=sharing',
-    previewUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/preview',
-    image: '/projects/noolab.jpg',
-    tags: ['Brand Reel', 'Kinetic Typography', 'CapCut Pro'],
+    id: 2,
+    title: 'Moothappa: The Sacred Rite',
+    file: 'MOOTHAPPA FINAL.mov',
+    driveId: '14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m',
+    category: 'Cinematic & Travel Edits',
+    filterCategory: 'cinematic',
+    software: 'DaVinci Resolve',
+    duration: '01:30',
+    size: '49.5 MB',
+    ratio: '16:9 Cinematic',
+    desc: 'Atmospheric heritage documentary capturing the spiritual energy of Muthappan ritual ceremonies in Kerala. Rich warm halation, fiery ambient torch glow, and traditional percussion layering.',
+    driveUrl: 'https://drive.google.com/file/d/14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/14hzohRpauGXi9WF0DfBPlrV_5D6mhT3m/preview',
+    thumbnailImage: null, // Replace with '/projects/moothappa.jpg' when image is ready
+    tags: ['Cinematic Storytelling', 'Film Halation', 'DaVinci Resolve'],
   },
   {
-    id: 7,
+    id: 3,
     title: 'Thakshi: Cinematic Mood & Rain',
     file: 'THAKSHI',
     driveId: '18ED_WzMm5fwGJUcf4RXnF21dVHD7xzmw',
-    category: 'Cinematic Portrait / Mood',
-    filterCategory: 'narrative',
+    category: 'Cinematic & Travel Edits',
+    filterCategory: 'cinematic',
     software: 'DaVinci Resolve',
     duration: '01:10',
     size: '49.4 MB',
@@ -332,16 +268,84 @@ export const PROJECTS = [
     desc: 'Atmospheric neon-lit night portrait. Intimate character pacing, ambient rain soundscapes, and subtle 35mm print film emulation.',
     driveUrl: 'https://drive.google.com/file/d/18ED_WzMm5fwGJUcf4RXnF21dVHD7xzmw/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/18ED_WzMm5fwGJUcf4RXnF21dVHD7xzmw/preview',
-    image: '/projects/thakshi.jpg',
+    thumbnailImage: null, // Replace with '/projects/thakshi.jpg' when image is ready
     tags: ['Cinematic Mood', 'Film Grain', 'DaVinci Resolve'],
+  },
+  {
+    id: 4,
+    title: 'Kia Seltos: Automotive Spot',
+    file: 'KIA SELTOS.mov',
+    driveId: '1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4',
+    category: 'Brand Films & Promos',
+    filterCategory: 'brand',
+    software: 'DaVinci Resolve Studio',
+    duration: '01:05',
+    size: '93.5 MB',
+    ratio: '16:9 Cinema 4K',
+    desc: 'High-octane commercial automotive cut for Kia Seltos. Highlights precision speed-ramping, tone separation, engine roar sound design, and cool-blue anamorphic grade.',
+    driveUrl: 'https://drive.google.com/file/d/1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/1cgywiTHIfhg5bqkxZaZvtpDz6eNkaA_4/preview',
+    thumbnailImage: null, // Replace with '/projects/kia-seltos.jpg' when image is ready
+    tags: ['Brand Promo', 'Speed Curves', 'DaVinci Resolve'],
+  },
+  {
+    id: 5,
+    title: 'Red Bull: Kinetic Motion Cut',
+    file: 'REDBULL',
+    driveId: '17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB',
+    category: 'Brand Films & Promos',
+    filterCategory: 'brand',
+    software: 'Adobe Premiere Pro',
+    duration: '00:58',
+    size: '77.3 MB',
+    ratio: '16:9 Widescreen',
+    desc: 'Adrenaline-fueled sports campaign edit. Synchronized micro-cuts on fast BPM audio, aggressive whip transitions, and vivid neon-saturated grading.',
+    driveUrl: 'https://drive.google.com/file/d/17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/17-CIPS6qKx3sNV9twXSDiY6uM1XGqgDB/preview',
+    thumbnailImage: null, // Replace with '/projects/redbull.jpg' when image is ready
+    tags: ['Brand Campaign', 'Beat Sync', 'Premiere Pro'],
+  },
+  {
+    id: 6,
+    title: 'Velocity: Coastal Drive Spot',
+    file: 'CAR FINAL .mov',
+    driveId: '11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ',
+    category: 'Brand Films & Promos',
+    filterCategory: 'brand',
+    software: 'DaVinci Resolve Studio',
+    duration: '01:15',
+    size: '59.3 MB',
+    ratio: '16:9 Cinema',
+    desc: 'Cinematic coastal sports car sequence with anamorphic framing, tone separation, aggressive speed curves, and rumbling engine sound design.',
+    driveUrl: 'https://drive.google.com/file/d/11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/11Lcal6pT62Lswd3iTu-Q-GUU1oYPi0RZ/preview',
+    thumbnailImage: null, // Replace with '/projects/car-commercial.jpg' when image is ready
+    tags: ['Automotive Promo', 'Anamorphic Framing', 'DaVinci Studio'],
+  },
+  {
+    id: 7,
+    title: 'Noolab: Streetwear Brand Campaign',
+    file: 'NOOLAB',
+    driveId: '1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO',
+    category: 'Reels & Social Media Content',
+    filterCategory: 'reels',
+    software: 'CapCut Pro & Premiere Pro',
+    duration: '00:35',
+    size: '10.7 MB',
+    ratio: '9:16 Vertical Reel',
+    desc: 'Modern streetwear apparel campaign designed for high viral retention on Instagram Reels and TikTok. Quick punch-ins, kinetic typography sync, and crisp bass drops.',
+    driveUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/view?usp=sharing',
+    previewUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/preview',
+    thumbnailImage: null, // Replace with '/projects/noolab.jpg' when image is ready
+    tags: ['Social Content', 'Kinetic Typography', 'CapCut Pro'],
   },
   {
     id: 8,
     title: 'Motion Dynamics: B1 & V1 Series',
     file: 'V1 & B1',
     driveId: '1BbQGGyZU2tltSyAGUQAeTHf6lubeEyaK',
-    category: 'Showreel / Motion Edit',
-    filterCategory: 'commercial',
+    category: 'Reels & Social Media Content',
+    filterCategory: 'reels',
     software: 'Adobe Premiere Pro & DaVinci',
     duration: '01:25',
     size: '60.1 MB',
@@ -349,8 +353,8 @@ export const PROJECTS = [
     desc: 'High-retention rhythm & motion edit combining fast-paced visual storytelling, custom speed ramping curves, and seamless sound bridges.',
     driveUrl: 'https://drive.google.com/file/d/1BbQGGyZU2tltSyAGUQAeTHf6lubeEyaK/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1BbQGGyZU2tltSyAGUQAeTHf6lubeEyaK/preview',
-    image: '/projects/tokyo-doc.jpg',
-    tags: ['Motion Dynamics', 'Sound Bridge', 'Premiere Pro'],
+    thumbnailImage: null, // Replace with '/projects/tokyo-doc.jpg' when image is ready
+    tags: ['Social Reel', 'Sound Bridge', 'Premiere Pro'],
   },
 ]
 
@@ -419,6 +423,120 @@ const renderSoftwareBadge = (software, dark = false) => {
       {Icon && <Icon size={14} className={dark ? 'text-black' : 'currentColor'} />}
       <span>{software}</span>
     </span>
+  )
+}
+
+// 🎬 COMPACT VERTICAL VIDEO CARD (MATCHING USER REFERENCE IMAGE)
+const VerticalProjectCard = ({ project, isDark, onPlay }) => {
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.25 }}
+      onClick={() => onPlay(project)}
+      className={`group relative aspect-[9/13.5] w-full overflow-hidden rounded-2xl sm:rounded-3xl border transition-all duration-300 cursor-pointer select-none shadow-md hover:-translate-y-1.5 hover:shadow-2xl ${
+        isDark
+          ? 'border-white/15 bg-neutral-900/90 text-white hover:border-white/40 shadow-black/40'
+          : 'border-black/15 bg-neutral-100 text-black hover:border-black/40 shadow-black/5'
+      }`}
+    >
+      {/* 1. Background Visual: Thumbnail Image (if provided) OR High-End Reel Placeholder */}
+      {project.thumbnailImage ? (
+        <Image
+          src={project.thumbnailImage}
+          alt={project.title}
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover object-center grayscale contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        /* Cinematic Vertical Reel Frame Placeholder */
+        <div className="absolute inset-0 flex flex-col justify-between p-3.5 select-none">
+          {/* Subtle dot pattern background */}
+          <div
+            className={`absolute inset-0 opacity-[0.07] ${
+              isDark
+                ? 'bg-[radial-gradient(#fff_1px,transparent_1px)]'
+                : 'bg-[radial-gradient(#000_1px,transparent_1px)]'
+            } [background-size:14px_14px] pointer-events-none`}
+          />
+
+          {/* Optical Viewfinder Corner Brackets */}
+          <div
+            className={`absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t border-l transition-colors ${
+              isDark ? 'border-white/30 group-hover:border-white/70' : 'border-black/30 group-hover:border-black/70'
+            }`}
+          />
+          <div
+            className={`absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t border-r transition-colors ${
+              isDark ? 'border-white/30 group-hover:border-white/70' : 'border-black/30 group-hover:border-black/70'
+            }`}
+          />
+
+          {/* Top Bar inside card */}
+          <div className="relative z-10 flex items-center justify-between text-[10px] font-mono">
+            <span
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border backdrop-blur-md ${
+                isDark ? 'border-white/15 bg-black/60 text-white/90' : 'border-black/15 bg-white/80 text-black/90'
+              }`}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+              <span>{project.ratio.includes('9:16') ? '9:16' : '4K'}</span>
+            </span>
+
+            <span
+              className={`px-2 py-0.5 rounded-full border backdrop-blur-md font-semibold ${
+                isDark ? 'border-white/15 bg-black/60 text-white/80' : 'border-black/15 bg-white/80 text-black/80'
+              }`}
+            >
+              {project.duration}
+            </span>
+          </div>
+
+          {/* Center Play Icon */}
+          <div className="relative z-10 flex flex-col items-center justify-center my-auto text-center px-2">
+            <div
+              className={`flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border shadow-lg transition-all duration-300 group-hover:scale-110 ${
+                isDark
+                  ? 'border-white/30 bg-white/10 text-white group-hover:bg-white group-hover:text-black group-hover:border-white'
+                  : 'border-black/30 bg-black/5 text-black group-hover:bg-black group-hover:text-white group-hover:border-black'
+              }`}
+            >
+              <Play size={18} className="fill-current ml-0.5" />
+            </div>
+
+            <span
+              className={`mt-2 font-mono text-[9px] uppercase tracking-widest font-bold transition-opacity ${
+                isDark ? 'text-white/60 group-hover:text-white' : 'text-black/60 group-hover:text-black'
+              }`}
+            >
+              WATCH CUT
+            </span>
+          </div>
+
+          {/* Empty bottom spacer for gradient overlay */}
+          <div />
+        </div>
+      )}
+
+      {/* 2. Bottom Overlay (Matches user reference image: white dot + Title / Channel Name) */}
+      <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-14 pb-3.5 px-3.5 flex flex-col justify-end text-white">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="h-2 w-2 rounded-full bg-white shrink-0 shadow-sm" />
+          <h4 className="text-xs sm:text-sm font-semibold tracking-tight truncate leading-tight">
+            {project.title.split(':')[0]}
+          </h4>
+        </div>
+        <p className="text-[10px] sm:text-[11px] font-mono text-white/60 truncate mt-0.5 pl-4">
+          {project.title.includes(':') ? project.title.split(':')[1].trim() : project.category}
+        </p>
+      </div>
+
+      {/* Subtle hover ring */}
+      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ring-1 ring-inset ring-transparent group-hover:ring-white/20 transition-all duration-300" />
+    </motion.div>
   )
 }
 
@@ -714,7 +832,7 @@ export default function Site() {
                 isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'
               }`}
             >
-              <span>Let&apos;s Cut</span>
+              <span>Let&apos;s Work</span>
             </button>
           </div>
         </header>
@@ -742,6 +860,10 @@ export default function Site() {
                 }`}
               >
                 <div className="flex items-center gap-3">
+                  <span className={`font-mono text-[11px] uppercase tracking-widest font-bold ${isDark ? 'text-white/80' : 'text-black/80'}`}>
+                    01 / HERO SECTION
+                  </span>
+                  <span className={isDark ? 'text-white/20' : 'text-black/20'}>|</span>
                   <span className={`flex items-center gap-1.5 font-semibold tracking-wide ${isDark ? 'text-white' : 'text-black'}`}>
                     <span className={`h-2 w-2 rounded-full inline-block animate-ping ${isDark ? 'bg-white' : 'bg-red-500'}`} />
                     REC [●] 00:02:48:19
@@ -825,7 +947,7 @@ export default function Site() {
                           }`}
                         >
                           <textPath href="#lensRingCircle" startOffset="0%">
-                            ✦ VIDEO EDITOR ✦ COLORIST ✦ POST-PRODUCTION ✦ ANANDU PRASAD ✦ VIDEO EDITOR ✦ COLORIST ✦ POST-PRODUCTION ✦ ANANDU PRASAD
+                            ✦ VIDEO EDITOR ✦ COLOR GRADING ✦ POST-PRODUCTION ✦ ANANDU PRASAD ✦ VIDEO EDITOR ✦ COLOR GRADING ✦ POST-PRODUCTION ✦ ANANDU PRASAD
                           </textPath>
                         </text>
                       </svg>
@@ -851,13 +973,20 @@ export default function Site() {
                   </div>
                 </div>
 
-                {/* Text & Details Column: Renders Second on Mobile (order-2), Left Column on Desktop (md:order-1) */}
+                {/* Text & Details Column */}
                 <div className="order-2 md:order-1 md:col-span-6 lg:col-span-6 flex flex-col justify-center text-center md:text-left items-center md:items-start mt-4 md:mt-0">
                   
-                  {/* Stylised Name Headline: Renders directly under portrait on Mobile */}
+                  {/* Mobile Section Tag */}
+                  <span className={`md:hidden font-mono text-[11px] uppercase tracking-widest font-semibold mb-2 block ${
+                    isDark ? 'text-white/50' : 'text-black/50'
+                  }`}>
+                    01 / HERO SECTION
+                  </span>
+
+                  {/* Stylised Name Headline */}
                   <h1
                     aria-label={PROFILE.name}
-                    className="select-none text-[14vw] leading-[0.92] tracking-tight sm:text-[11vw] md:text-[5.5rem] lg:text-[7.2rem] xl:text-[8.2rem] order-1 md:order-2"
+                    className="select-none text-[14vw] leading-[0.92] tracking-tight sm:text-[11vw] md:text-[5.5rem] lg:text-[7.2rem] xl:text-[8.2rem]"
                   >
                     <span
                       className={`block overflow-hidden pb-[.06em] font-anton uppercase tracking-[0.02em] transition-colors duration-150 ${
@@ -881,86 +1010,110 @@ export default function Site() {
                     </span>
                   </h1>
 
-                  {/* Hero CTAs: Side-by-side action buttons on mobile */}
-                  <div className="mt-5 sm:mt-8 flex flex-row items-center justify-center md:justify-start gap-3 sm:gap-4 w-full sm:w-auto order-2 md:order-4">
-                    <a
-                      href={PROFILE.showreelDriveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-full px-5 sm:px-7 py-3 sm:py-4 text-xs sm:text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg ${
-                        isDark
-                          ? 'bg-white text-black hover:bg-neutral-200 shadow-white/10'
-                          : 'bg-black text-white hover:bg-neutral-800 shadow-black/10'
-                      }`}
-                    >
-                      <LogoGoogleDrive size={15} />
-                      <span className="whitespace-nowrap">Drive Showreel</span>
-                      <ArrowUpRight size={13} />
-                    </a>
-                    <button
-                      onClick={() => {
-                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
-                        go(contactIndex >= 0 ? contactIndex : 4)
-                      }}
-                      className={`flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-full border px-5 sm:px-7 py-3 sm:py-4 text-xs sm:text-sm font-medium transition-all hover:scale-105 active:scale-95 cursor-pointer ${
-                        isDark
-                          ? 'border-white/25 bg-transparent text-white hover:border-white hover:bg-white/10'
-                          : 'border-black/25 bg-transparent text-black hover:border-black hover:bg-black/5'
-                      }`}
-                    >
-                      <span className="whitespace-nowrap">Hire For Edit</span>
-                      <ArrowUpRight size={13} />
-                    </button>
-                  </div>
+                  {/* Subtitle / Roles: VIDEO EDITOR · COLOR GRADING · POST-PRODUCTION */}
+                  <p className={`mt-3 sm:mt-4 font-mono text-xs sm:text-sm md:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] font-bold ${
+                    isDark ? 'text-white/90' : 'text-black/90'
+                  }`}>
+                    {PROFILE.headline}
+                  </p>
 
-                  {/* Official Software Badges: Above Name on desktop (md:order-1), below CTAs on mobile (order-3) */}
-                  <div className="mb-0 md:mb-5 mt-6 sm:mt-8 md:mt-0 flex flex-wrap items-center justify-center md:justify-start gap-2.5 sm:gap-3 order-3 md:order-1">
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 font-mono text-[11px] sm:text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoDaVinci size={14} />
-                      <span>DaVinci Resolve</span>
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 font-mono text-[11px] sm:text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoPremiere size={14} />
-                      <span>Premiere Pro</span>
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 font-mono text-[11px] sm:text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoAfterEffects size={14} />
-                      <span>After Effects</span>
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 font-mono text-[11px] sm:text-xs font-semibold ${
-                        isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                      }`}
-                    >
-                      <LogoCapCut size={14} />
-                      <span>CapCut Pro</span>
-                    </span>
-                  </div>
-
-                  {/* Subtitle Bio: Scrollable below on mobile */}
+                  {/* Subtitle Bio */}
                   <p
-                    className={`mt-4 sm:mt-6 max-w-xl text-xs sm:text-base md:text-lg leading-relaxed font-normal transition-colors duration-150 order-4 md:order-3 ${
+                    className={`mt-4 sm:mt-5 max-w-xl text-xs sm:text-base md:text-lg leading-relaxed font-normal transition-colors duration-150 ${
                       isDark ? 'text-white/75' : 'text-black/75'
                     }`}
                   >
                     {PROFILE.bio}
                   </p>
 
-                  {/* Mobile Ticker: Appears when scrolling down on mobile */}
+                  {/* Focus Areas Chips: Wedding Films · Cinematic Edits · Social Content */}
+                  <div className="mt-4 sm:mt-5 flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-2.5">
+                    {PROFILE.heroTags.map((tag) => (
+                      <span
+                        key={tag}
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-3 sm:px-3.5 py-1 text-xs sm:text-sm font-mono font-medium transition-all ${
+                          isDark
+                            ? 'border-white/15 bg-white/[0.05] text-white/90'
+                            : 'border-black/15 bg-black/[0.04] text-black/90'
+                        }`}
+                      >
+                        <span className={`h-1.5 w-1.5 rounded-full ${isDark ? 'bg-white' : 'bg-black'}`} />
+                        <span>{tag}</span>
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Hero CTAs: VIEW SHOWREEL ↗️ and LET'S WORK ↗️ */}
+                  <div className="mt-6 sm:mt-8 flex flex-row items-center justify-center md:justify-start gap-3 sm:gap-4 w-full sm:w-auto">
+                    <a
+                      href={PROFILE.showreelDriveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-full px-5 sm:px-7 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg ${
+                        isDark
+                          ? 'bg-white text-black hover:bg-neutral-200 shadow-white/10'
+                          : 'bg-black text-white hover:bg-neutral-800 shadow-black/10'
+                      }`}
+                    >
+                      <LogoGoogleDrive size={15} />
+                      <span className="whitespace-nowrap">VIEW SHOWREEL</span>
+                      <ArrowUpRight size={14} />
+                    </a>
+                    <button
+                      onClick={() => {
+                        const contactIndex = TABS.findIndex(([id]) => id === 'contact')
+                        go(contactIndex >= 0 ? contactIndex : 4)
+                      }}
+                      className={`flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-full border px-5 sm:px-7 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 cursor-pointer ${
+                        isDark
+                          ? 'border-white/25 bg-transparent text-white hover:border-white hover:bg-white/10'
+                          : 'border-black/25 bg-transparent text-black hover:border-black hover:bg-black/5'
+                      }`}
+                    >
+                      <span className="whitespace-nowrap">LET&apos;S WORK</span>
+                      <ArrowUpRight size={14} />
+                    </button>
+                  </div>
+
+                  {/* Software Badges */}
+                  <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-2.5">
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] sm:text-xs font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.04] text-white/80' : 'border-black/15 bg-black/[0.03] text-black/80'
+                      }`}
+                    >
+                      <LogoDaVinci size={13} />
+                      <span>DaVinci Resolve</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] sm:text-xs font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.04] text-white/80' : 'border-black/15 bg-black/[0.03] text-black/80'
+                      }`}
+                    >
+                      <LogoPremiere size={13} />
+                      <span>Premiere Pro</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] sm:text-xs font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.04] text-white/80' : 'border-black/15 bg-black/[0.03] text-black/80'
+                      }`}
+                    >
+                      <LogoAfterEffects size={13} />
+                      <span>After Effects</span>
+                    </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] sm:text-xs font-semibold ${
+                        isDark ? 'border-white/15 bg-white/[0.04] text-white/80' : 'border-black/15 bg-black/[0.03] text-black/80'
+                      }`}
+                    >
+                      <LogoCapCut size={13} />
+                      <span>CapCut Pro</span>
+                    </span>
+                  </div>
+
+                  {/* Mobile Ticker */}
                   <div
-                    className={`mt-7 sm:mt-9 w-full flex md:hidden flex-col items-center gap-2 border-t pt-4 font-mono text-[11px] sm:text-xs transition-colors order-5 ${
+                    className={`mt-7 sm:mt-9 w-full flex md:hidden flex-col items-center gap-2 border-t pt-4 font-mono text-[11px] sm:text-xs transition-colors ${
                       isDark ? 'text-white/50 border-white/10' : 'text-black/50 border-black/10'
                     }`}
                   >
@@ -986,7 +1139,7 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 2: ABOUT ME
+              SECTION 2: ABOUT SECTION
               ========================================================================= */}
           <Sec id="about" alternate>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -996,12 +1149,12 @@ export default function Site() {
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
-                  Who I Am
+                  02 / ABOUT SECTION
                 </span>
-                <H2>About Me</H2>
+                <H2>About</H2>
               </div>
               <p className={`max-w-md text-base md:text-lg font-medium italic ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-                &ldquo;Turning ideas into impactful visuals, one frame at a time.&rdquo;
+                &ldquo;Editing with purpose. Storytelling with feeling.&rdquo;
               </p>
             </div>
 
@@ -1021,27 +1174,24 @@ export default function Site() {
                   <span className={`font-mono text-xs uppercase tracking-wider font-semibold ${
                     isDark ? 'text-white/60' : 'text-black/60'
                   }`}>
-                    Anandhu Prasad
+                    Anandu Prasad
                   </span>
                 </div>
 
-                <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold font-display tracking-tight mb-6 leading-snug ${
+                <h3 className={`text-2xl sm:text-3xl md:text-4xl font-bold font-display tracking-tight mb-6 leading-snug ${
                   isDark ? 'text-white' : 'text-black'
                 }`}>
-                  I’m a passionate Video Editor who transforms ideas into engaging visual stories.
+                  Editing with purpose. Storytelling with feeling.
                 </h3>
 
-                <div className={`space-y-4 text-base sm:text-lg leading-relaxed ${
-                  isDark ? 'text-white/75' : 'text-black/75'
+                <div className={`space-y-4 text-base sm:text-xl leading-relaxed ${
+                  isDark ? 'text-white/80' : 'text-black/80'
                 }`}>
                   <p>
-                    I’m a creative Video Editor passionate about visual storytelling, cinematic editing, and crafting engaging content that connects with audiences.
+                    A video editor focused on storytelling, rhythm, sound design, and cinematic color — creating visuals that feel intentional, immersive, and memorable.
                   </p>
-                  <p>
-                    With a strong eye for detail, rhythm, and creativity, I focus on crafting videos that capture attention, communicate emotions, and leave a lasting impact.
-                  </p>
-                  <p>
-                    From cinematic edits and social media reels to promotional videos and creative content, I aim to bring every vision to life through impactful storytelling, smooth transitions, and compelling visuals.
+                  <p className={`text-sm sm:text-base ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                    I shape raw footage into cinematic stories through precise editing, thoughtful sound design, and intentional color.
                   </p>
                 </div>
               </div>
@@ -1059,7 +1209,7 @@ export default function Site() {
                   <p className={`text-base sm:text-lg md:text-xl font-semibold tracking-tight ${
                     isDark ? 'text-white' : 'text-black'
                   }`}>
-                    My goal is simple — to turn ordinary footage into extraordinary stories.
+                    Editing with purpose. Storytelling with feeling.
                   </p>
                 </div>
 
@@ -1074,7 +1224,7 @@ export default function Site() {
                       : 'bg-black text-white hover:bg-neutral-800'
                   }`}
                 >
-                  <span>Let&apos;s Connect</span>
+                  <span>LET&apos;S WORK</span>
                   <ArrowUpRight size={14} />
                 </button>
               </div>
@@ -1082,20 +1232,25 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 3: SELECTED WORKS (ULTRA-MINIMAL CINEMATIC SHOWCASE)
+              SECTION 3: WORK SECTION
               ========================================================================= */}
           <Sec id="projects">
             {/* Minimal Header */}
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 sm:mb-12">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 sm:mb-10">
               <div>
                 <span
                   className={`font-mono text-xs uppercase tracking-widest block mb-2 font-semibold ${
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
-                  Selected Cuts
+                  03 / WORK SECTION
                 </span>
-                <H2>Selected Works</H2>
+                <H2>Selected Work</H2>
+                <p className={`font-mono text-xs sm:text-sm uppercase tracking-widest mt-2 font-bold ${
+                  isDark ? 'text-white/70' : 'text-black/70'
+                }`}>
+                  SELECTED WORK — 2025/26
+                </p>
               </div>
 
               <div className="flex items-center gap-3">
@@ -1117,7 +1272,7 @@ export default function Site() {
             </div>
 
             {/* Clean Minimal Category Tabs */}
-            <div className={`mb-10 flex flex-wrap items-center gap-2 border-b pb-4 ${
+            <div className={`mb-8 sm:mb-10 flex flex-wrap items-center gap-2 border-b pb-4 ${
               isDark ? 'border-white/10' : 'border-black/10'
             }`}>
               {PROJECT_CATEGORIES.map((cat) => {
@@ -1142,108 +1297,19 @@ export default function Site() {
               })}
             </div>
 
-            {/* Ultra-Minimal Typographic Works Directory (No Thumbnails) */}
-            <motion.div layout className="space-y-3">
+            {/* Compact Vertical Video Cards Grid (Direct Match to User Reference Image) */}
+            <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-5">
               <AnimatePresence>
                 {PROJECTS.filter(
                   (p) => selectedCategory === 'all' || p.filterCategory === selectedCategory
-                ).map((project, index) => {
-                  const itemIndex = String(index + 1).padStart(2, '0')
-                  return (
-                    <motion.div
-                      key={project.id}
-                      layout
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.2 }}
-                      onClick={() => setPlayingVideo(project)}
-                      className={`group relative flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 sm:p-6 rounded-2xl border transition-all duration-300 cursor-pointer select-none ${
-                        isDark
-                          ? 'border-white/10 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.05]'
-                          : 'border-black/10 bg-black/[0.015] hover:border-black/30 hover:bg-black/[0.04]'
-                      }`}
-                    >
-                      {/* Left: Index number + Title + Category */}
-                      <div className="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
-                        <span
-                          className={`font-mono text-xs sm:text-sm font-semibold tracking-wider pt-1 sm:pt-0 shrink-0 transition-colors ${
-                            isDark
-                              ? 'text-white/40 group-hover:text-white'
-                              : 'text-black/40 group-hover:text-black'
-                          }`}
-                        >
-                          {itemIndex}
-                        </span>
-
-                        <div className="min-w-0">
-                          <h3
-                            className={`font-display text-lg sm:text-2xl md:text-3xl font-bold tracking-tight transition-transform duration-300 group-hover:translate-x-1 ${
-                              isDark ? 'text-white' : 'text-black'
-                            }`}
-                          >
-                            {project.title}
-                          </h3>
-                          <div className="flex flex-wrap items-center gap-2 mt-1">
-                            <span
-                              className={`text-xs sm:text-sm font-mono ${
-                                isDark ? 'text-white/50' : 'text-black/50'
-                              }`}
-                            >
-                              {project.category}
-                            </span>
-                            <span className={isDark ? 'text-white/20' : 'text-black/20'}>•</span>
-                            <span
-                              className={`text-xs font-mono ${
-                                isDark ? 'text-white/40' : 'text-black/40'
-                              }`}
-                            >
-                              {project.ratio}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Right: Software badge + Duration + Play Action */}
-                      <div className="flex items-center justify-between md:justify-end gap-3 sm:gap-4 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-inherit">
-                        <div className="flex items-center gap-2">
-                          <span
-                            className={`hidden sm:inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] font-medium ${
-                              isDark
-                                ? 'border-white/10 bg-white/5 text-white/80'
-                                : 'border-black/10 bg-black/5 text-black/80'
-                            }`}
-                          >
-                            {renderSoftwareBadge(project.software, isDark)}
-                          </span>
-
-                          <span
-                            className={`font-mono text-xs px-2.5 py-1 rounded-md border ${
-                              isDark
-                                ? 'border-white/10 text-white/60 bg-white/[0.02]'
-                                : 'border-black/10 text-black/60 bg-black/[0.02]'
-                            }`}
-                          >
-                            {project.duration}
-                          </span>
-                        </div>
-
-                        {/* Interactive Play Button Pill */}
-                        <div
-                          className={`flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-xs font-semibold transition-all duration-300 ${
-                            isDark
-                              ? 'border-white/20 bg-white/5 text-white group-hover:bg-white group-hover:text-black group-hover:border-white group-hover:shadow-lg group-hover:shadow-white/10'
-                              : 'border-black/20 bg-black/5 text-black group-hover:bg-black group-hover:text-white group-hover:border-black group-hover:shadow-lg group-hover:shadow-black/10'
-                          }`}
-                        >
-                          <Play size={13} className="fill-current ml-0.5" />
-                          <span>Watch</span>
-                          <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        </div>
-                      </div>
-                    </motion.div>
-                  )
-                })}
+                ).map((project) => (
+                  <VerticalProjectCard
+                    key={project.id}
+                    project={project}
+                    isDark={isDark}
+                    onPlay={setPlayingVideo}
+                  />
+                ))}
               </AnimatePresence>
             </motion.div>
           </Sec>
@@ -1259,7 +1325,7 @@ export default function Site() {
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
-                  Software & Workflow
+                  04 / ARSENAL
                 </span>
                 <H2>The Arsenal</H2>
               </div>
@@ -1343,9 +1409,9 @@ export default function Site() {
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
-                  Collaboration
+                  05 / CONTACT
                 </span>
-                <H2>Let&apos;s Cut</H2>
+                <H2>Let&apos;s Work</H2>
               </div>
               <p className={`max-w-md text-base md:text-lg ${isDark ? 'text-white/70' : 'text-black/70'}`}>
                 Have Google Drive footage ready? Send project details and let&apos;s get cutting.
@@ -1504,11 +1570,11 @@ export default function Site() {
                       name="service"
                       className={`${field} cursor-pointer ${isDark ? 'bg-neutral-900 text-white' : 'bg-white text-black'}`}
                     >
-                      <option value="YouTube Long-Form (Retention Edit)">YouTube Long-Form Video</option>
-                      <option value="Commercial / Brand Ad Spot">Commercial / Brand Ad</option>
-                      <option value="Instagram Reels & TikToks">Viral Reels / TikToks</option>
-                      <option value="DaVinci Resolve Color Grading">Color Grading Only</option>
-                      <option value="Full Video Post-Production">Complete Post-Production</option>
+                      <option value="Wedding Films & Highlights">Wedding Films & Highlights</option>
+                      <option value="Cinematic & Travel Edits">Cinematic & Travel Edits</option>
+                      <option value="Reels & Social Media Content">Reels & Social Media Content</option>
+                      <option value="Brand Films & Promos">Brand Films & Promos</option>
+                      <option value="Color Grading & Post-Production">Color Grading & Post-Production</option>
                     </select>
                   </div>
 
@@ -1720,7 +1786,7 @@ export default function Site() {
                         isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'
                       }`}
                     >
-                      <span>Hire For This Style</span>
+                      <span>Let&apos;s Work Together</span>
                     </button>
                   </div>
                 </div>

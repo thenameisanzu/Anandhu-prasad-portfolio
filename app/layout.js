@@ -1,19 +1,15 @@
 import './globals.css'
-import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google'
-
-const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display' })
-const body = Instrument_Sans({ subsets: ['latin'], variable: '--font-body' })
 
 export const metadata = {
-  title: 'Anandu Prasad | Video Editor & Colorist',
-  description: 'Portfolio of Anandu Prasad — Video Editor & Colorist specializing in DaVinci Resolve, Adobe Premiere Pro, and CapCut. Crafting cinematic stories and viral high-retention edits.',
+  title: 'Anandu Prasad | Video Editor · Color Grading · Post-Production',
+  description: 'Anandu Prasad — Video Editor · Color Grading · Post-Production. I shape raw footage into cinematic stories through precise editing, thoughtful sound design, and intentional color.',
 }
 
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`dark ${display.variable} ${body.variable}`}>
+    <html lang="en" className="dark">
       <head>
         <script
           dangerouslySetInnerHTML={{
