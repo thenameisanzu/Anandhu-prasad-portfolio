@@ -234,6 +234,7 @@ export const PROJECTS = [
     desc: 'Upcoming brand commercial for Creamin. Playful pacing, vibrant dessert visuals, rhythmic sound design, and clean pastel color grade.',
     driveUrl: 'https://drive.google.com/file/d/1qu--RNOXEWenVRXysdAlpjR_deYEG2k4/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1qu--RNOXEWenVRXysdAlpjR_deYEG2k4/preview',
+    videoUrl: '/projects/creamin.mp4',
     thumbnailImage: '/projects/creamin.jpg',
     tags: ['Brand Film', 'Upcoming Brand', 'DaVinci Resolve'],
   },
@@ -1816,14 +1817,25 @@ export default function Site() {
                 </div>
 
                 {/* Video Player */}
-                <div className="relative w-full bg-black aspect-video flex items-center justify-center">
-                  <iframe
-                    src={playingVideo.previewUrl}
-                    title={playingVideo.title}
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    className="h-full w-full border-0"
-                  />
+                <div className="relative w-full bg-black aspect-video flex items-center justify-center overflow-hidden">
+                  {playingVideo.videoUrl ? (
+                    <video
+                      key={playingVideo.id}
+                      src={playingVideo.videoUrl}
+                      controls
+                      autoPlay
+                      playsInline
+                      className="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <iframe
+                      src={playingVideo.previewUrl}
+                      title={playingVideo.title}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className="h-full w-full border-0"
+                    />
+                  )}
                 </div>
 
                 {/* Modal Footer */}
