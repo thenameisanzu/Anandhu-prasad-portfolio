@@ -54,6 +54,7 @@ export default function RootLayout({ children }) {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Anandu Prasad - Video Editor &amp; Colorist" />
+        <meta property="og:updated_time" content="2026-10-30T00:45:00Z" />
         <meta name="twitter:image" content="https://anandhu-prasad-portfolio.vercel.app/anandu-comic-og.jpg?v=comic-8" />
         <script
           dangerouslySetInnerHTML={{
