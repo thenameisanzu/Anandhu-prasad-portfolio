@@ -6,10 +6,12 @@ export const metadata = {
   description: 'Anandu Prasad — Video Editor · Color Grading · Post-Production. I shape raw footage into cinematic stories through precise editing, thoughtful sound design, and intentional color.',
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/png' },
-      { url: '/favicon.ico' },
+      { url: '/anandu-comic-icon.png?v=comic-5', type: 'image/png', sizes: '512x512' },
+      { url: '/anandu-comic-icon-192.png?v=comic-5', type: 'image/png', sizes: '192x192' },
+      { url: '/anandu-comic-favicon.ico?v=comic-5' },
     ],
-    apple: '/apple-touch-icon.png',
+    shortcut: '/anandu-comic-icon.png?v=comic-5',
+    apple: '/anandu-comic-apple-icon.png?v=comic-5',
   },
   openGraph: {
     title: 'Anandu Prasad | Video Editor · Color Grading · Post-Production',
@@ -41,9 +43,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/icon.png" type="image/png" sizes="512x512" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="icon" href="/anandu-comic-icon.png?v=comic-5" type="image/png" sizes="512x512" />
+        <link rel="icon" href="/anandu-comic-icon-192.png?v=comic-5" type="image/png" sizes="192x192" />
+        <link rel="shortcut icon" href="/anandu-comic-favicon.ico?v=comic-5" />
+        <link rel="apple-touch-icon" href="/anandu-comic-apple-icon.png?v=comic-5" sizes="180x180" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
