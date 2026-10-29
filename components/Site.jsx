@@ -1139,7 +1139,7 @@ export default function Site() {
           </Sec>
 
           {/* =========================================================================
-              SECTION 2: ABOUT SECTION
+              SECTION 2: ABOUT ME
               ========================================================================= */}
           <Sec id="about" alternate>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -1149,12 +1149,12 @@ export default function Site() {
                     isDark ? 'text-white/50' : 'text-black/50'
                   }`}
                 >
-                  02 / ABOUT SECTION
+                  Who I Am
                 </span>
-                <H2>About</H2>
+                <H2>About Me</H2>
               </div>
               <p className={`max-w-md text-base md:text-lg font-medium italic ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-                &ldquo;Editing with purpose. Storytelling with feeling.&rdquo;
+                &ldquo;Turning ideas into impactful visuals, one frame at a time.&rdquo;
               </p>
             </div>
 
@@ -1178,20 +1178,23 @@ export default function Site() {
                   </span>
                 </div>
 
-                <h3 className={`text-2xl sm:text-3xl md:text-4xl font-bold font-display tracking-tight mb-6 leading-snug ${
+                <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold font-display tracking-tight mb-6 leading-snug ${
                   isDark ? 'text-white' : 'text-black'
                 }`}>
-                  Editing with purpose. Storytelling with feeling.
+                  I’m a passionate Video Editor who transforms ideas into engaging visual stories.
                 </h3>
 
-                <div className={`space-y-4 text-base sm:text-xl leading-relaxed ${
-                  isDark ? 'text-white/80' : 'text-black/80'
+                <div className={`space-y-4 text-base sm:text-lg leading-relaxed ${
+                  isDark ? 'text-white/75' : 'text-black/75'
                 }`}>
                   <p>
-                    A video editor focused on storytelling, rhythm, sound design, and cinematic color — creating visuals that feel intentional, immersive, and memorable.
+                    I’m a creative Video Editor passionate about visual storytelling, cinematic editing, and crafting engaging content that connects with audiences.
                   </p>
-                  <p className={`text-sm sm:text-base ${isDark ? 'text-white/60' : 'text-black/60'}`}>
-                    I shape raw footage into cinematic stories through precise editing, thoughtful sound design, and intentional color.
+                  <p>
+                    With a strong eye for detail, rhythm, and creativity, I focus on crafting videos that capture attention, communicate emotions, and leave a lasting impact.
+                  </p>
+                  <p>
+                    From cinematic edits and social media reels to promotional videos and creative content, I aim to bring every vision to life through impactful storytelling, smooth transitions, and compelling visuals.
                   </p>
                 </div>
               </div>
@@ -1209,7 +1212,7 @@ export default function Site() {
                   <p className={`text-base sm:text-lg md:text-xl font-semibold tracking-tight ${
                     isDark ? 'text-white' : 'text-black'
                   }`}>
-                    Editing with purpose. Storytelling with feeling.
+                    My goal is simple — to turn ordinary footage into extraordinary stories.
                   </p>
                 </div>
 
@@ -1224,7 +1227,7 @@ export default function Site() {
                       : 'bg-black text-white hover:bg-neutral-800'
                   }`}
                 >
-                  <span>LET&apos;S WORK</span>
+                  <span>Let&apos;s Connect</span>
                   <ArrowUpRight size={14} />
                 </button>
               </div>
