@@ -211,10 +211,10 @@ export const TOOLS = [
 // 📽️ SELECTED WORKS - 2025/26 SYNCED WITH GOOGLE DRIVE
 export const PROJECT_CATEGORIES = [
   { id: 'all', label: 'All Works' },
-  { id: 'weddings', label: 'Wedding Films & Highlights' },
-  { id: 'cinematic', label: 'Cinematic & Travel Edits' },
-  { id: 'reels', label: 'Reels & Social Media Content' },
   { id: 'brand', label: 'Brand Films & Promos' },
+  { id: 'reels', label: 'Reels & Social Media Content' },
+  { id: 'cinematic', label: 'Cinematic & Travel Edits' },
+  { id: 'weddings', label: 'Wedding Films & Highlights' },
 ]
 
 export const PROJECTS = [
