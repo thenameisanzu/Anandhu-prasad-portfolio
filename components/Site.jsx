@@ -618,6 +618,18 @@ export default function Site() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
+  // Lock body scroll when video modal is open
+  useEffect(() => {
+    if (playingVideo) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [playingVideo])
+
   // Initialize theme from localStorage
   useEffect(() => {
     try {
@@ -1631,114 +1643,151 @@ export default function Site() {
             🎬 GOOGLE DRIVE MASTER VIDEO PLAYER MODAL
             ========================================================================= */}
         <AnimatePresence>
-          {playingVideo && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-black/85 backdrop-blur-md"
-              onClick={() => setPlayingVideo(null)}
-            >
+          {playingVideo && (() => {
+            const isVertical =
+              playingVideo.ratio?.includes('9:16') ||
+              playingVideo.ratio?.toLowerCase().includes('vertical') ||
+              playingVideo.category?.toLowerCase().includes('reels')
+
+            return (
               <motion.div
-                initial={{ scale: 0.95, opacity: 0, y: 20 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                onClick={(e) => e.stopPropagation()}
-                className={`relative w-full max-w-4xl overflow-hidden rounded-3xl border shadow-2xl transition-colors ${isDark
-                  ? 'border-white/20 bg-neutral-950 text-white shadow-black/80'
-                  : 'border-black/20 bg-white text-black shadow-2xl'
-                  }`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-[100] flex items-center justify-center p-2.5 sm:p-5 md:p-8 bg-black/90 backdrop-blur-md"
+                onClick={() => setPlayingVideo(null)}
               >
-                {/* Modal Header */}
-                <div
-                  className={`flex items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 border-b ${isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
-                    }`}
+                <motion.div
+                  initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                  transition={{ type: 'spring', damping: 26, stiffness: 320 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className={`relative w-full overflow-hidden rounded-2xl sm:rounded-3xl border shadow-2xl transition-all flex flex-col max-h-[92dvh] ${
+                    isVertical ? 'max-w-[390px] sm:max-w-[440px]' : 'max-w-4xl'
+                  } ${
+                    isDark
+                      ? 'border-white/20 bg-neutral-950 text-white shadow-black/90'
+                      : 'border-black/20 bg-white text-black shadow-2xl'
+                  }`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-mono text-xs font-bold border ${isDark ? 'border-white/20 bg-white/10 text-white' : 'border-black/20 bg-black/5 text-black'
+                  {/* Modal Header */}
+                  <div
+                    className={`flex items-center justify-between gap-3 px-3.5 sm:px-6 py-3 sm:py-3.5 border-b shrink-0 ${
+                      isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div
+                        className={`flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl font-mono text-xs font-bold border ${
+                          isDark ? 'border-white/20 bg-white/10 text-white' : 'border-black/20 bg-black/5 text-black'
                         }`}
-                    >
-                      {getSoftwareIcon(playingVideo.software, isDark)}
-                    </div>
-                    <div className="min-w-0">
-                      <h4 className="font-display text-sm sm:text-base md:text-lg font-bold tracking-tight leading-snug truncate">
-                        {playingVideo.title}
-                      </h4>
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
-                        <p className={`text-xs font-mono truncate ${isDark ? 'text-white/60' : 'text-black/60'}`}>
-                          {playingVideo.category} • {playingVideo.duration}
-                        </p>
-                        {playingVideo.software && (
+                      >
+                        {getSoftwareIcon(playingVideo.software, isDark)}
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-display text-sm sm:text-base font-bold tracking-tight leading-snug truncate">
+                          {playingVideo.title}
+                        </h4>
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
+                          <p className={`text-xs font-mono truncate ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                            {playingVideo.category} • {playingVideo.duration}
+                          </p>
                           <span
-                            className={`hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded-full border ${isDark ? 'border-white/15 bg-white/5 text-white/70' : 'border-black/15 bg-black/5 text-black/70'
-                              }`}
+                            className={`inline-flex items-center text-[10px] font-mono px-1.5 py-0.2 rounded border uppercase font-bold tracking-wider ${
+                              isDark ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400' : 'border-emerald-600/30 bg-emerald-600/10 text-emerald-700'
+                            }`}
                           >
-                            {playingVideo.software}
+                            4K Master
                           </span>
-                        )}
+                        </div>
                       </div>
                     </div>
+
+                    <button
+                      onClick={() => setPlayingVideo(null)}
+                      aria-label="Close video player"
+                      className={`rounded-full p-2 border transition-colors cursor-pointer shrink-0 ${
+                        isDark
+                          ? 'border-white/20 hover:bg-white/10 text-white'
+                          : 'border-black/20 hover:bg-black/10 text-black'
+                      }`}
+                    >
+                      <X size={18} />
+                    </button>
                   </div>
 
-                  <button
-                    onClick={() => setPlayingVideo(null)}
-                    aria-label="Close video player"
-                    className={`rounded-full p-2 border transition-colors cursor-pointer shrink-0 ${isDark
-                      ? 'border-white/20 hover:bg-white/10 text-white'
-                      : 'border-black/20 hover:bg-black/10 text-black'
-                      }`}
-                  >
-                    <X size={18} />
-                  </button>
-                </div>
-
-                {/* Video Player */}
-                <div className="relative w-full bg-black aspect-video flex items-center justify-center overflow-hidden">
-                  {playingVideo.videoUrl ? (
-                    <video
-                      key={playingVideo.id}
-                      src={playingVideo.videoUrl}
-                      controls
-                      autoPlay
-                      playsInline
-                      className="h-full w-full object-contain"
-                    />
-                  ) : (
-                    <iframe
-                      src={playingVideo.previewUrl}
-                      title={playingVideo.title}
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      className="h-full w-full border-0"
-                    />
-                  )}
-                </div>
-
-                {/* Modal Footer */}
-                <div
-                  className={`flex items-center justify-between gap-3 px-5 py-3.5 border-t ${isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
+                  {/* Video Player Box */}
+                  <div
+                    className={`relative w-full bg-black flex items-center justify-center overflow-hidden flex-1 min-h-0 ${
+                      isVertical
+                        ? 'aspect-[9/16] max-h-[66dvh] sm:max-h-[72dvh]'
+                        : 'aspect-video max-h-[58dvh]'
                     }`}
-                >
-                  <span className={`text-xs font-mono ${isDark ? 'text-white/50' : 'text-black/50'}`}>
-                    Direct preview from portfolio drive
-                  </span>
+                  >
+                    {playingVideo.videoUrl ? (
+                      <video
+                        key={playingVideo.id}
+                        src={playingVideo.videoUrl}
+                        controls
+                        playsInline
+                        preload="auto"
+                        className="h-full w-full object-contain"
+                      />
+                    ) : (
+                      <iframe
+                        src={playingVideo.previewUrl}
+                        title={playingVideo.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                        allowFullScreen
+                        loading="eager"
+                        className="h-full w-full border-0"
+                      />
+                    )}
+                  </div>
 
-                  <div className="flex items-center gap-2.5">
+                  {/* Quality status banner */}
+                  <div
+                    className={`flex items-center justify-between gap-2 px-3.5 sm:px-5 py-2 text-[11px] font-mono border-t shrink-0 ${
+                      isDark ? 'border-white/10 bg-white/[0.03] text-white/70' : 'border-black/10 bg-black/[0.03] text-black/70'
+                    }`}
+                  >
+                    <span className="truncate">
+                      Direct High-Bitrate Master • {playingVideo.ratio}
+                    </span>
                     <a
                       href={playingVideo.driveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold font-mono transition-all ${isDark
-                        ? 'border-white/20 bg-white/10 text-white hover:bg-white hover:text-black'
-                        : 'border-black/20 bg-black/5 text-black hover:bg-black hover:text-white'
-                        }`}
+                      className={`inline-flex items-center gap-1 font-bold underline underline-offset-2 shrink-0 ${
+                        isDark ? 'text-white hover:text-white/80' : 'text-black hover:text-black/80'
+                      }`}
                     >
-                      <LogoGoogleDrive size={15} />
-                      <span>Open in Drive</span>
-                      <ArrowUpRight size={14} />
+                      <span>Watch Full 4K</span>
+                      <ArrowUpRight size={12} />
+                    </a>
+                  </div>
+
+                  {/* Modal Footer */}
+                  <div
+                    className={`flex items-center justify-between gap-2.5 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 border-t shrink-0 ${
+                      isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
+                    }`}
+                  >
+                    <a
+                      href={playingVideo.driveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border px-3.5 sm:px-4 py-2 text-xs font-semibold font-mono transition-all ${
+                        isDark
+                          ? 'border-white/20 bg-white/10 text-white hover:bg-white hover:text-black'
+                          : 'border-black/20 bg-black/5 text-black hover:bg-black hover:text-white'
+                      }`}
+                    >
+                      <LogoGoogleDrive size={14} />
+                      <span>Open Drive Player</span>
+                      <ArrowUpRight size={13} />
                     </a>
                     <button
                       onClick={() => {
@@ -1746,16 +1795,17 @@ export default function Site() {
                         const contactIndex = TABS.findIndex(([id]) => id === 'contact')
                         go(contactIndex >= 0 ? contactIndex : 4)
                       }}
-                      className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-all shadow-sm cursor-pointer ${isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'
-                        }`}
+                      className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 rounded-full px-3.5 sm:px-4 py-2 text-xs font-bold transition-all shadow-sm cursor-pointer ${
+                        isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'
+                      }`}
                     >
-                      <span>Let&apos;s Work Together</span>
+                      <span>Let&apos;s Work</span>
                     </button>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )}
+            )
+          })()}
         </AnimatePresence>
       </MotionConfig>
     </ThemeContext.Provider>
