@@ -388,7 +388,7 @@ export const PROJECTS = [
     desc: 'Clean, modern corporate brand film for Dentistree Healthcare. Trust-building clean clinical lighting grade, clear voiceover pacing, and warm ambient score.',
     driveUrl: 'https://drive.google.com/file/d/1CcdfrybKr1EegkiIBYjjR92AvGNT1xP9/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1CcdfrybKr1EegkiIBYjjR92AvGNT1xP9/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/dentistree.jpg',
     tags: ['Dental Clinic Film', 'Clean Grade', 'DaVinci Resolve'],
   },
   {
