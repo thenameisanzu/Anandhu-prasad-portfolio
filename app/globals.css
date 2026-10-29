@@ -75,6 +75,7 @@ body::before {
 
 .no-scrollbar {
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -84,7 +85,6 @@ body::before {
   html, body {
     height: 100%;
     overflow: hidden;
-    overscroll-behavior: none;
   }
 }
 

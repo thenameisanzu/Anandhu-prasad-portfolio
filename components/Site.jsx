@@ -373,7 +373,7 @@ const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
   return (
     <section
       id={id}
-      className={`relative px-5 md:px-10 lg:px-16 max-lg:h-[100dvh] max-lg:min-w-full max-lg:w-full max-lg:max-w-full max-lg:snap-start max-lg:snap-always max-lg:overflow-y-auto max-lg:overflow-x-hidden ${
+      className={`relative px-5 md:px-10 lg:px-16 max-lg:h-[100dvh] max-lg:min-w-full max-lg:w-full max-lg:max-w-full max-lg:snap-start max-lg:overflow-y-auto max-lg:overflow-x-hidden ${
         isFooter
           ? 'pt-24 pb-28 lg:pt-28 lg:pb-6 lg:min-h-0'
           : 'pt-24 pb-28 lg:py-24 lg:min-h-screen'
@@ -386,6 +386,10 @@ const Sec = ({ id, alternate, isFooter = false, className = '', children }) => {
           ? 'bg-black text-white'
           : 'bg-white text-black'
       } transition-colors duration-150 ${className}`}
+      style={{
+        WebkitOverflowScrolling: 'touch',
+        touchAction: 'pan-y pan-x',
+      }}
     >
       {children}
     </section>
@@ -623,8 +627,26 @@ export default function Site() {
   // Throttled scroll listener that does NOT fight with programmatic tab clicks
   useEffect(() => {
     let ticking = false
+    let swipeDebounce = null
+
     const fn = () => {
       if (isProgrammaticScroll.current) return
+
+      // On mobile/iPad horizontal swipe, debounce tab active update so heavy re-renders don't freeze WebKit snap momentum
+      if (window.innerWidth < 1024) {
+        if (swipeDebounce) clearTimeout(swipeDebounce)
+        swipeDebounce = setTimeout(() => {
+          const p = pager.current
+          if (!p || isProgrammaticScroll.current) return
+          const newActive = Math.round(p.scrollLeft / p.clientWidth)
+          if (newActive !== lastActiveRef.current && newActive >= 0 && newActive < TABS.length) {
+            lastActiveRef.current = newActive
+            setActive(newActive)
+          }
+        }, 50)
+        return
+      }
+
       if (ticking) return
       ticking = true
 
@@ -633,15 +655,6 @@ export default function Site() {
         if (isProgrammaticScroll.current) return
         const p = pager.current
         if (!p) return
-
-        if (window.innerWidth < 1024) {
-          const newActive = Math.round(p.scrollLeft / p.clientWidth)
-          if (newActive !== lastActiveRef.current && newActive >= 0 && newActive < TABS.length) {
-            lastActiveRef.current = newActive
-            setActive(newActive)
-          }
-          return
-        }
 
         // On desktop/tablet, check which section is in view
         const midY = window.innerHeight * 0.4
@@ -662,14 +675,21 @@ export default function Site() {
     }
 
     const p = pager.current
-    if (p) p.addEventListener('scroll', fn, { passive: true })
+    if (p) {
+      p.addEventListener('scroll', fn, { passive: true })
+      p.addEventListener('scrollend', fn, { passive: true })
+    }
     window.addEventListener('scroll', fn, { passive: true })
     window.addEventListener('resize', fn, { passive: true })
 
     return () => {
-      if (p) p.removeEventListener('scroll', fn)
+      if (p) {
+        p.removeEventListener('scroll', fn)
+        p.removeEventListener('scrollend', fn)
+      }
       window.removeEventListener('scroll', fn)
       window.removeEventListener('resize', fn)
+      if (swipeDebounce) clearTimeout(swipeDebounce)
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
     }
   }, [])
@@ -834,7 +854,12 @@ export default function Site() {
         {/* MAIN VIEWPORT */}
         <main
           ref={pager}
-          className="no-scrollbar max-lg:flex max-lg:h-[100dvh] max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto overscroll-x-contain"
+          className="no-scrollbar max-lg:flex max-lg:h-[100dvh] max-lg:snap-x max-lg:snap-mandatory max-lg:overflow-x-auto will-change-scroll"
+          style={{
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-x pan-y',
+            overscrollBehaviorX: 'contain',
+          }}
         >
           {/* =========================================================================
               SECTION 1: HERO

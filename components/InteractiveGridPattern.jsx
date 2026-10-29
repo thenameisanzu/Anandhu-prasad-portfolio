@@ -35,27 +35,21 @@ export function InteractiveGridPattern({
       })
     }
 
-    const onPointerMove = (e) => handleMove(e.clientX, e.clientY)
-    const onTouchMove = (e) => {
-      if (e.touches && e.touches[0]) {
-        handleMove(e.touches[0].clientX, e.touches[0].clientY)
-      }
+    const onPointerMove = (e) => {
+      if (e.pointerType === 'touch') return
+      handleMove(e.clientX, e.clientY)
     }
     const onLeave = () => {
       setPointer((prev) => ({ ...prev, active: false }))
     }
 
     parent.addEventListener('pointermove', onPointerMove, { passive: true })
-    parent.addEventListener('touchmove', onTouchMove, { passive: true })
     parent.addEventListener('pointerleave', onLeave, { passive: true })
-    parent.addEventListener('touchend', onLeave, { passive: true })
 
     return () => {
       if (rafId.current) cancelAnimationFrame(rafId.current)
       parent.removeEventListener('pointermove', onPointerMove)
-      parent.removeEventListener('touchmove', onTouchMove)
       parent.removeEventListener('pointerleave', onLeave)
-      parent.removeEventListener('touchend', onLeave)
     }
   }, [])
 
