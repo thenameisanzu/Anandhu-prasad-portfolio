@@ -320,7 +320,7 @@ export const PROJECTS = [
     desc: 'High-fashion aesthetic reel featuring refined color palette, seamless match cuts, dynamic typography, and crisp beauty grade.',
     driveUrl: 'https://drive.google.com/file/d/1eRSgnNweBRr38AnYdVB91Gdk-ulWwmqF/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1eRSgnNweBRr38AnYdVB91Gdk-ulWwmqF/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/the-art-of-beauty.jpg',
     tags: ['Fashion Reel', 'Beauty Grade', 'CapCut Pro'],
   },
   {
