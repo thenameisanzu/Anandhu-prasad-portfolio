@@ -45,3 +45,4 @@ export async function GET(request, { params }) {
     return new Response('Error streaming video', { status: 502 })
   }
 }
+

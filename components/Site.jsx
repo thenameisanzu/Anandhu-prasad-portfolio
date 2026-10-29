@@ -54,6 +54,7 @@ export const PROFILE = {
   location: 'Kerala, India • Available Worldwide (Remote)',
 
   heroImage: '/anandu-portrait.jpg',
+  avatarImage: '/avatar.png',
   showreelDriveUrl: DRIVE_FOLDER_URL,
 
   socials: {
@@ -802,11 +803,11 @@ export default function Site() {
                 }`}
             >
               <Image
-                src={PROFILE.heroImage}
+                src={PROFILE.avatarImage || PROFILE.heroImage}
                 alt={`${PROFILE.name} - Avatar`}
                 fill
                 sizes="36px"
-                className="object-cover object-top contrast-[1.05]"
+                className="object-cover object-center contrast-[1.05]"
               />
             </div>
 
