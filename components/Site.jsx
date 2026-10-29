@@ -557,11 +557,11 @@ const VerticalProjectCard = ({ project, isDark, onPlay }) => {
       <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-14 pb-3.5 px-3.5 flex flex-col justify-end text-white">
         <div className="flex items-center gap-2 min-w-0">
           <span className="h-2 w-2 rounded-full bg-white shrink-0 shadow-sm" />
-          <h4 className="text-xs sm:text-sm font-semibold tracking-tight truncate leading-tight">
+          <h4 className="text-xs sm:text-sm font-semibold font-montserrat tracking-tight truncate leading-tight">
             {project.title.split(':')[0]}
           </h4>
         </div>
-        <p className="text-[10px] sm:text-[11px] font-mono text-white/60 truncate mt-0.5 pl-4">
+        <p className="text-[10px] sm:text-[11px] font-montserrat text-white/60 truncate mt-0.5 pl-4">
           {project.title.includes(':') ? project.title.split(':')[1].trim() : project.category}
         </p>
       </div>
@@ -1302,7 +1302,7 @@ export default function Site() {
                   03 / WORK SECTION
                 </span>
                 <H2>Selected Work</H2>
-                <p className={`font-mono text-xs sm:text-sm uppercase tracking-widest mt-2 font-bold ${
+                <p className={`font-montserrat text-xs sm:text-sm uppercase tracking-widest mt-2 font-bold ${
                   isDark ? 'text-white/70' : 'text-black/70'
                 }`}>
                   SELECTED WORK — 2025/26
@@ -1314,7 +1314,7 @@ export default function Site() {
                   href={DRIVE_FOLDER_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-xs font-semibold transition-all hover:scale-105 active:scale-95 ${
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-montserrat text-xs font-semibold transition-all hover:scale-105 active:scale-95 ${
                     isDark
                       ? 'border-white/20 bg-white/5 text-white/90 hover:bg-white hover:text-black hover:border-white'
                       : 'border-black/20 bg-black/5 text-black/90 hover:bg-black hover:text-white hover:border-black'
@@ -1337,14 +1337,14 @@ export default function Site() {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`rounded-full px-4 py-1.5 text-xs font-mono transition-all cursor-pointer ${
+                    className={`rounded-full px-4 py-1.5 text-xs font-montserrat font-medium transition-all cursor-pointer ${
                       isCatActive
                         ? isDark
-                          ? 'bg-white text-black font-bold shadow-sm'
-                          : 'bg-black text-white font-bold shadow-sm'
+                          ? 'bg-white text-black font-semibold shadow-sm'
+                          : 'bg-black text-white font-semibold shadow-sm'
                         : isDark
-                        ? 'text-white/60 hover:text-white hover:bg-white/10'
-                        : 'text-black/60 hover:text-black hover:bg-black/5'
+                        ? 'text-white/70 hover:text-white hover:bg-white/10'
+                        : 'text-black/70 hover:text-black hover:bg-black/5'
                     }`}
                   >
                     {cat.label}
