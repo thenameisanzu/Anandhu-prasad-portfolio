@@ -269,7 +269,7 @@ export const PROJECTS = [
     desc: 'Misty hills and tranquil road journey of Vagamon captured with rich film grain, deep forest greens, ambient soundscapes, and gentle pacing.',
     driveUrl: 'https://drive.google.com/file/d/1_GdaevQ-gFKcLTaRFDAgYncYrVOgPHkn/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1_GdaevQ-gFKcLTaRFDAgYncYrVOgPHkn/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/wagamon-diaries.jpg',
     tags: ['Road Trip', 'Film Grain', 'DaVinci Resolve'],
   },
   {
