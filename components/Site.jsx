@@ -251,7 +251,7 @@ export const PROJECTS = [
     desc: 'Dreamy aesthetic portrait film with luminous skin tones, soft highlight rolls, rhythmic pacing, and emotional music bed.',
     driveUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/preview',
-    thumbnailImage: '/projects/kalyani.jpg',
+    thumbnailImage: null,
     tags: ['Portrait Film', 'Skin Tone Color', 'DaVinci Resolve'],
   },
   {
@@ -285,7 +285,7 @@ export const PROJECTS = [
     desc: 'Atmospheric neon-lit portrait edit with intimate character pacing, ambient rain soundscapes, and subtle 35mm print film emulation.',
     driveUrl: 'https://drive.google.com/file/d/1BBdkpSsO3tCH0Pq_lJNo7c5ne8QJajhx/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1BBdkpSsO3tCH0Pq_lJNo7c5ne8QJajhx/preview',
-    thumbnailImage: '/projects/thakshi.jpg',
+    thumbnailImage: null,
     tags: ['Cinematic Mood', 'Film Halation', 'DaVinci Resolve'],
   },
   {
@@ -336,7 +336,7 @@ export const PROJECTS = [
     desc: 'Modern streetwear apparel campaign designed for viral retention on Instagram Reels and TikTok. Quick punch-ins, kinetic sync, and crisp bass drops.',
     driveUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/preview',
-    thumbnailImage: '/projects/noolab.jpg',
+    thumbnailImage: null,
     tags: ['Social Content', 'Kinetic Typography', 'CapCut Pro'],
   },
   {
