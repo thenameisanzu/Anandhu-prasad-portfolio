@@ -12,7 +12,6 @@ import {
   CheckCircle2,
   Clock,
   Instagram,
-  Youtube,
   Plus,
   Sun,
   Moon,
@@ -59,7 +58,6 @@ export const PROFILE = {
 
   socials: {
     instagram: 'https://www.instagram.com/ananduprasad._/',
-    youtube: 'https://youtube.com/',
   },
 }
 
@@ -337,7 +335,7 @@ export const PROJECTS = [
     desc: 'Modern streetwear apparel campaign designed for viral retention on Instagram Reels and TikTok. Quick punch-ins, kinetic sync, and crisp bass drops.',
     driveUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/noolab-motion.jpg',
     tags: ['Motion in Monochrome', 'Streetwear', 'CapCut Pro'],
   },
   {
@@ -405,7 +403,7 @@ export const PROJECTS = [
     desc: 'Detailed streetwear garment showcase highlighting fabric craftsmanship, texture macro cuts, minimal monochrome aesthetic, and tight kinetic cuts.',
     driveUrl: 'https://drive.google.com/file/d/1-ihdmbX2TmVRO__EC-H16YndVfWs0rLo/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1-ihdmbX2TmVRO__EC-H16YndVfWs0rLo/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/noolab-crafted.jpg',
     tags: ['Crafted in Detail', 'Streetwear', 'CapCut Pro'],
   },
 ]
@@ -807,7 +805,7 @@ export default function Site() {
                 alt={`${PROFILE.name} - Avatar`}
                 fill
                 sizes="36px"
-                className="object-cover object-center grayscale contrast-[1.08] brightness-[0.98]"
+                className="object-cover object-center contrast-[1.05]"
               />
             </div>
 
@@ -931,113 +929,28 @@ export default function Site() {
               className="[mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,white_25%,transparent_90%)] opacity-85"
             />
 
-            <div className="relative z-10 flex flex-col justify-between min-h-full">
-              {/* Viewfinder HUD Ticker: Desktop Top (Hidden on mobile to prioritize Face & Name) */}
-              <div
-                className={`mb-6 sm:mb-8 hidden md:flex flex-wrap items-center justify-between gap-3 font-mono text-xs transition-colors ${
-                  isDark ? 'text-white/50' : 'text-black/50'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className={`font-mono text-[11px] uppercase tracking-widest font-bold ${isDark ? 'text-white/80' : 'text-black/80'}`}>
-                    01 / HERO SECTION
-                  </span>
-                  <span className={isDark ? 'text-white/20' : 'text-black/20'}>|</span>
-                  <span className={`flex items-center gap-1.5 font-semibold tracking-wide ${isDark ? 'text-white' : 'text-black'}`}>
-                    <span className={`h-2 w-2 rounded-full inline-block animate-ping ${isDark ? 'bg-white' : 'bg-red-500'}`} />
-                    REC [●] 00:02:48:19
-                  </span>
-                  <span className={`hidden sm:inline ${isDark ? 'text-white/20' : 'text-black/20'}`}>|</span>
-                  <span className="hidden sm:inline">4K DCI • 23.976 FPS</span>
-                  <span className={`hidden md:inline ${isDark ? 'text-white/20' : 'text-black/20'}`}>|</span>
-                  <span className={`hidden md:inline ${isDark ? 'text-white/70' : 'text-black/70'}`}>PRORES 422 HQ</span>
-                </div>
-                <div className={`flex items-center gap-2 ${isDark ? 'text-white/70' : 'text-black/70'}`}>
-                  <span className={`text-[10px] uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-black/40'}`}>
-                    COLOR PIPELINE:
-                  </span>
-                  <span
-                    className={`rounded border px-2 py-0.5 text-[11px] font-medium ${
-                      isDark ? 'border-white/15 bg-white/[0.06] text-white' : 'border-black/15 bg-black/[0.04] text-black'
-                    }`}
-                  >
-                    DaVinci YRGB Color Managed
-                  </span>
-                </div>
-              </div>
-
+            <div className="relative z-10 flex flex-col justify-center min-h-full">
               {/* Responsive Hero Layout:
                   - Mobile (< md): Portrait (order-1) -> Headline Name (order-2) -> CTAs (order-3) -> Badges & Bio (scrollable)
                   - Desktop (>= md): 2-Column Grid (Left: Badges, Name, Bio, CTAs | Right: Large Portrait) */}
-              <div className="flex flex-col md:grid md:gap-10 md:grid-cols-12 md:items-center">
+              <div className="flex flex-col md:grid md:gap-10 lg:gap-12 md:grid-cols-12 md:items-center">
 
                 {/* Portrait Column: Renders First on Mobile (order-1), Right Column on Desktop (md:order-2) */}
-                <div className="order-1 md:order-2 md:col-span-6 lg:col-span-6 flex justify-center items-center py-4 sm:py-6 md:py-8">
-                  <div className="relative w-[230px] sm:w-[270px] md:w-full md:max-w-[420px] lg:max-w-[460px] aspect-square group">
-                    {/* Ambient Glow behind circle */}
+                <div className="order-1 md:order-2 md:col-span-5 lg:col-span-5 flex justify-center items-center py-4 sm:py-6 md:py-8">
+                  <div className="relative w-[240px] sm:w-[280px] md:w-full md:max-w-[340px] lg:max-w-[380px] aspect-[3/4] group">
+                    {/* Ambient Glow behind card */}
                     <div
-                      className={`absolute inset-4 rounded-full blur-3xl opacity-35 transition-opacity duration-700 group-hover:opacity-70 ${
-                        isDark ? 'bg-white/25' : 'bg-black/15'
+                      className={`absolute inset-4 rounded-3xl blur-3xl opacity-35 transition-opacity duration-700 group-hover:opacity-70 ${
+                        isDark ? 'bg-amber-500/20' : 'bg-black/15'
                       }`}
                     />
 
-                    {/* Rotating Camera Lens Aperture Ring Overlapping the Portrait Edge */}
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
-                      className="absolute -inset-5 sm:-inset-7 md:-inset-9 pointer-events-none z-20 flex items-center justify-center select-none"
-                    >
-                      <svg viewBox="0 0 500 500" className="w-full h-full overflow-visible">
-                        <defs>
-                          <path
-                            id="lensRingCircle"
-                            d="M 250, 250 m -230, 0 a 230,230 0 1,1 460,0 a 230,230 0 1,1 -460,0"
-                            fill="none"
-                          />
-                        </defs>
-
-                        {/* Outer optical lens calibration ring */}
-                        <circle
-                          cx="250"
-                          cy="250"
-                          r="244"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                          strokeDasharray="2 6"
-                          className={isDark ? 'text-white/20' : 'text-black/20'}
-                        />
-
-                        {/* Inner focal ring border */}
-                        <circle
-                          cx="250"
-                          cy="250"
-                          r="216"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                          className={isDark ? 'text-white/15' : 'text-black/15'}
-                        />
-
-                        {/* Revolving Lens Typography */}
-                        <text
-                          className={`font-mono text-[11px] sm:text-[12px] uppercase font-semibold tracking-[0.28em] fill-current ${
-                            isDark ? 'text-white/75' : 'text-black/75'
-                          }`}
-                        >
-                          <textPath href="#lensRingCircle" startOffset="0%">
-                            ✦ VIDEO EDITOR ✦ COLOR GRADING ✦ POST-PRODUCTION ✦ ANANDU PRASAD ✦ VIDEO EDITOR ✦ COLOR GRADING ✦ POST-PRODUCTION ✦ ANANDU PRASAD
-                          </textPath>
-                        </text>
-                      </svg>
-                    </motion.div>
-
-                    {/* Circular Frame with Border & Shadow */}
+                    {/* Stylized Poster Card with Rounded Corners & Subtle Border */}
                     <div
-                      className={`relative w-full h-full overflow-hidden rounded-full border-2 transition-all duration-700 ease-out shadow-2xl group-hover:scale-[1.02] ${
+                      className={`relative w-full h-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 transition-all duration-700 ease-out shadow-2xl group-hover:scale-[1.02] ${
                         isDark
-                          ? 'border-white/20 bg-neutral-900 group-hover:border-white/40 shadow-white/5'
-                          : 'border-black/15 bg-neutral-100 group-hover:border-black/30 shadow-black/5'
+                          ? 'border-white/20 bg-neutral-900 group-hover:border-white/40 shadow-black/40'
+                          : 'border-black/15 bg-neutral-100 group-hover:border-black/30 shadow-black/10'
                       }`}
                     >
                       <Image
@@ -1045,22 +958,15 @@ export default function Site() {
                         alt={`${PROFILE.name} - Video Editor Portrait`}
                         fill
                         priority
-                        sizes="(max-width: 768px) 270px, (max-width: 1024px) 50vw, 550px"
-                        className="object-cover object-center grayscale contrast-[1.08] brightness-[0.98] transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 280px, (max-width: 1024px) 50vw, 420px"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Text & Details Column */}
-                <div className="order-2 md:order-1 md:col-span-6 lg:col-span-6 flex flex-col justify-center text-center md:text-left items-center md:items-start mt-4 md:mt-0">
-                  
-                  {/* Mobile Section Tag */}
-                  <span className={`md:hidden font-mono text-[11px] uppercase tracking-widest font-semibold mb-2 block ${
-                    isDark ? 'text-white/50' : 'text-black/50'
-                  }`}>
-                    01 / HERO SECTION
-                  </span>
+                <div className="order-2 md:order-1 md:col-span-7 lg:col-span-7 flex flex-col justify-center text-center md:text-left items-center md:items-start mt-4 md:mt-0">
 
                   {/* Stylised Name Headline */}
                   <h1
@@ -1585,19 +1491,6 @@ export default function Site() {
                     >
                       <Instagram size={15} />
                       <span>Instagram</span>
-                    </a>
-                    <a
-                      href={PROFILE.socials.youtube}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium transition-colors shadow-xs ${
-                        isDark
-                          ? 'border-white/20 bg-white/[0.04] text-white hover:bg-white hover:text-black'
-                          : 'border-black/20 bg-black/[0.04] text-black hover:bg-black hover:text-white'
-                      }`}
-                    >
-                      <Youtube size={15} />
-                      <span>YouTube</span>
                     </a>
                     <a
                       href={`https://wa.me/${PROFILE.whatsapp}`}
