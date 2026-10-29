@@ -222,20 +222,20 @@ export const PROJECT_CATEGORIES = [
 export const PROJECTS = [
   {
     id: 1,
-    title: 'A Sweet Beginning: Wedding Highlights',
+    title: 'Creamin: A Sweet Beginning',
     file: 'A Sweet Beginning',
     driveId: '1qu--RNOXEWenVRXysdAlpjR_deYEG2k4',
-    category: 'Wedding Films & Highlights',
-    filterCategory: 'weddings',
+    category: 'Brand Films & Promos',
+    filterCategory: 'brand',
     software: 'DaVinci Resolve Studio',
     duration: '01:15',
     size: '35.2 MB',
     ratio: '9:16 Vertical Reel',
-    desc: 'Emotional wedding highlights capturing intimate moments, natural golden-hour warmth, nuanced skin tones, and evocative acoustic scoring.',
+    desc: 'Upcoming brand commercial for Creamin. Playful pacing, vibrant dessert visuals, rhythmic sound design, and clean pastel color grade.',
     driveUrl: 'https://drive.google.com/file/d/1qu--RNOXEWenVRXysdAlpjR_deYEG2k4/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1qu--RNOXEWenVRXysdAlpjR_deYEG2k4/preview',
-    thumbnailImage: null,
-    tags: ['Wedding Film', 'Golden Hour', 'DaVinci Resolve'],
+    thumbnailImage: '/projects/creamin.jpg',
+    tags: ['Brand Film', 'Upcoming Brand', 'DaVinci Resolve'],
   },
   {
     id: 2,
@@ -251,7 +251,7 @@ export const PROJECTS = [
     desc: 'Dreamy aesthetic portrait film with luminous skin tones, soft highlight rolls, rhythmic pacing, and emotional music bed.',
     driveUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/kalyani.jpg',
     tags: ['Portrait Film', 'Skin Tone Color', 'DaVinci Resolve'],
   },
   {
@@ -285,7 +285,7 @@ export const PROJECTS = [
     desc: 'Atmospheric neon-lit portrait edit with intimate character pacing, ambient rain soundscapes, and subtle 35mm print film emulation.',
     driveUrl: 'https://drive.google.com/file/d/1BBdkpSsO3tCH0Pq_lJNo7c5ne8QJajhx/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1BBdkpSsO3tCH0Pq_lJNo7c5ne8QJajhx/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/thakshi.jpg',
     tags: ['Cinematic Mood', 'Film Halation', 'DaVinci Resolve'],
   },
   {
@@ -302,7 +302,7 @@ export const PROJECTS = [
     desc: 'Open-road visual narrative highlighting the rhythm of journey, sweeping landscapes, dynamic speed curves, and emotive acoustic sound design.',
     driveUrl: 'https://drive.google.com/file/d/1QXy1kICMuEbz5HK2UfdHZZA8cG9zEO3N/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1QXy1kICMuEbz5HK2UfdHZZA8cG9zEO3N/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/beyond-the-ride.jpg',
     tags: ['Road Story', 'Speed Curves', 'Premiere Pro'],
   },
   {
@@ -336,7 +336,7 @@ export const PROJECTS = [
     desc: 'Modern streetwear apparel campaign designed for viral retention on Instagram Reels and TikTok. Quick punch-ins, kinetic sync, and crisp bass drops.',
     driveUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1uc4z_qQWK3nlHKzBIodNNHgPa05meSOO/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/noolab.jpg',
     tags: ['Social Content', 'Kinetic Typography', 'CapCut Pro'],
   },
   {
@@ -353,7 +353,7 @@ export const PROJECTS = [
     desc: 'High-octane action sports cut with beat-synchronized jump cuts, dirt-track rev sound design, aggressive whip transitions, and vivid grade.',
     driveUrl: 'https://drive.google.com/file/d/1OLQHX3AMpUyk9eSIjNcLYZbjrs_-3dpO/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1OLQHX3AMpUyk9eSIjNcLYZbjrs_-3dpO/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/motocross.jpg',
     tags: ['Action Sports', 'Beat Sync', 'Premiere Pro'],
   },
   {
@@ -370,7 +370,7 @@ export const PROJECTS = [
     desc: 'Dynamic cinematic commercial focusing on power, elegance, and velocity. Precision speed-ramps, custom audio riser curves, and sleek anamorphic tones.',
     driveUrl: 'https://drive.google.com/file/d/1KY6cCEK0u1MKaH35tgxyUdgHvfMcbUON/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1KY6cCEK0u1MKaH35tgxyUdgHvfMcbUON/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/porsche-art-of-performance.jpg',
     tags: ['Brand Promo', 'Speed Ramps', 'DaVinci Resolve'],
   },
   {
@@ -476,13 +476,21 @@ const VerticalProjectCard = ({ project, isDark, onPlay }) => {
     >
       {/* 1. Background Visual: Thumbnail Image (if provided) OR High-End Reel Placeholder */}
       {project.thumbnailImage ? (
-        <Image
-          src={project.thumbnailImage}
-          alt={project.title}
-          fill
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover object-center grayscale contrast-[1.08] transition-transform duration-500 group-hover:scale-105"
-        />
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src={project.thumbnailImage}
+            alt={project.title}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          />
+          {/* Subtle hover play overlay */}
+          <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+            <div className="h-11 w-11 rounded-full bg-white text-black flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform">
+              <Play size={18} className="fill-current ml-0.5" />
+            </div>
+          </div>
+        </div>
       ) : (
         /* Cinematic Vertical Reel Frame Placeholder */
         <div className="absolute inset-0 flex flex-col justify-between p-3.5 select-none">
