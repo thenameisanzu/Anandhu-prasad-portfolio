@@ -604,6 +604,7 @@ export default function Site() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [viewMode, setViewMode] = useState('grid')
   const [playingVideo, setPlayingVideo] = useState(null)
+  const [isPortraitColor, setIsPortraitColor] = useState(false)
 
   const isDark = theme === 'dark'
 
@@ -937,20 +938,74 @@ export default function Site() {
 
                 {/* Portrait Column: Renders First on Mobile (order-1), Right Column on Desktop (md:order-2) */}
                 <div className="order-1 md:order-2 md:col-span-5 lg:col-span-5 flex justify-center items-center py-4 sm:py-6 md:py-8">
-                  <div className="relative w-[240px] sm:w-[280px] md:w-full md:max-w-[340px] lg:max-w-[380px] aspect-[3/4] group">
-                    {/* Ambient Glow behind card */}
+                  <div
+                    onClick={() => setIsPortraitColor((prev) => !prev)}
+                    className="relative w-[230px] sm:w-[270px] md:w-full md:max-w-[380px] lg:max-w-[420px] aspect-square group cursor-pointer select-none"
+                  >
+                    {/* Ambient Glow behind circle */}
                     <div
-                      className={`absolute inset-4 rounded-3xl blur-3xl opacity-35 transition-opacity duration-700 group-hover:opacity-70 ${
-                        isDark ? 'bg-amber-500/20' : 'bg-black/15'
+                      className={`absolute inset-4 rounded-full blur-3xl opacity-35 transition-opacity duration-700 group-hover:opacity-75 ${
+                        isDark ? 'bg-white/25' : 'bg-black/15'
                       }`}
                     />
 
-                    {/* Stylized Poster Card with Rounded Corners & Subtle Border */}
+                    {/* Rotating Camera Lens Aperture Ring Overlapping the Portrait Edge */}
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 32, ease: 'linear' }}
+                      className="absolute -inset-6 sm:-inset-8 md:-inset-9 pointer-events-none z-20 flex items-center justify-center select-none"
+                    >
+                      <svg viewBox="0 0 500 500" className="w-full h-full overflow-visible">
+                        <defs>
+                          <path
+                            id="lensRingCircle"
+                            d="M 250, 250 m -230, 0 a 230,230 0 1,1 460,0 a 230,230 0 1,1 -460,0"
+                            fill="none"
+                          />
+                        </defs>
+
+                        {/* Outer optical lens calibration ring */}
+                        <circle
+                          cx="250"
+                          cy="250"
+                          r="244"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeDasharray="2 6"
+                          className={isDark ? 'text-white/20' : 'text-black/20'}
+                        />
+
+                        {/* Inner focal ring border */}
+                        <circle
+                          cx="250"
+                          cy="250"
+                          r="216"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          className={isDark ? 'text-white/15' : 'text-black/15'}
+                        />
+
+                        {/* Revolving Lens Typography */}
+                        <text
+                          className={`font-mono text-[11px] sm:text-[12px] uppercase font-semibold tracking-[0.28em] fill-current ${
+                            isDark ? 'text-white/75' : 'text-black/75'
+                          }`}
+                        >
+                          <textPath href="#lensRingCircle" startOffset="0%">
+                            ✦ VIDEO EDITOR ✦ COLORIST ✦ POST-PRODUCTION ✦ ANANDU PRASAD ✦ VIDEO EDITOR ✦ COLORIST ✦ POST-PRODUCTION ✦ ANANDU PRASAD
+                          </textPath>
+                        </text>
+                      </svg>
+                    </motion.div>
+
+                    {/* Circular Frame with Border & Shadow */}
                     <div
-                      className={`relative w-full h-full overflow-hidden rounded-2xl sm:rounded-3xl border-2 transition-all duration-700 ease-out shadow-2xl group-hover:scale-[1.02] ${
+                      className={`relative w-full h-full overflow-hidden rounded-full border-2 transition-all duration-700 ease-out shadow-2xl group-hover:scale-[1.02] ${
                         isDark
-                          ? 'border-white/20 bg-neutral-900 group-hover:border-white/40 shadow-black/40'
-                          : 'border-black/15 bg-neutral-100 group-hover:border-black/30 shadow-black/10'
+                          ? 'border-white/20 bg-neutral-900 group-hover:border-white/40 shadow-white/5'
+                          : 'border-black/15 bg-neutral-100 group-hover:border-black/30 shadow-black/5'
                       }`}
                     >
                       <Image
@@ -958,8 +1013,12 @@ export default function Site() {
                         alt={`${PROFILE.name} - Video Editor Portrait`}
                         fill
                         priority
-                        sizes="(max-width: 768px) 280px, (max-width: 1024px) 50vw, 420px"
-                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 270px, (max-width: 1024px) 50vw, 550px"
+                        className={`object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-active:grayscale-0 group-active:contrast-100 ${
+                          isPortraitColor
+                            ? 'grayscale-0 contrast-100 brightness-100 scale-105'
+                            : 'grayscale contrast-[1.08] brightness-[0.98]'
+                        }`}
                       />
                     </div>
                   </div>
