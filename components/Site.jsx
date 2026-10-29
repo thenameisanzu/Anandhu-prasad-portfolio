@@ -410,20 +410,14 @@ const H2 = ({ children, className = '' }) => {
   )
 }
 
-const renderSoftwareBadge = (software, dark = false) => {
-  const s = software.toLowerCase()
-  let Icon = null
-  if (s.includes('davinci')) Icon = LogoDaVinci
-  else if (s.includes('premiere')) Icon = LogoPremiere
-  else if (s.includes('after effects') || s.includes('aftereffects')) Icon = LogoAfterEffects
-  else if (s.includes('capcut')) Icon = LogoCapCut
-
-  return (
-    <span className="inline-flex items-center gap-1.5">
-      {Icon && <Icon size={14} className={dark ? 'text-black' : 'currentColor'} />}
-      <span>{software}</span>
-    </span>
-  )
+const getSoftwareIcon = (software = '', isDark = true) => {
+  const s = (software || '').toLowerCase()
+  const iconColor = isDark ? 'text-white' : 'text-black'
+  if (s.includes('davinci')) return <LogoDaVinci size={18} className={iconColor} />
+  if (s.includes('premiere')) return <LogoPremiere size={18} className={iconColor} />
+  if (s.includes('after effects') || s.includes('aftereffects')) return <LogoAfterEffects size={18} className={iconColor} />
+  if (s.includes('capcut')) return <LogoCapCut size={18} className={iconColor} />
+  return <Film size={18} className={iconColor} />
 }
 
 // 🎬 COMPACT VERTICAL VIDEO CARD (MATCHING USER REFERENCE IMAGE)
@@ -1708,32 +1702,43 @@ export default function Site() {
               >
                 {/* Modal Header */}
                 <div
-                  className={`flex items-center justify-between px-5 py-4 border-b ${
+                  className={`flex items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 border-b ${
                     isDark ? 'border-white/10 bg-white/[0.02]' : 'border-black/10 bg-black/[0.02]'
                   }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
                     <div
-                      className={`flex h-9 w-9 items-center justify-center rounded-xl font-mono text-xs font-bold border ${
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-mono text-xs font-bold border ${
                         isDark ? 'border-white/20 bg-white/10 text-white' : 'border-black/20 bg-black/5 text-black'
                       }`}
                     >
-                      {renderSoftwareBadge(playingVideo.software, isDark)}
+                      {getSoftwareIcon(playingVideo.software, isDark)}
                     </div>
-                    <div>
-                      <h4 className="font-display text-base sm:text-lg font-bold tracking-tight leading-tight">
+                    <div className="min-w-0">
+                      <h4 className="font-display text-sm sm:text-base md:text-lg font-bold tracking-tight leading-snug truncate">
                         {playingVideo.title}
                       </h4>
-                      <p className={`text-xs font-mono ${isDark ? 'text-white/60' : 'text-black/60'}`}>
-                        {playingVideo.category} • {playingVideo.duration}
-                      </p>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
+                        <p className={`text-xs font-mono truncate ${isDark ? 'text-white/60' : 'text-black/60'}`}>
+                          {playingVideo.category} • {playingVideo.duration}
+                        </p>
+                        {playingVideo.software && (
+                          <span
+                            className={`hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded-full border ${
+                              isDark ? 'border-white/15 bg-white/5 text-white/70' : 'border-black/15 bg-black/5 text-black/70'
+                            }`}
+                          >
+                            {playingVideo.software}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
 
                   <button
                     onClick={() => setPlayingVideo(null)}
                     aria-label="Close video player"
-                    className={`rounded-full p-2 border transition-colors cursor-pointer ${
+                    className={`rounded-full p-2 border transition-colors cursor-pointer shrink-0 ${
                       isDark
                         ? 'border-white/20 hover:bg-white/10 text-white'
                         : 'border-black/20 hover:bg-black/10 text-black'
