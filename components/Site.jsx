@@ -286,7 +286,7 @@ export const PROJECTS = [
     desc: 'Aesthetic traditional saree film with graceful pacing, rich fabric textures, elegant warmth, and emotive score.',
     driveUrl: 'https://drive.google.com/file/d/1BBdkpSsO3tCH0Pq_lJNo7c5ne8QJajhx/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1BBdkpSsO3tCH0Pq_lJNo7c5ne8QJajhx/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/timeless-grace.jpg',
     tags: ['Saree Film', 'Skin Tone Color', 'DaVinci Resolve'],
   },
   {
