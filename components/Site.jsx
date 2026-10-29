@@ -252,7 +252,7 @@ export const PROJECTS = [
     desc: 'Dreamy aesthetic portrait film with luminous skin tones, soft highlight rolls, rhythmic pacing, and emotional music bed.',
     driveUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/view?usp=sharing',
     previewUrl: 'https://drive.google.com/file/d/1c4-XQAbTFMkh2SknbMIdgNMcRCqgIenJ/preview',
-    thumbnailImage: null,
+    thumbnailImage: '/projects/cinematic-portrait.jpg',
     tags: ['Portrait Film', 'Skin Tone Color', 'DaVinci Resolve'],
   },
   {
