@@ -594,6 +594,7 @@ export default function Site() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [viewMode, setViewMode] = useState('grid')
   const [playingVideo, setPlayingVideo] = useState(null)
+  const [useIframeFallback, setUseIframeFallback] = useState(false)
   const [isPortraitColor, setIsPortraitColor] = useState(false)
 
   const isDark = theme === 'dark'
@@ -620,6 +621,7 @@ export default function Site() {
 
   // Lock body scroll when video modal is open
   useEffect(() => {
+    setUseIframeFallback(false)
     if (playingVideo) {
       document.body.style.overflow = 'hidden'
     } else {
@@ -1726,13 +1728,17 @@ export default function Site() {
                         : 'aspect-video max-h-[58dvh]'
                     }`}
                   >
-                    {playingVideo.videoUrl ? (
+                    {!useIframeFallback ? (
                       <video
                         key={playingVideo.id}
-                        src={playingVideo.videoUrl}
+                        src={
+                          playingVideo.videoUrl ||
+                          `/api/video/${playingVideo.driveId}`
+                        }
                         controls
                         playsInline
-                        preload="auto"
+                        preload="metadata"
+                        onError={() => setUseIframeFallback(true)}
                         className="h-full w-full object-contain"
                       />
                     ) : (
